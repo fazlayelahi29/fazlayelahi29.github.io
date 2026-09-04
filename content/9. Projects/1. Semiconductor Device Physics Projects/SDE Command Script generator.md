@@ -1,0 +1,1 @@
+Write a complete Synopsys Sentaurus SDE .cmd script/code using the Scheme with the Synopsys Sentaurus Structure Editor API language or Scheme-based SDE Command Language for the Synopsys Sentaurus version N-2017 TCAD software, which is going to be as a .cmd file extension for the 
