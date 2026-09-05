@@ -1,117 +1,216 @@
 # yaml-language-server: $schema=./quartz/plugins/quartz-plugins.schema.json
 configuration:
-  pageTitle: "Fazlay Elahi"
+  pageTitle: "Pedro H. R. de Andrade"
   pageTitleSuffix: ""
   enableSPA: true
   enablePopovers: true
-  analytics: null
-  locale: en-US
-  baseUrl: quartz.jzhao.xyz
+  analytics:
+    provider: plausible
+  locale: pt-BR
+  baseUrl: www.phrandrade.com
   ignorePatterns:
     - private
     - templates
+    - templates/**
+    - "**/templates/**"
     - .obsidian
+    - "**/*.sync-conflict-*"
+    - "**/_materiais"
+    - "**/_materiais/**"
+    - "**/Esboço"
+    - "**/Esboço/**"
+    - "**/esboço"
+    - "**/esboço/**"
+    - "**/Esboco"
+    - "**/Esboco/**"
+    - "**/esboco"
+    - "**/esboco/**"
+    - "**/README*"
+    - "**/*README*"
+    - "**/README - *"
   theme:
     fontOrigin: googleFonts
     cdnCaching: true
     typography:
-      header: "STIX Two Text"
-      body: "STIX Two Text"
-      code: "JetBrains Mono"
+      header: Schibsted Grotesk
+      body: Source Sans Pro
+      code: IBM Plex Mono
     colors:
       lightMode:
-        light: "#ffffff"
-        lightgray: "#e5e5e5"
-        gray: "#888888"
-        darkgray: "#222222"
-        dark: "#000000"
-        secondary: "#003366"
-        tertiary: "#005b96"
-        highlight: "rgba(0, 51, 102, 0.05)"
-        textHighlight: "rgba(0, 51, 102, 0.1)"
+        light: "#faf8ff"
+        lightgray: "#f3eefc"
+        gray: "#8b7ca8"
+        darkgray: "#241836"
+        dark: "#120924"
+        secondary: "#6d28d9"
+        tertiary: "#9333ea"
+        highlight: "rgba(109, 40, 217, 0.10)"
+        textHighlight: "rgba(147, 51, 234, 0.20)"
       darkMode:
-        light: "#0b0e14"
-        lightgray: "#1e2233"
-        gray: "#646c8a"
-        darkgray: "#c8d3f5"
+        light: "#0f0b18"
+        lightgray: "#1e162f"
+        gray: "#7c6d99"
+        darkgray: "#e9e1f7"
         dark: "#ffffff"
-        secondary: "#00e6cc"
-        tertiary: "#82aaff"
-        highlight: "rgba(0, 230, 204, 0.1)"
-        textHighlight: "rgba(0, 230, 204, 0.2)"
+        secondary: "#c084fc"
+        tertiary: "#e9d5ff"
+        highlight: "rgba(192, 132, 252, 0.15)"
+        textHighlight: "rgba(216, 180, 254, 0.25)"
 plugins:
-  - source: "@quartz-community/created-modified-date"
-    enabled: false
-  - source: "@quartz-community/syntax-highlighting"
+  - source: github:quartz-community/created-modified-date
+    enabled: true
+    options:
+      defaultDateType: modified
+      priority:
+        - git
+        - frontmatter
+        - filesystem
+    order: 10
+  - source: github:quartz-community/syntax-highlighting
     enabled: true
     options:
       theme:
         light: github-light
-        dark: poimandres
+        dark: github-dark
       keepBackground: false
     order: 20
-  - source: "@quartz-community/obsidian-flavored-markdown"
+  - source: github:quartz-community/obsidian-flavored-markdown
     enabled: true
     options:
       enableInHtmlEmbed: false
       enableCheckbox: true
     order: 30
-  - source: "@quartz-community/github-flavored-markdown"
+  - source: github:quartz-community/github-flavored-markdown
     enabled: true
     order: 40
-  - source: "@quartz-community/table-of-contents"
+  - source: github:quartz-community/table-of-contents
     enabled: true
     order: 50
     layout:
       position: right
       priority: 30
-  - source: "@quartz-community/crawl-links"
+  - source: github:quartz-community/crawl-links
     enabled: true
     options:
       markdownLinkResolution: shortest
     order: 60
-  - source: "@quartz-community/description"
+  - source: github:quartz-community/description
     enabled: true
     order: 70
-  - source: "@quartz-community/latex"
+  - source: github:quartz-community/latex
     enabled: true
     options:
       renderEngine: katex
-    order: 80
-  - source: "@quartz-community/quartz-fonts"
-    enabled: true
-  - source: "@quartz-community/hard-line-breaks"
-    enabled: true
+      katexOptions:
+        strict: false
+        trust: true
+      customMacros:
+        "\\bar": "\\overline{#1}"
+    order: 70
+  - source: github:quartz-community/citations
+    enabled: false
+    order: 85
+  - source: github:quartz-community/hard-line-breaks
+    enabled: false
     order: 90
-  - source: "@quartz-community/remove-draft"
+  - source: github:quartz-community/ox-hugo
+    enabled: false
+    order: 91
+  - source: github:quartz-community/roam
+    enabled: false
+    order: 92
+  - source: github:quartz-community/fonts
     enabled: true
-  - source: "@quartz-community/alias-redirects"
+  - source: github:quartz-community/remove-draft
     enabled: true
-  - source: "@quartz-community/content-index"
+  - source: github:quartz-community/explicit-publish
+    enabled: true
+  - source: github:quartz-community/unlisted-pages
+    enabled: true
+    options: {}
+    order: 45
+  - source: ./local-plugins/encrypted-pages
+    enabled: true
+    options:
+      iterations: 600000
+      passwordField: password
+      unlistWhenEncrypted: false
+      outputPath: static/encryptedContentIndex.json
+    order: 95
+    layout:
+      position: beforeBody
+      priority: 5
+      display: all
+  - source: github:quartz-community/stacked-pages
+    enabled: false
+    layout:
+      position: afterBody
+      priority: 50
+      display: all
+  - source: github:quartz-community/alias-redirects
+    enabled: true
+    options:
+      enableCaseRedirects: false
+  - source: github:quartz-community/content-index
     enabled: true
     options:
       enableSiteMap: true
       enableRSS: true
-  - source: "@quartz-community/favicon"
+  - source: github:quartz-community/favicon
     enabled: true
-  - source: "@quartz-community/og-image"
+  - source: github:quartz-community/og-image
     enabled: true
-  - source: "@quartz-community/cname"
+  - source: github:quartz-community/cname
     enabled: true
-  - source: "@quartz-community/canvas-page"
+  - source: github:quartz-community/canvas-page
     enabled: true
-  - source: "@quartz-community/content-page"
+  - source: github:quartz-community/content-page
     enabled: true
-  - source: "@quartz-community/folder-page"
-    enabled: true 
-  - source: "@quartz-community/tag-page"
+  - source: github:quartz-community/folder-page
     enabled: true
-  - source: "@quartz-community/explorer"
+  - source: github:quartz-community/tag-page
     enabled: true
+  - source: github:quartz-community/explorer
+    enabled: true
+    options:
+      folderClickBehavior: "link"
+      filterFn: |
+        (node) => {
+          const name = node.slugSegment;
+          if (name === "tags") return false;
+          const path = window.location.pathname;
+          const languages = ["en", "pt-br", "es", "fr"];
+          const currentLang = languages.find((l) => path.includes(`/${l}/`)) ?? "pt-br";
+          if (languages.includes(name) && name !== currentLang) return false;
+          return true;
+        }
+      sortFn: |
+        (a, b) => {
+          let orderA = a.data?.frontmatter?.order ?? 100
+          let orderB = b.data?.frontmatter?.order ?? 100
+          if (orderA !== orderB) return orderA - orderB
+          return a.displayName.localeCompare(b.displayName, undefined, { numeric: true, sensitivity: "base" })
+        }
+      mapFn: |
+        (node) => {
+          const seg = (node.slugSegment || "").toLowerCase();
+          if (seg === "anotações" || seg === "anotacoes") {
+            node.displayName = "Anotações";
+          }
+          if (seg === "atividades") {
+            node.displayName = "Atividades";
+          }
+          return node;
+        }
     layout:
       position: left
       priority: 50
-  - source: "@quartz-community/search"
+  - source: github:quartz-community/graph
+    enabled: true
+    layout:
+      position: right
+      priority: 10
+  - source: github:quartz-community/search
     enabled: true
     layout:
       position: left
@@ -119,36 +218,83 @@ plugins:
       group: toolbar
       groupOptions:
         grow: true
-  - source: "@quartz-community/article-title"
+  - source: github:quartz-community/backlinks
+    enabled: true
+    layout:
+      position: right
+      priority: 50
+  - source: github:quartz-community/article-title
     enabled: true
     layout:
       position: beforeBody
       priority: 10
-  - source: "@quartz-community/page-title"
+  - source: github:quartz-community/content-meta
+    enabled: true
+    layout:
+      position: beforeBody
+      priority: 20
+  - source: github:quartz-community/tag-list
+    enabled: true
+    layout:
+      position: beforeBody
+      priority: 30
+  - source: ./local-plugins/photo-carousel
+    enabled: true
+    layout:
+      position: beforeBody
+      priority: 25
+      display: all
+  - source: ./local-plugins/jc-dashboard
+    enabled: true
+    layout:
+      position: afterBody
+      priority: 24
+  - source: ./local-plugins/page-title-i18n
     enabled: true
     layout:
       position: left
       priority: 10
-  - source: "@quartz-community/darkmode"
+  - source: github:quartz-community/darkmode
     enabled: true
     layout:
       position: left
       priority: 30
       group: toolbar
-  - source: "@quartz-community/breadcrumbs"
+  - source: github:quartz-community/reader-mode
+    enabled: true
+    layout:
+      position: left
+      priority: 35
+      group: toolbar
+  - source: github:quartz-community/breadcrumbs
     enabled: true
     layout:
       position: beforeBody
       priority: 5
       condition: not-index
-  - source: "@quartz-community/footer"
+  - source: github:quartz-community/comments
     enabled: true
     options:
-      links: {}
+      provider: giscus
+      options:
+        repo: pedroiff0/page
+        repoId: R_kgDOTcqzBQ
+        category: Announcements
+        categoryId: DIC_kwDOTcqzBc4DBxFq
+        mapping: pathname
+        strict: false
+        reactionsEnabled: true
+        inputPosition: bottom
+        themeUrl: https://giscus.app/themes
+        lang: pt
     layout:
-      position: footer
-      priority: 50
-  - source: "@quartz-community/spacer"
+      position: afterBody
+      priority: 10
+      condition: is-blog
+
+  - source: github:quartz-community/recent-notes
+    enabled: false
+  - source: github:quartz-community/spacer
     enabled: true
     options: {}
     order: 25
@@ -156,18 +302,27 @@ plugins:
       position: left
       priority: 25
       display: mobile-only
-  - source: "@quartz-community/bases-page"
+  - source: github:quartz-community/bases-page
     enabled: true
     options: {}
     order: 50
-  - source: "@quartz-community/content-meta"
-    enabled: false
-  - source: "@quartz-community/note-properties"
-    enabled: false
-  - source: "@quartz-community/backlinks"
-    enabled: false
-  - source: "@quartz-community/graph"
-    enabled: false
+  - source: github:quartz-community/note-properties
+    enabled: true
+    options:
+      includeAll: false
+      includedProperties:
+        - description
+        - tags
+        - aliases
+      excludedProperties: []
+      hidePropertiesView: true
+      delimiters: ---
+      language: yaml
+    order: 5
+    layout:
+      position: beforeBody
+      priority: 15
+      display: all
 layout:
   groups:
     toolbar:
@@ -181,15 +336,7 @@ layout:
         left: []
         right: []
     content: {}
-    folder:
-      exclude:
-        - reader-mode
-      positions:
-        right: []
-    tag:
-      exclude:
-        - reader-mode
-      positions:
-        right: []
+    folder: {}
+    tag: {}
     canvas: {}
     bases: {}
