@@ -40,6 +40,8 @@ configuration:
         highlight: "rgba(0, 230, 204, 0.1)"
         textHighlight: "rgba(0, 230, 204, 0.2)"
 plugins:
+  - source: "@quartz-community/created-modified-date"
+    enabled: false
   - source: "@quartz-community/syntax-highlighting"
     enabled: true
     options:
@@ -78,6 +80,9 @@ plugins:
     order: 80
   - source: "@quartz-community/quartz-fonts"
     enabled: true
+  - source: "@quartz-community/hard-line-breaks"
+    enabled: true
+    order: 90
   - source: "@quartz-community/remove-draft"
     enabled: true
   - source: "@quartz-community/alias-redirects"
@@ -155,6 +160,14 @@ plugins:
     enabled: true
     options: {}
     order: 50
+  - source: "@quartz-community/content-meta"
+    enabled: false
+  - source: "@quartz-community/note-properties"
+    enabled: false
+  - source: "@quartz-community/backlinks"
+    enabled: false
+  - source: "@quartz-community/graph"
+    enabled: false
 layout:
   groups:
     toolbar:

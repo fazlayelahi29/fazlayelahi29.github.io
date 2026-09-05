@@ -18,56 +18,43 @@ article p {
   width: 100%;
 }
 
-/* 3. STRICT THREE-COLUMN FLEXBOX LAYOUT (Prevents all overlapping) */
+/* 3. RIGID 3-COLUMN LAYOUT: Explorer | TOC | Content */
 @media all and (min-width: 1200px) {
   .page {
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: flex-start !important;
-    justify-content: flex-start !important;
-    gap: 2.5rem !important;
     max-width: 1600px !important;
+    display: grid !important;
+    
+    /* Defines exactly three columns: 280px for Explorer, 250px for TOC, remainder for Content */
+    grid-template-columns: 280px 250px 1fr !important;
+    
+    /* Physically forces the DOM elements into this exact visual order */
+    grid-template-areas: "left right center" !important;
+    gap: 2.5rem !important;
     margin: 2rem auto !important;
     padding: 0 2rem !important;
   }
   
-  /* Column 1: Website Explorer */
   .left.sidebar {
-    order: 1 !important;
-    display: block !important;
-    width: 280px !important;
-    flex-shrink: 0 !important; /* Prevents column from crushing */
-    border-right: 1px solid var(--lightgray) !important;
-    padding-right: 1.5rem !important;
+    grid-area: left !important;
+    border-right: 1px solid var(--lightgray);
+    padding-right: 1.5rem;
   }
   
-  /* Column 2: Page Table of Contents */
   .right.sidebar {
-    order: 2 !important; /* Physically pulls this column between Left and Center */
+    grid-area: right !important;
     display: block !important;
-    width: 250px !important;
-    flex-shrink: 0 !important; /* Prevents column from crushing */
-    border-right: 1px solid var(--lightgray) !important;
-    padding-right: 1.5rem !important;
-    margin-top: 0 !important; 
+    border-right: 1px solid var(--lightgray);
+    padding-right: 1.5rem;
+    margin-top: 0 !important;
   }
   
-  /* Column 3: Wide Reading Page */
   .center {
-    order: 3 !important;
-    flex-grow: 1 !important;
+    grid-area: center !important;
     max-width: 950px !important;
-    margin: 0 !important;
+    margin-left: 0 !important;
   }
 }
 
-/* 4. Permanently hide all blog metadata (dates, reading time) */
-.content-meta {
-  display: none !important;
-}
-
-/* 5. Clean up folder lists so they format properly */
-.folder-page ul {
-   list-style: none;
-   padding-left: 0;
-}
+/* 4. Hide Blog Metadata */
+.content-meta { display: none !important; }
+.folder-page ul { list-style: none; padding-left: 0; }
