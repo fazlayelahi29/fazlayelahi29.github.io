@@ -18,44 +18,55 @@ article p {
   width: 100%;
 }
 
-/* 3. STRICT THREE-COLUMN LAYOUT OVERRIDE */
+/* 3. STRICT THREE-COLUMN FLEXBOX LAYOUT (Prevents all overlapping) */
 @media all and (min-width: 1200px) {
   .page {
-    display: grid !important;
-    /* Column 1: Website Explorer | Column 2: Page TOC | Column 3: Wide Reading Page */
-    grid-template-columns: 280px 250px minmax(500px, 950px) !important;
-    /* This overrides Quartz logic and physically pulls the right sidebar to the middle */
-    grid-template-areas: "left right center" !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
     gap: 2.5rem !important;
     max-width: 1600px !important;
-    margin: 0 auto !important;
+    margin: 2rem auto !important;
     padding: 0 2rem !important;
   }
   
-  .left.sidebar { 
-    grid-area: left !important; 
-    border-right: 1px solid var(--lightgray);
-  }
-  
-  .right.sidebar { 
-    grid-area: right !important; 
+  /* Column 1: Website Explorer */
+  .left.sidebar {
+    order: 1 !important;
     display: block !important;
-    border-right: 1px solid var(--lightgray);
-    margin-top: 0 !important;
+    width: 280px !important;
+    flex-shrink: 0 !important; /* Prevents column from crushing */
+    border-right: 1px solid var(--lightgray) !important;
+    padding-right: 1.5rem !important;
   }
   
-  .center { 
-    grid-area: center !important; 
-    margin-left: 0 !important; 
+  /* Column 2: Page Table of Contents */
+  .right.sidebar {
+    order: 2 !important; /* Physically pulls this column between Left and Center */
+    display: block !important;
+    width: 250px !important;
+    flex-shrink: 0 !important; /* Prevents column from crushing */
+    border-right: 1px solid var(--lightgray) !important;
+    padding-right: 1.5rem !important;
+    margin-top: 0 !important; 
+  }
+  
+  /* Column 3: Wide Reading Page */
+  .center {
+    order: 3 !important;
+    flex-grow: 1 !important;
+    max-width: 950px !important;
+    margin: 0 !important;
   }
 }
 
-/* 4. Remove all blog metadata, dates, and reading times */
+/* 4. Permanently hide all blog metadata (dates, reading time) */
 .content-meta {
   display: none !important;
 }
 
-/* 5. Clean up the folder listing view */
+/* 5. Clean up folder lists so they format properly */
 .folder-page ul {
    list-style: none;
    padding-left: 0;
