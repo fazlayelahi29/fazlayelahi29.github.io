@@ -3,7 +3,7 @@ article p, article li {
   text-align: justify !important;
   text-justify: inter-word !important;
   line-height: 1.7 !important;
-  margin-bottom: 1.5rem !important; /* Fixes lines colliding into each other */
+  margin-bottom: 1.5rem !important; 
 }
 
 /* 2. Mathematical Equation Scaling and Centering */
@@ -13,63 +13,69 @@ article p, article li {
   text-align: center !important;
   font-size: 1.45em !important; 
   margin: 2.5rem 0 !important;
-  overflow-x: auto !important;
   width: 100% !important;
+  overflow-x: auto !important;
 }
 
-/* 3. STRICT THREE-COLUMN GRID: Explorer | TOC | Content */
-@media screen and (min-width: 1200px) {
-  .page {
-    /* Define the exactly three columns */
-    display: grid !important;
-    grid-template-columns: 280px 250px minmax(0, 1fr) !important;
-    
-    /* Physically forces TOC between Explorer and Center */
-    grid-template-areas: "left right center" !important;
-    gap: 3rem !important;
-    max-width: 1600px !important;
-    margin: 0 auto !important;
-    padding: 2rem !important;
-    align-items: start !important;
-  }
-  
-  /* Column 1: Explorer */
-  .sidebar.left {
-    grid-area: left !important;
-    border-right: 1px solid var(--lightgray);
-    padding-right: 1rem;
-    position: sticky !important;
-    top: 2rem !important;
-    max-height: calc(100vh - 4rem) !important; /* Fixes scrolling */
-    overflow-y: auto !important; /* Fixes scrolling */
-  }
-  
-  /* Column 2: Table of Contents */
-  .sidebar.right {
-    grid-area: right !important;
-    display: flex !important;
-    flex-direction: column !important;
-    border-right: 1px solid var(--lightgray);
-    padding-right: 1rem;
-    margin: 0 !important; /* Prevents overlap */
-    position: sticky !important;
-    top: 2rem !important;
-    max-height: calc(100vh - 4rem) !important; /* Fixes scrolling */
-    overflow-y: auto !important; /* Fixes scrolling */
-  }
-  
-  /* Column 3: Wide Reading Page */
-  .center {
-    grid-area: center !important;
-    margin: 0 !important;
-    max-width: 100% !important;
-  }
-}
-
-/* 4. Hide Blog Metadata & Clean Folders */
+/* 3. Hide Blog Metadata */
 .content-meta { display: none !important; }
 .folder-page ul { list-style: none !important; padding-left: 0 !important; }
 
-/* 5. Custom Scrollbar for sidebars */
+/* 4. STRICT THREE-COLUMN EXPLICIT GRID */
+@media all and (min-width: 1200px) {
+  .page {
+    display: grid !important;
+    /* Calculates exact widths: 280px (Col 1), 250px (Col 2), Remainder (Col 3) */
+    grid-template-columns: 280px 250px calc(100% - 530px) !important;
+    max-width: 1600px !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+    padding: 2rem !important;
+    gap: 0 !important;
+  }
+
+  /* Column 1: Explorer */
+  .sidebar.left {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+    width: 100% !important;
+    position: sticky !important;
+    top: 2rem !important;
+    height: max-content !important;
+    max-height: 90vh !important;
+    overflow-y: auto !important;
+    border-right: 1px solid var(--lightgray) !important;
+    padding-right: 1.5rem !important;
+  }
+
+  /* Column 2: Table of Contents */
+  .sidebar.right {
+    grid-column: 2 !important;
+    grid-row: 1 !important;
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    position: sticky !important;
+    top: 2rem !important;
+    height: max-content !important;
+    max-height: 90vh !important;
+    overflow-y: auto !important;
+    border-right: 1px solid var(--lightgray) !important;
+    padding: 0 1.5rem !important;
+    margin: 0 !important;
+  }
+
+  /* Column 3: Wide Reading Page */
+  .center {
+    grid-column: 3 !important;
+    grid-row: 1 !important;
+    width: 100% !important;
+    min-width: 400px !important; /* Absolutely prevents text from squishing */
+    padding-left: 2.5rem !important;
+    margin: 0 !important;
+  }
+}
+
+/* 5. Custom Scrollbar Styling */
 .sidebar::-webkit-scrollbar { width: 6px; }
 .sidebar::-webkit-scrollbar-thumb { background: var(--gray); border-radius: 4px; }
