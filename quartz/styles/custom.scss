@@ -17,47 +17,54 @@ article p, article li {
   width: 100% !important;
 }
 
-/* 3. RIGID 3-COLUMN GRID COORDINATES */
+/* 3. THE "ABSOLUTE COORDINATE" HIJACK (Explorer -> TOC -> Content) */
 @media screen and (min-width: 1200px) {
   .page {
-    display: grid !important;
-    /* Exactly defines widths: 280px | 250px | Remainder */
-    grid-template-columns: 280px 250px minmax(500px, 950px) !important;
-    /* Physically forces the DOM elements into this left-to-right order */
-    grid-template-areas: "left right center" !important;
-    gap: 2.5rem !important;
-    max-width: 1650px !important;
-    margin: 0 auto !important;
-    padding: 0 2rem !important;
-    align-items: start !important;
-  }
-  
-  .left.sidebar {
-    grid-area: left !important;
-    position: sticky !important;
-    top: 2rem !important;
-    max-height: calc(100vh - 4rem) !important;
-    overflow-y: auto !important;
-    border-right: 1px solid var(--lightgray) !important;
-    padding-right: 1.5rem !important;
-  }
-  
-  .right.sidebar {
-    grid-area: right !important;
     display: flex !important;
-    flex-direction: column !important;
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    position: relative !important; /* Critical: Traps the absolute TOC inside this container */
+    max-width: 1600px !important;
+    margin: 0 auto !important;
+    padding: 2rem 0 !important; /* Resets inner padding for exact pixel math */
+  }
+  
+  /* Column 1: Explorer (Anchored Left) */
+  .page > .sidebar.left {
+    flex: 0 0 280px !important;
+    width: 280px !important;
+    margin-left: 2rem !important; /* Indents from screen edge */
     position: sticky !important;
     top: 2rem !important;
     max-height: calc(100vh - 4rem) !important;
-    overflow-y: auto !important;
+    overflow-y: auto !important; /* Retains Scroll */
+    border-right: 1px solid var(--lightgray) !important;
+    padding-right: 1.5rem !important;
+  }
+  
+  /* Column 2: Table of Contents (Ripped from Right, Nailed to Middle) */
+  .page > .sidebar.right {
+    display: block !important;
+    position: absolute !important; /* Rips it out of the Quartz layout logic entirely */
+    left: calc(2rem + 280px + 1.5rem) !important; /* Maps exactly next to the Explorer */
+    top: 2rem !important;
+    width: 250px !important;
+    max-height: calc(100vh - 4rem) !important;
+    overflow-y: auto !important; /* Retains Scroll */
     border-right: 1px solid var(--lightgray) !important;
     padding-right: 1.5rem !important;
     margin: 0 !important;
   }
   
-  .center {
-    grid-area: center !important;
-    margin: 0 !important;
+  /* Column 3: Main Reading View */
+  .page > .center {
+    flex: 1 1 auto !important;
+    min-width: 500px !important;
+    max-width: 950px !important;
+    /* Mathematically forces the content to jump past the floating TOC column */
+    margin-left: calc(250px + 3.5rem) !important; 
+    margin-right: 2rem !important;
+    padding: 0 !important;
   }
 }
 
