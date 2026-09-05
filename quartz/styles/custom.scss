@@ -2,7 +2,6 @@
 article p, article li {
   text-align: justify !important;
   text-justify: inter-word !important;
-  hyphens: auto !important;
   line-height: 1.7 !important;
 }
 
@@ -17,46 +16,59 @@ article p, article li {
   width: 100% !important;
 }
 
-/* 3. RIGID 3-COLUMN CSS GRID (Guarantees zero overlap) */
+/* 3. STRICT THREE-COLUMN FLEXBOX LAYOUT (Bulletproof override) */
 @media screen and (min-width: 1200px) {
+  /* Force the main container to use Flexbox instead of Grid */
   .page {
-    display: grid !important;
-    /* Exactly defines widths: 280px (Explorer) | 250px (TOC) | 500-950px (Content) */
-    grid-template-columns: 280px 250px minmax(500px, 950px) !important;
-    /* Physically forces the correct visual order from left to right */
-    grid-template-areas: "left right center" !important;
-    gap: 3rem !important;
-    max-width: 1650px !important;
-    margin: 0 auto !important;
-    padding: 0 2rem !important;
-    align-items: flex-start !important;
-  }
-  
-  .page > .left {
-    grid-area: left !important;
-    position: sticky !important;
-    top: 2rem !important;
-    height: max-content !important;
-    border-right: 1px solid var(--lightgray) !important;
-    padding-right: 1rem !important;
-  }
-  
-  .page > .right {
-    grid-area: right !important;
     display: flex !important;
-    flex-direction: column !important;
-    position: sticky !important;
-    top: 2rem !important;
-    height: max-content !important;
-    border-right: 1px solid var(--lightgray) !important;
-    padding-right: 1rem !important;
-    margin: 0 !important;
-  }
-  
-  .page > .center {
-    grid-area: center !important;
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
     max-width: 100% !important;
     margin: 0 !important;
+    padding: 2rem !important;
+  }
+  
+  /* Column 1: Explorer (Fixed Left) */
+  .sidebar.left {
+    order: 1 !important;
+    flex: 0 0 300px !important; /* Strictly 300px wide, no shrinking */
+    width: 300px !important;
+    position: sticky !important;
+    top: 2rem !important;
+    height: max-content !important;
+    max-height: 90vh !important;
+    overflow-y: auto !important;
+    border-right: 2px solid var(--lightgray) !important;
+    padding-right: 1.5rem !important;
+    margin: 0 !important;
+  }
+  
+  /* Column 2: Table of Contents (Fixed Middle) */
+  .sidebar.right {
+    order: 2 !important;
+    display: block !important;
+    flex: 0 0 280px !important; /* Strictly 280px wide, no shrinking */
+    width: 280px !important;
+    position: sticky !important;
+    top: 2rem !important;
+    height: max-content !important;
+    max-height: 90vh !important;
+    overflow-y: auto !important;
+    border-right: 2px solid var(--lightgray) !important;
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+    margin: 0 !important;
+  }
+  
+  /* Column 3: Reading Area (Wide Right) */
+  .center {
+    order: 3 !important;
+    flex: 1 1 auto !important; /* Take up all remaining space */
+    min-width: 500px !important; /* Prevent text from squishing */
+    max-width: 1000px !important;
+    margin: 0 0 0 2rem !important;
+    padding: 0 !important;
   }
 }
 
