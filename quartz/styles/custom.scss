@@ -3,7 +3,6 @@ article p, article li {
   text-align: justify !important;
   text-justify: inter-word !important;
   line-height: 1.7 !important;
-  margin-bottom: 1.5rem !important; 
 }
 
 /* 2. Mathematical Equation Scaling and Centering */
@@ -13,69 +12,71 @@ article p, article li {
   text-align: center !important;
   font-size: 1.45em !important; 
   margin: 2.5rem 0 !important;
-  width: 100% !important;
   overflow-x: auto !important;
+  width: 100% !important;
 }
 
-/* 3. Hide Blog Metadata */
+/* 3. INDESTRUCTIBLE 3-COLUMN FLEXBOX LAYOUT */
+@media screen and (min-width: 1200px) {
+  /* Override Quartz Grid with Flexbox */
+  .page {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    max-width: 1700px !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+  }
+  
+  /* Column 1: Explorer (Fixed Left) */
+  .sidebar.left {
+    order: 1 !important;
+    display: block !important;
+    flex: 0 0 280px !important; /* Force exact width */
+    width: 280px !important;
+    height: 100vh !important; /* Enable full column height */
+    position: sticky !important;
+    top: 0 !important;
+    overflow-y: auto !important; /* ENABLE SCROLLING */
+    border-right: 1px solid var(--lightgray) !important;
+    padding: 2rem 1.5rem !important;
+    margin: 0 !important;
+  }
+  
+  /* Column 2: Table of Contents (Fixed Middle) */
+  .sidebar.right {
+    order: 2 !important; /* Physically pull to the middle */
+    display: flex !important; /* Force render even if empty */
+    flex-direction: column !important;
+    flex: 0 0 250px !important; /* Force exact width */
+    width: 250px !important;
+    height: 100vh !important; /* Enable full column height */
+    position: sticky !important;
+    top: 0 !important;
+    overflow-y: auto !important; /* ENABLE SCROLLING */
+    border-right: 1px solid var(--lightgray) !important;
+    padding: 2rem 1.5rem !important;
+    margin: 0 !important;
+  }
+  
+  /* Column 3: Wide Reading Page (Right) */
+  .center {
+    order: 3 !important;
+    flex: 1 1 auto !important; /* Expand to fill all remaining screen space */
+    width: 100% !important;
+    max-width: 1000px !important;
+    padding: 2rem 3rem !important;
+    margin: 0 !important;
+  }
+}
+
+/* 4. Hide Blog Metadata */
 .content-meta { display: none !important; }
+
+/* 5. Clean up folder lists */
 .folder-page ul { list-style: none !important; padding-left: 0 !important; }
 
-/* 4. STRICT THREE-COLUMN EXPLICIT GRID */
-@media all and (min-width: 1200px) {
-  .page {
-    display: grid !important;
-    /* Calculates exact widths: 280px (Col 1), 250px (Col 2), Remainder (Col 3) */
-    grid-template-columns: 280px 250px calc(100% - 530px) !important;
-    max-width: 1600px !important;
-    width: 100% !important;
-    margin: 0 auto !important;
-    padding: 2rem !important;
-    gap: 0 !important;
-  }
-
-  /* Column 1: Explorer */
-  .sidebar.left {
-    grid-column: 1 !important;
-    grid-row: 1 !important;
-    width: 100% !important;
-    position: sticky !important;
-    top: 2rem !important;
-    height: max-content !important;
-    max-height: 90vh !important;
-    overflow-y: auto !important;
-    border-right: 1px solid var(--lightgray) !important;
-    padding-right: 1.5rem !important;
-  }
-
-  /* Column 2: Table of Contents */
-  .sidebar.right {
-    grid-column: 2 !important;
-    grid-row: 1 !important;
-    width: 100% !important;
-    display: flex !important;
-    flex-direction: column !important;
-    position: sticky !important;
-    top: 2rem !important;
-    height: max-content !important;
-    max-height: 90vh !important;
-    overflow-y: auto !important;
-    border-right: 1px solid var(--lightgray) !important;
-    padding: 0 1.5rem !important;
-    margin: 0 !important;
-  }
-
-  /* Column 3: Wide Reading Page */
-  .center {
-    grid-column: 3 !important;
-    grid-row: 1 !important;
-    width: 100% !important;
-    min-width: 400px !important; /* Absolutely prevents text from squishing */
-    padding-left: 2.5rem !important;
-    margin: 0 !important;
-  }
-}
-
-/* 5. Custom Scrollbar Styling */
+/* 6. Custom Scrollbar Styling to match EDA theme */
 .sidebar::-webkit-scrollbar { width: 6px; }
 .sidebar::-webkit-scrollbar-thumb { background: var(--gray); border-radius: 4px; }
