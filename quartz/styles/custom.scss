@@ -18,34 +18,45 @@ article p {
   width: 100%;
 }
 
-/* 3. Structural Layout Execution (Left Sidebar + Wide Page) */
+/* 3. STRICT THREE-COLUMN LAYOUT OVERRIDE */
 @media all and (min-width: 1200px) {
-  /* Expand the left sidebar to comfortably stack Explorer and TOC */
-  .left.sidebar {
-    max-width: 380px !important;
-    padding-right: 2rem;
+  .page {
+    display: grid !important;
+    /* Column 1: Website Explorer | Column 2: Page TOC | Column 3: Wide Reading Page */
+    grid-template-columns: 280px 250px minmax(500px, 950px) !important;
+    /* This overrides Quartz logic and physically pulls the right sidebar to the middle */
+    grid-template-areas: "left right center" !important;
+    gap: 2.5rem !important;
+    max-width: 1600px !important;
+    margin: 0 auto !important;
+    padding: 0 2rem !important;
+  }
+  
+  .left.sidebar { 
+    grid-area: left !important; 
     border-right: 1px solid var(--lightgray);
   }
   
-  /* Completely annihilate the right sidebar container */
-  .right.sidebar {
-    display: none !important;
-    width: 0 !important;
+  .right.sidebar { 
+    grid-area: right !important; 
+    display: block !important;
+    border-right: 1px solid var(--lightgray);
+    margin-top: 0 !important;
   }
   
-  /* Expand the center document to utilize the freed space */
-  .center {
-    max-width: 1000px !important;
-    margin-left: 4rem;
-  }
-
-  /* Structural container overrides for 2-column aesthetic */
-  .page {
-    grid-template-columns: 380px auto !important;
+  .center { 
+    grid-area: center !important; 
+    margin-left: 0 !important; 
   }
 }
 
-/* 4. Remove lingering article metadata gaps */
+/* 4. Remove all blog metadata, dates, and reading times */
 .content-meta {
   display: none !important;
+}
+
+/* 5. Clean up the folder listing view */
+.folder-page ul {
+   list-style: none;
+   padding-left: 0;
 }
