@@ -1,9 +1,9 @@
 /* 1. Academic Manuscript Paragraph Formatting */
-article p {
-  text-align: justify;
-  text-justify: inter-word;
-  hyphens: auto;
-  line-height: 1.7;
+article p, article li {
+  text-align: justify !important;
+  text-justify: inter-word !important;
+  hyphens: auto !important;
+  line-height: 1.7 !important;
 }
 
 /* 2. Mathematical Equation Scaling and Centering */
@@ -11,50 +11,55 @@ article p {
   display: flex !important;
   justify-content: center !important;
   text-align: center !important;
-  font-size: 1.55em !important; 
-  margin-top: 2.5rem !important;
-  margin-bottom: 2.5rem !important;
-  overflow-x: auto;
-  width: 100%;
+  font-size: 1.45em !important; 
+  margin: 2.5rem 0 !important;
+  overflow-x: auto !important;
+  width: 100% !important;
 }
 
-/* 3. RIGID 3-COLUMN LAYOUT: Explorer | TOC | Content */
-@media all and (min-width: 1200px) {
+/* 3. RIGID 3-COLUMN CSS GRID (Guarantees zero overlap) */
+@media screen and (min-width: 1200px) {
   .page {
-    max-width: 1600px !important;
     display: grid !important;
-    
-    /* Defines exactly three columns: 280px for Explorer, 250px for TOC, remainder for Content */
-    grid-template-columns: 280px 250px 1fr !important;
-    
-    /* Physically forces the DOM elements into this exact visual order */
+    /* Exactly defines widths: 280px (Explorer) | 250px (TOC) | 500-950px (Content) */
+    grid-template-columns: 280px 250px minmax(500px, 950px) !important;
+    /* Physically forces the correct visual order from left to right */
     grid-template-areas: "left right center" !important;
-    gap: 2.5rem !important;
-    margin: 2rem auto !important;
+    gap: 3rem !important;
+    max-width: 1650px !important;
+    margin: 0 auto !important;
     padding: 0 2rem !important;
+    align-items: flex-start !important;
   }
   
-  .left.sidebar {
+  .page > .left {
     grid-area: left !important;
-    border-right: 1px solid var(--lightgray);
-    padding-right: 1.5rem;
+    position: sticky !important;
+    top: 2rem !important;
+    height: max-content !important;
+    border-right: 1px solid var(--lightgray) !important;
+    padding-right: 1rem !important;
   }
   
-  .right.sidebar {
+  .page > .right {
     grid-area: right !important;
-    display: block !important;
-    border-right: 1px solid var(--lightgray);
-    padding-right: 1.5rem;
-    margin-top: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    position: sticky !important;
+    top: 2rem !important;
+    height: max-content !important;
+    border-right: 1px solid var(--lightgray) !important;
+    padding-right: 1rem !important;
+    margin: 0 !important;
   }
   
-  .center {
+  .page > .center {
     grid-area: center !important;
-    max-width: 950px !important;
-    margin-left: 0 !important;
+    max-width: 100% !important;
+    margin: 0 !important;
   }
 }
 
 /* 4. Hide Blog Metadata */
 .content-meta { display: none !important; }
-.folder-page ul { list-style: none; padding-left: 0; }
+.folder-page ul { list-style: none !important; padding-left: 0 !important; }
