@@ -1,4 +1,4 @@
-/* 1. Academic Manuscript Formatting */
+/* 1. Academic Formatting */
 article p, article li {
   text-align: justify !important;
   text-justify: inter-word !important;
@@ -17,54 +17,66 @@ article p, article li {
   width: 100% !important;
 }
 
-/* 3. THE "ABSOLUTE COORDINATE" HIJACK (Explorer -> TOC -> Content) */
+/* 3. INDESTRUCTIBLE 3-COLUMN FLEXBOX OVERRIDE */
 @media screen and (min-width: 1200px) {
   .page {
     display: flex !important;
     flex-direction: row !important;
-    align-items: flex-start !important;
-    position: relative !important; /* Critical: Traps the absolute TOC inside this container */
-    max-width: 1600px !important;
+    flex-wrap: nowrap !important; 
+    width: 100% !important;
+    min-width: 1100px !important; /* Forces page to stay wide */
+    max-width: 1700px !important;
     margin: 0 auto !important;
-    padding: 2rem 0 !important; /* Resets inner padding for exact pixel math */
+    padding: 2rem !important;
+    align-items: flex-start !important;
   }
   
-  /* Column 1: Explorer (Anchored Left) */
+  /* Column 1: Explorer */
   .page > .sidebar.left {
-    flex: 0 0 280px !important;
+    order: 1 !important;
     width: 280px !important;
-    margin-left: 2rem !important; /* Indents from screen edge */
+    min-width: 280px !important;
+    flex-shrink: 0 !important; /* Failsafe: Prevents column from squishing */
     position: sticky !important;
     top: 2rem !important;
-    max-height: calc(100vh - 4rem) !important;
-    overflow-y: auto !important; /* Retains Scroll */
-    border-right: 1px solid var(--lightgray) !important;
-    padding-right: 1.5rem !important;
-  }
-  
-  /* Column 2: Table of Contents (Ripped from Right, Nailed to Middle) */
-  .page > .sidebar.right {
-    display: block !important;
-    position: absolute !important; /* Rips it out of the Quartz layout logic entirely */
-    left: calc(2rem + 280px + 1.5rem) !important; /* Maps exactly next to the Explorer */
-    top: 2rem !important;
-    width: 250px !important;
-    max-height: calc(100vh - 4rem) !important;
-    overflow-y: auto !important; /* Retains Scroll */
+    height: 85vh !important;
+    overflow-y: auto !important;
     border-right: 1px solid var(--lightgray) !important;
     padding-right: 1.5rem !important;
     margin: 0 !important;
   }
   
+  /* Column 2: Table of Contents (Forced to Middle) */
+  .page > .sidebar.right {
+    order: 2 !important;
+    width: 250px !important;
+    min-width: 250px !important;
+    flex-shrink: 0 !important; /* Failsafe: Prevents column from squishing */
+    display: flex !important;
+    flex-direction: column !important;
+    position: sticky !important;
+    top: 2rem !important;
+    height: 85vh !important;
+    overflow-y: auto !important;
+    border-right: 1px solid var(--lightgray) !important;
+    padding: 0 1.5rem !important;
+    margin: 0 !important;
+  }
+  
   /* Column 3: Main Reading View */
   .page > .center {
-    flex: 1 1 auto !important;
-    min-width: 500px !important;
-    max-width: 950px !important;
-    /* Mathematically forces the content to jump past the floating TOC column */
-    margin-left: calc(250px + 3.5rem) !important; 
-    margin-right: 2rem !important;
-    padding: 0 !important;
+    order: 3 !important;
+    flex-grow: 1 !important;
+    width: calc(100% - 530px) !important;
+    min-width: 500px !important; /* Failsafe: Prevents text squishing */
+    padding-left: 2rem !important;
+    margin: 0 !important;
+  }
+  
+  /* Absolute Failsafe: Stop words from breaking into single letters */
+  .page * {
+    word-break: normal !important;
+    overflow-wrap: break-word !important;
   }
 }
 
