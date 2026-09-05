@@ -1,32 +1,78 @@
-/* FORCE COLUMN ORDER: Explorer -> TOC -> Page Content */
-@media all and (min-width: 1200px) {
+/* 1. Academic Manuscript Formatting */
+article p, article li {
+  text-align: justify !important;
+  text-justify: inter-word !important;
+  line-height: 1.7 !important;
+  margin-bottom: 1.5rem !important; 
+}
+
+/* 2. Mathematical Equation Scaling */
+.katex-display {
+  display: flex !important;
+  justify-content: center !important;
+  text-align: center !important;
+  font-size: 1.45em !important; 
+  margin: 2.5rem 0 !important;
+  overflow-x: auto !important;
+  width: 100% !important;
+}
+
+/* 3. EXPLICIT 3-COLUMN GRID COORDINATES */
+@media screen and (min-width: 1200px) {
   .page {
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: flex-start !important;
-    max-width: 1800px !important;
+    display: grid !important;
+    /* Sets exact column widths: 280px | 250px | Remaining Space */
+    grid-template-columns: 280px 250px minmax(500px, 1fr) !important;
+    max-width: 1700px !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+    padding: 2rem !important;
+    gap: 2rem !important;
+    align-items: start !important;
   }
   
-  /* 1st Column: Explorer */
+  /* Force Explorer into Column 1 */
   .page > .sidebar.left {
-    order: 1 !important;
-    min-width: 280px !important;
-  }
-  
-  /* 2nd Column: Table of Contents (Forced to Middle) */
-  .page > .sidebar.right {
-    order: 2 !important;
-    min-width: 250px !important;
-    margin-left: 2rem !important;
-    margin-right: 2rem !important;
-    border-left: none !important;
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+    width: 100% !important;
+    position: sticky !important;
+    top: 2rem !important;
+    max-height: calc(100vh - 4rem) !important;
+    overflow-y: auto !important;
     border-right: 1px solid var(--lightgray) !important;
+    padding-right: 1rem !important;
   }
   
-  /* 3rd Column: Main Reading Page */
+  /* Force Table of Contents into Column 2 (The Middle) */
+  .page > .sidebar.right {
+    grid-column: 2 !important; 
+    grid-row: 1 !important;
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    position: sticky !important;
+    top: 2rem !important;
+    max-height: calc(100vh - 4rem) !important;
+    overflow-y: auto !important;
+    border-right: 1px solid var(--lightgray) !important;
+    padding-right: 1rem !important;
+    margin: 0 !important;
+  }
+  
+  /* Force Reading View into Column 3 (The Right) */
   .page > .center {
-    order: 3 !important;
-    flex-grow: 1 !important;
-    max-width: 1000px !important;
+    grid-column: 3 !important; 
+    grid-row: 1 !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding-left: 1rem !important;
   }
 }
+
+/* 4. Hide Blog Metadata */
+.content-meta { display: none !important; }
+
+/* 5. Custom Scrollbars */
+.sidebar::-webkit-scrollbar { width: 6px; }
+.sidebar::-webkit-scrollbar-thumb { background: var(--gray); border-radius: 4px; }
