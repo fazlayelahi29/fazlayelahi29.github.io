@@ -1,82 +1,32 @@
-/* 1. Academic Manuscript Paragraph Formatting */
-article p, article li {
-  text-align: justify !important;
-  text-justify: inter-word !important;
-  line-height: 1.7 !important;
-}
-
-/* 2. Mathematical Equation Scaling and Centering */
-.katex-display {
-  display: flex !important;
-  justify-content: center !important;
-  text-align: center !important;
-  font-size: 1.45em !important; 
-  margin: 2.5rem 0 !important;
-  overflow-x: auto !important;
-  width: 100% !important;
-}
-
-/* 3. INDESTRUCTIBLE 3-COLUMN FLEXBOX LAYOUT */
-@media screen and (min-width: 1200px) {
-  /* Override Quartz Grid with Flexbox */
+/* FORCE COLUMN ORDER: Explorer -> TOC -> Page Content */
+@media all and (min-width: 1200px) {
   .page {
     display: flex !important;
     flex-direction: row !important;
     align-items: flex-start !important;
-    justify-content: flex-start !important;
-    max-width: 1700px !important;
-    margin: 0 auto !important;
-    padding: 0 !important;
+    max-width: 1800px !important;
   }
   
-  /* Column 1: Explorer (Fixed Left) */
-  .sidebar.left {
+  /* 1st Column: Explorer */
+  .page > .sidebar.left {
     order: 1 !important;
-    display: block !important;
-    flex: 0 0 280px !important; /* Force exact width */
-    width: 280px !important;
-    height: 100vh !important; /* Enable full column height */
-    position: sticky !important;
-    top: 0 !important;
-    overflow-y: auto !important; /* ENABLE SCROLLING */
-    border-right: 1px solid var(--lightgray) !important;
-    padding: 2rem 1.5rem !important;
-    margin: 0 !important;
+    min-width: 280px !important;
   }
   
-  /* Column 2: Table of Contents (Fixed Middle) */
-  .sidebar.right {
-    order: 2 !important; /* Physically pull to the middle */
-    display: flex !important; /* Force render even if empty */
-    flex-direction: column !important;
-    flex: 0 0 250px !important; /* Force exact width */
-    width: 250px !important;
-    height: 100vh !important; /* Enable full column height */
-    position: sticky !important;
-    top: 0 !important;
-    overflow-y: auto !important; /* ENABLE SCROLLING */
+  /* 2nd Column: Table of Contents (Forced to Middle) */
+  .page > .sidebar.right {
+    order: 2 !important;
+    min-width: 250px !important;
+    margin-left: 2rem !important;
+    margin-right: 2rem !important;
+    border-left: none !important;
     border-right: 1px solid var(--lightgray) !important;
-    padding: 2rem 1.5rem !important;
-    margin: 0 !important;
   }
   
-  /* Column 3: Wide Reading Page (Right) */
-  .center {
+  /* 3rd Column: Main Reading Page */
+  .page > .center {
     order: 3 !important;
-    flex: 1 1 auto !important; /* Expand to fill all remaining screen space */
-    width: 100% !important;
+    flex-grow: 1 !important;
     max-width: 1000px !important;
-    padding: 2rem 3rem !important;
-    margin: 0 !important;
   }
 }
-
-/* 4. Hide Blog Metadata */
-.content-meta { display: none !important; }
-
-/* 5. Clean up folder lists */
-.folder-page ul { list-style: none !important; padding-left: 0 !important; }
-
-/* 6. Custom Scrollbar Styling to match EDA theme */
-.sidebar::-webkit-scrollbar { width: 6px; }
-.sidebar::-webkit-scrollbar-thumb { background: var(--gray); border-radius: 4px; }
