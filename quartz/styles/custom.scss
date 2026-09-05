@@ -17,61 +17,66 @@ article p, article li {
   width: 100% !important;
 }
 
-/* 3. EXPLICIT 3-COLUMN GRID COORDINATES */
+/* 3. INDESTRUCTIBLE 3-COLUMN FLEXBOX OVERRIDE */
 @media screen and (min-width: 1200px) {
   .page {
-    display: grid !important;
-    /* Sets exact column widths: 280px | 250px | Remaining Space */
-    grid-template-columns: 280px 250px minmax(500px, 1fr) !important;
-    max-width: 1700px !important;
-    width: 100% !important;
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important; /* Prevents columns from wrapping or stacking */
+    align-items: flex-start !important;
+    max-width: 1600px !important;
     margin: 0 auto !important;
     padding: 2rem !important;
-    gap: 2rem !important;
-    align-items: start !important;
+    gap: 3rem !important; /* Forces physical empty space between the 3 columns */
+    box-sizing: border-box !important;
   }
   
-  /* Force Explorer into Column 1 */
+  /* Column 1: Explorer */
   .page > .sidebar.left {
-    grid-column: 1 !important;
-    grid-row: 1 !important;
-    width: 100% !important;
+    order: 1 !important;
+    display: block !important;
+    flex: 0 0 280px !important; /* Locks width strictly to 280px, no shrinking */
+    max-width: 280px !important;
     position: sticky !important;
     top: 2rem !important;
+    height: max-content !important;
     max-height: calc(100vh - 4rem) !important;
-    overflow-y: auto !important;
+    overflow-y: auto !important; /* ENABLES SCROLLING */
     border-right: 1px solid var(--lightgray) !important;
-    padding-right: 1rem !important;
+    padding-right: 1.5rem !important;
+    margin: 0 !important;
   }
   
-  /* Force Table of Contents into Column 2 (The Middle) */
+  /* Column 2: Table of Contents (Forced to Middle) */
   .page > .sidebar.right {
-    grid-column: 2 !important; 
-    grid-row: 1 !important;
-    width: 100% !important;
-    display: flex !important;
-    flex-direction: column !important;
+    order: 2 !important;
+    display: block !important;
+    flex: 0 0 250px !important; /* Locks width strictly to 250px, no shrinking */
+    max-width: 250px !important;
     position: sticky !important;
     top: 2rem !important;
+    height: max-content !important;
     max-height: calc(100vh - 4rem) !important;
-    overflow-y: auto !important;
+    overflow-y: auto !important; /* ENABLES SCROLLING */
     border-right: 1px solid var(--lightgray) !important;
-    padding-right: 1rem !important;
+    padding: 0 1.5rem 0 0 !important;
     margin: 0 !important;
   }
   
-  /* Force Reading View into Column 3 (The Right) */
+  /* Column 3: Main Reading View */
   .page > .center {
-    grid-column: 3 !important; 
-    grid-row: 1 !important;
-    width: 100% !important;
+    order: 3 !important;
+    flex: 1 1 0% !important; /* Instructs column to cleanly fill all remaining space */
+    min-width: 500px !important; /* ABSOLUTE FAILSAFE: Prevents single-letter text squishing */
+    max-width: 950px !important;
     margin: 0 !important;
-    padding-left: 1rem !important;
+    padding: 0 !important;
   }
 }
 
-/* 4. Hide Blog Metadata */
+/* 4. Hide Blog Metadata & Clean Up Folders */
 .content-meta { display: none !important; }
+.folder-page ul { list-style: none !important; padding-left: 0 !important; }
 
 /* 5. Custom Scrollbars */
 .sidebar::-webkit-scrollbar { width: 6px; }
