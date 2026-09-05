@@ -1,3 +1,51 @@
-@use "./variables.scss" as *;
+/* 1. Academic Manuscript Paragraph Formatting */
+article p {
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+  line-height: 1.7;
+}
 
-// put your custom CSS here!
+/* 2. Mathematical Equation Scaling and Centering */
+.katex-display {
+  display: flex !important;
+  justify-content: center !important;
+  text-align: center !important;
+  font-size: 1.55em !important; 
+  margin-top: 2.5rem !important;
+  margin-bottom: 2.5rem !important;
+  overflow-x: auto;
+  width: 100%;
+}
+
+/* 3. Structural Layout Execution (Left Sidebar + Wide Page) */
+@media all and (min-width: 1200px) {
+  /* Expand the left sidebar to comfortably stack Explorer and TOC */
+  .left.sidebar {
+    max-width: 380px !important;
+    padding-right: 2rem;
+    border-right: 1px solid var(--lightgray);
+  }
+  
+  /* Completely annihilate the right sidebar container */
+  .right.sidebar {
+    display: none !important;
+    width: 0 !important;
+  }
+  
+  /* Expand the center document to utilize the freed space */
+  .center {
+    max-width: 1000px !important;
+    margin-left: 4rem;
+  }
+
+  /* Structural container overrides for 2-column aesthetic */
+  .page {
+    grid-template-columns: 380px auto !important;
+  }
+}
+
+/* 4. Remove lingering article metadata gaps */
+.content-meta {
+  display: none !important;
+}
