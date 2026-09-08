@@ -18,7 +18,7 @@
 
   
 
-Student ID: 20220105234 
+
 
   
 
@@ -43,9 +43,6 @@ Email address: 
 [scholar.fazlay.elahi.eee.aust@gmail.com](mailto:scholar.fazlay.elahi.eee.aust@gmail.com)
 
   
-
-[fazlay.elahi.eee.aust@gmail.com](mailto:fazlay.elahi.eee.aust@gmail.com) 
-
   
 
 [https://orcid.org/0009-0001-0029-2010](https://orcid.org/0009-0001-0029-2010) 
@@ -64,7 +61,7 @@ Email address issued by my institution AUST: 
 
   
 
-[sharif.eee.20220105234@aust.edu](mailto:sharif.eee.20220105234@aust.edu)
+
 
   
   
