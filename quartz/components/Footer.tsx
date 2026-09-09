@@ -1,5 +1,4 @@
 import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "./types"
-import style from "./styles/footer.scss"
 
 export default (() => {
   const Footer: QuartzComponent = ({ displayClass }) => {
@@ -22,6 +21,5 @@ export default (() => {
     )
   }
 
-  Footer.css = style
   return Footer
 }) satisfies QuartzComponentConstructor
