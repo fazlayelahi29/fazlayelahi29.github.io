@@ -1,6 +1,10 @@
 import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "./types"
 
-export default (() => {
+interface Options {
+  links?: Record<string, string>
+}
+
+export default ((opts?: Options) => {
   const Footer: QuartzComponent = ({ displayClass }) => {
     const year = new Date().getFullYear()
     const syncTime = new Date().toLocaleString("en-US", {
