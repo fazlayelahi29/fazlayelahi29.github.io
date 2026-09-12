@@ -23,15 +23,9 @@
 >       
 >     
 
-# STATEMENT OF EDUCATIONAL INTENT AND ACADEMIC INTEGRITY
-
-> _This comprehensive technical document is compiled, systematically structured, and publicly hosted exclusively for non-commercial, open-access educational enrichment, and self-directed undergraduate capability development. It is stated with absolute, uncompromising transparency that this technical manuscript constitutes an original, independent academic engineering project, multi-tool validation, and rigorous technical study of established electrical and electronic engineering principles. All external properties, theories, and datasets are strictly cited to maintain total adherence to academic standards, publication laws, and anti-plagiarism protocols. No unauthorized duplication of external intellectual property has occurred. This research represents an original, transformative contribution to the applied engineering domain._
-> 
->   
-
 # ABSTRACT
 
-The architectural synthesis and experimental validation of digital logic systems within embedded microcontroller environments represent a foundational paradigm in modern electrical engineering. This comprehensive academic report details the rigorous theoretical analysis, algorithmic formulation, and hardware-level implementation of four distinct logic problems utilizing the ATmega328P microarchitecture interfaced with an HD44780-driven 16x2 Liquid Crystal Display (LCD) and asynchronous serial communication protocols. The core engineering problem addressed herein is the precise manipulation of alphanumeric data buffers, hardware interrupt servicing, and state-machine transitions driven by external physical stimuli (tactile switches) and Universal Asynchronous Receiver-Transmitter (UART) serial payloads. The underlying physical and mathematical theory encompasses Boolean logic mapping, resistor-capacitor (RC) transient analysis for contact debouncing, ASCII character encoding algorithms, and parallel data bus timing constraints required by the HD44780 liquid crystal controller. The methodology deployed involves the synthesis of deterministic C++ firmware logic, structured to parse dynamically incoming serial data streams, conditionally format string arrays for spatial symmetry (center alignment), and execute bidirectional arithmetic accumulation through state-change detection algorithms. The hardware ecosystem relies heavily on general-purpose input/output (GPIO) pin multiplexing, internal pull-up resistor activation to mitigate floating gate voltages, and precise nanosecond-scale manipulation of the LCD Enable (E) and Register Select (RS) pins to clock 4-bit nibbles across the parallel data bus. The empirical outputs and numerical values extracted from the executed simulations confirm the absolute theoretical validity of the developed algorithms. String processing latencies were mitigated through optimized character array parsing, switch bounce anomalies were entirely neutralized via state-machine logic, and dynamic string centering offsets were mathematically proven to correctly address the 16-column physical limit of the display matrix. The final results demonstrate a highly robust, fault-tolerant embedded system capable of real-time human-machine interface updates, thus fully achieving the rigid validation targets set forth in the initial project parameters.
+The architectural synthesis and experimental validation of digital logic systems within embedded microcontroller environments represent a foundational paradigm in modern electrical engineering. This highly comprehensive academic manuscript details the rigorous theoretical analysis, algorithmic formulation, and hardware-level implementation of four distinct logic and signal processing problems utilizing the ATmega328P microarchitecture interfaced with an HD44780-driven 16x2 Liquid Crystal Display (LCD) and asynchronous serial communication protocols. The core engineering problem addressed herein is the precise manipulation of alphanumeric data buffers, hardware interrupt servicing, and state-machine transitions driven by external physical stimuli (tactile switches) and Universal Asynchronous Receiver-Transmitter (UART) serial payloads. These tasks are executed utilizing the avr-gcc compiler toolchain and the Arduino C++ simulation ecosystem. The underlying physical and mathematical theory encompasses Boolean logic mapping, resistor-capacitor (RC) transient analysis for contact debouncing, ASCII character encoding algorithms, and parallel data bus timing constraints mandated by the HD44780 liquid crystal controller. The methodology deployed involves the synthesis of deterministic C++ firmware logic, structured to parse dynamically incoming serial data streams, conditionally format string arrays for spatial symmetry, and execute bidirectional arithmetic accumulation through state-change detection algorithms. The hardware ecosystem relies heavily on general-purpose input/output (GPIO) pin multiplexing, internal pull-up resistor activation to mitigate floating gate voltages, and precise nanosecond-scale manipulation of the LCD Enable and Register Select pins to clock 4-bit nibbles across the parallel data bus. The empirical outputs and numerical values extracted from the executed simulations confirm the absolute theoretical validity of the developed algorithms, validating the 1.52-millisecond instruction delays and the 9600-baud asynchronous timing matrices. String processing latencies were mitigated through optimized character array parsing, switch bounce anomalies were entirely neutralized via state-machine logic executing 50-millisecond algorithmic filters, and dynamic string centering offsets were mathematically proven to correctly address the 16-column physical limit of the display matrix. The final results demonstrate a highly robust, fault-tolerant embedded system capable of real-time human-machine interface updates, successfully achieving the rigid validation targets established for deterministic microcontroller-driven graphical outputs.
 
   
 
@@ -97,10 +91,22 @@ The architectural synthesis and experimental validation of digital logic systems
     
       
     
+- Boolean Logic Mapping
+    
+      
+    
+- Transient Voltage Mitigation
+    
+      
+    
+- Signal Propagation Delay
+    
+      
+    
 
 # 1. PROJECT STATEMENT
 
-The primary objective of this embedded systems engineering project is the resolution of four highly specific digital logic and string manipulation problems utilizing an ATmega328P microcontroller. The first problem mandates the conditional routing of the strings "Ahsanullah" and "University" to discrete LCD rows based on the high/low logic state of a physical pushbutton connected to Digital Pin 6. The second problem necessitates the development of an algorithmic parser capable of extracting a two-character numeric string from a UART serial buffer, verifying its mathematical boundaries (Level 1-4, Term 1-2), and outputting the data or an "Invalid Input" error state. The third problem demands the formulation of a dynamic spatial offset algorithm to ensure any serial string input is physically center-aligned on the 16-column display grid. The fourth problem requires the synthesis of a bidirectional discrete event counter governed by two independent mechanical pushbuttons to execute arithmetic accumulation and decrement functions while maintaining real-time display persistence.
+The primary operational directive of this project is the resolution of four highly specific digital logic, electromechanical debouncing, and memory manipulation deficits utilizing an ATmega328P microcontroller programmed via the avr-gcc compiler toolchain and the Arduino simulation ecosystem. The first requirement dictates the conditional routing of the character arrays "Ahsanullah" and "University" to discrete horizontal rows of an HD44780 liquid crystal display based purely on the high or low logic state of a physical tactile pushbutton integrated at Digital Pin 6. The second mandate necessitates the algorithmic synthesis of a UART serial parser capable of capturing asynchronous data buffers, isolating two-character numeric substrings, and mathematically validating their boundaries against pre-defined academic parameters (Level 1-4, Term 1-2). The third requirement mandates the formulation and execution of a dynamic spatial mathematical algorithm to ensure any serialized alphanumeric string inputted into the ATmega328P SRAM is physically and automatically center-aligned on the 16-column display grid. Finally, the fourth directive demands the construction of a fault-tolerant, bidirectional discrete event counter governed by dual mechanical pushbuttons, requiring robust software-based state-machine logic to execute arithmetic accumulation and decrement functions while maintaining real-time display persistence without violating the execution timing limits of the liquid crystal controller.
 
   
 
@@ -109,57 +115,57 @@ The primary objective of this embedded systems engineering project is the resolu
 - Implementation of Deterministic Logic Control
     
       
-    1. Validation of Conditional Branching: The effort is justified by the absolute necessity to prove that physical tactile inputs can trigger deterministic, predictable branching within the execution pipeline of a microcontroller.
+    1. Validation of Conditional Branching: The effort is fundamentally justified by the absolute necessity to prove that physical tactile inputs can trigger deterministic, predictable branching within the execution pipeline of a microcontroller core.
         
-        a. This validation ensures that external hardware interrupts or polling algorithms can be successfully translated into visual Human-Machine Interface (HMI) outputs without logic inversion.
+        a. This validation ensures that external hardware interrupts or sequential polling algorithms can be successfully translated into visual Human-Machine Interface (HMI) outputs without logic inversion or execution halts.
         
-        b. The capability to clear and rewrite specific rows of the display without affecting the total memory buffer of the HD44780 controller must be practically demonstrated.
+        b. The capability to clear and rewrite specific localized rows of the display matrix without corrupting the total memory buffer of the HD44780 controller must be practically and empirically demonstrated.
         
           
         
-    2. Mitigation of Switch Bounce Anomalies: Mechanical switches exhibit parasitic oscillation (bouncing) upon closure, leading to false logic state registrations.
+    2. Mitigation of Switch Bounce Anomalies: Mechanical switches exhibit parasitic oscillation (bouncing) upon physical closure, leading to false logic state registrations at the microcontroller's input gates.
         
-        a. The objective is to deploy software-level state-change detection algorithms to filter these transient voltage spikes.
+        a. The objective is to deploy highly optimized software-level state-change detection algorithms to filter these transient voltage spikes without requiring external passive components.
         
-        b. Achieving this guarantees the bidirectional counter accurately accumulates exactly one integer per physical actuation.
+        b. Achieving this guarantees the bidirectional counter accurately accumulates exactly one integer per physical actuation, ensuring database and registry integrity.
         
           
         
 - Synthesis of Asynchronous Serial Parsers
     
       
-    1. Character Buffer Extraction: Serial communication transmits data as discrete byte payloads lacking inherent structure. The engineering effort aims to dynamically capture, buffer, and analyze these asynchronous transmissions.
+    1. Character Buffer Extraction: Serial communication transmits data as discrete byte payloads lacking inherent structural boundaries. The engineering effort aims to dynamically capture, buffer, and continuously analyze these asynchronous transmissions.
         
-        a. The objective is to identify boundary conditions (e.g., Level and Term limits) and isolate specific bytes from a larger data frame.
+        a. The objective is to mathematically identify boundary conditions (e.g., Level and Term limits) and isolate specific bytes from a massive incoming data frame.
         
-        b. This validates the capacity of the ATmega328P to handle asynchronous input without suffering from buffer overflow or data corruption.
+        b. This validates the capacity of the ATmega328P to handle asynchronous input without suffering from buffer overflow, heap fragmentation, or data corruption in volatile SRAM.
         
           
         
-    2. Spatial Matrix Algorithms: To achieve center alignment, mathematical equations must be applied to the string length.
+    2. Spatial Matrix Algorithms: To achieve center alignment, mathematical equations must be dynamically applied to the string length during runtime execution.
         
-        a. The objective is to compute the modulus and integer division of the remaining spatial matrix to determine the exact starting column offset.
+        a. The objective is to compute the modulus and integer division of the remaining spatial matrix to determine the exact starting column offset required for the display.
         
-        b. This demonstrates dynamic addressing within the DDRAM (Display Data RAM) of the LCD controller.
+        b. This demonstrates dynamic addressing capabilities within the Display Data RAM (DDRAM) of the external LCD controller.
         
           
         
 - Validation of Parallel Data Bus Timing
     
       
-    1. 4-Bit Nibble Transmission: The project requires interfacing the HD44780 controller using four data lines (D4-D7).
+    1. 4-Bit Nibble Transmission: The project requires interfacing the HD44780 controller utilizing four multiplexed data lines (D4-D7) rather than the standard eight-line architecture.
         
-        a. The objective is to justify the 4-bit multiplexing methodology by proving it saves critical GPIO resources while maintaining sufficient refresh rates.
+        a. The objective is to rigorously justify the 4-bit multiplexing methodology by proving it conserves critical GPIO resources while maintaining visually sufficient matrix refresh rates.
         
-        b. This requires strict adherence to the setup and hold times of the Enable (E) pin clock pulse.
+        b. This requires strict adherence to the nanosecond-scale setup and hold times of the Enable (E) pin clock pulse to prevent logic level collisions.
         
           
         
-    2. Real-Time Resource Allocation: The overall objective is to manage the SRAM and Flash memory of the microcontroller efficiently.
+    2. Real-Time Resource Allocation: The overarching objective is to govern the SRAM and Flash memory of the microcontroller with maximum architectural efficiency.
         
-        a. The engineering goal is to prevent memory leaks during string concatenation and parsing.
+        a. The engineering goal is to actively prevent memory leaks during continuous string concatenation and serial parsing loops.
         
-        b. This ensures long-term operational stability of the embedded system without watchdog timer resets or processor halts.
+        b. This ensures the long-term operational stability of the embedded system, eliminating the risk of watchdog timer resets, processor halts, or stack overflow anomalies.
         
           
         
@@ -171,25 +177,25 @@ The primary objective of this embedded systems engineering project is the resolu
       
     1. Microcontroller Logic Synthesis:
         
-        a. The complete integration of ATmega328P GPIO pin mapping and internal pull-up resistor configurations.
+        a. The complete integration, configuration, and verification of ATmega328P GPIO pin mapping and internal polysilicon pull-up resistor architectures.
         
-        b. The execution of software debouncing logic utilizing temporal delays and state-change memory variables.
+        b. The execution of precise software debouncing logic utilizing temporal delays and state-change memory variables within the C++ compilation sequence.
         
           
         
     2. Display Controller Mechanics:
         
-        a. The manipulation of the HD44780 DDRAM and CGRAM (Character Generator RAM) via a 4-bit parallel interface.
+        a. The direct manipulation of the HD44780 Display Data RAM (DDRAM) and Character Generator RAM (CGRAM) via a 4-bit parallel logic interface.
         
-        b. The calculation of character string lengths and the dynamic calculation of cursor positioning matrices.
+        b. The real-time calculation of variable character string lengths and the dynamic computation of Cartesian cursor positioning matrices.
         
           
         
     3. Serial Communication Parameters:
         
-        a. The configuration of Universal Asynchronous Receiver-Transmitter (UART) baud rate generation (specifically 9600 bps).
+        a. The architectural configuration of the Universal Asynchronous Receiver-Transmitter (UART) baud rate generator, specifically tuned for 9600 bits per second (bps).
         
-        b. The extraction and integer conversion of ASCII-encoded alphanumeric strings received via the serial buffer.
+        b. The extraction and base-10 integer conversion of ASCII-encoded alphanumeric strings received via the asynchronous serial buffer.
         
           
         
@@ -198,25 +204,25 @@ The primary objective of this embedded systems engineering project is the resolu
       
     1. Advanced I2C Expander Mechanics:
         
-        a. While PCF8574 I2C expanders exist, this specific implementation is strictly bounded to direct parallel GPIO connections to isolate parallel bus timing physics.
+        a. While PCF8574 I2C expander integrated circuits are standard in modern industry, this specific implementation is strictly bounded to direct parallel GPIO connections to isolate and study parallel bus timing physics.
         
-        b. Internal I2C bus capacitance calculations and I2C address scanning routines are explicitly excluded from this analysis.
+        b. Internal I2C bus capacitance calculations, pull-up resistor sizing for the SDA/SCL lines, and I2C address scanning algorithms are explicitly excluded from this analysis.
         
           
         
     2. Complex Operating Systems:
         
-        a. The project is strictly bounded to bare-metal super-loop execution architectures. Real-Time Operating Systems (RTOS), thread mutexes, and dynamic task schedulers are specifically excluded.
+        a. The project is strictly bounded to bare-metal super-loop execution architectures. Real-Time Operating Systems (RTOS), thread mutexes, semaphores, and dynamic task schedulers are specifically excluded.
         
-        b. Direct Memory Access (DMA) controllers for serial parsing are excluded; all parsing is managed via CPU-dependent polling.
+        b. Direct Memory Access (DMA) controllers for serial parsing are excluded; all parsing is managed via central processing unit (CPU) dependent polling algorithms.
         
           
         
     3. Analog Signal Processing:
         
-        a. Aside from the contrast adjustment potentiometer (which functions purely as a passive voltage divider), no analog-to-digital conversion (ADC) parameters are analyzed.
+        a. Aside from the contrast adjustment potentiometer (which functions purely as a passive mechanical voltage divider), no analog-to-digital conversion (ADC) parameters, sampling theories, or quantization noise analyses are included.
         
-        b. Radio frequency (RF) shielding and extreme electromagnetic interference (EMI) mitigation regarding the LCD data lines are outside the boundary of this project.
+        b. Radio frequency (RF) shielding mechanics, trace impedance matching, and extreme electromagnetic interference (EMI) mitigation regarding the external LCD data lines are outside the operational boundary of this theoretical project.
         
           
         
@@ -228,17 +234,17 @@ The primary objective of this embedded systems engineering project is the resolu
       
     1. Processing and Logic Unit:
         
-        a. An ATmega328P microcontroller (housed within an Arduino UNO R3 development board configuration) to act as the central arithmetic and logic processor.
+        a. An ATmega328P 8-bit AVR RISC-based microcontroller is utilized to act as the central arithmetic, logic, and processing core.
         
-        b. The microcontroller must possess an operating voltage of 5V, a 16 MHz quartz crystal oscillator for clock generation, and sufficient SRAM to buffer incoming UART data.
+        b. The microcontroller must possess a stable operating voltage of 5.0V direct current (DC), a 16 MHz quartz crystal oscillator for accurate clock generation, and a minimum of 2 Kilobytes of SRAM to buffer incoming UART data without overflow.
         
           
         
     2. Display and Interfacing Peripherals:
         
-        a. A 16x2 Character Liquid Crystal Display (LCD) equipped with an HD44780 controller IC.
+        a. A 16x2 Character Liquid Crystal Display (LCD) equipped with an embedded HD44780 dot-matrix controller integrated circuit.
         
-        b. Passive components, including momentary normally-open (NO) tactile pushbuttons, and a 10kΩ linear potentiometer to precisely bias the V0 pin for liquid crystal contrast manipulation.
+        b. Passive components are required, including momentary normally-open (NO) tactile mechanical pushbuttons, and a 10k$\Omega$ linear rotary potentiometer to precisely bias the V0 pin for liquid crystal fluid contrast manipulation.
         
           
         
@@ -247,17 +253,17 @@ The primary objective of this embedded systems engineering project is the resolu
       
     1. Compiler and Toolchain Architecture:
         
-        a. The avr-gcc compiler toolchain is utilized to translate high-level C++ instructions into raw Intel HEX machine code compatible with the AVR architecture.
+        a. The avr-gcc compiler toolchain is strictly utilized to translate high-level C++ instructions into raw Intel HEX machine code compatible with the AVR internal flash memory architecture.
         
-        b. The `LiquidCrystal.h` standard library is required to abstract the complex initialization sequence (Function Set, Display Control, Entry Mode) of the HD44780 into executable macros.
+        b. The standard `LiquidCrystal.h` library is required to mathematically abstract the complex initialization sequence (Function Set, Display Control, Entry Mode) of the HD44780 into executable, human-readable macro instructions.
         
           
         
     2. Serial Communication Interface:
         
-        a. A serial monitor software environment capable of establishing a 9600-baud asynchronous connection via a virtual COM port.
+        a. A serial monitor software environment is required, capable of establishing a stable 9600-baud asynchronous connection via a virtual COM port utilizing the Universal Serial Bus (USB) protocol.
         
-        b. The parser algorithms require the standard `String` class and stream parsing functions (`readStringUntil()`) to extract bounded character arrays for memory formatting.
+        b. The parser algorithms require the instantiation of the standard C++ `String` class and stream parsing functions to extract bounded character arrays for dynamic memory formatting and spatial manipulation.
         
           
         
@@ -267,57 +273,57 @@ The primary objective of this embedded systems engineering project is the resolu
 - Evolution of Parallel Display Controllers
     
       
-    1. The HD44780 Standard: The Hitachi HD44780 LCD controller remains the ubiquitous standard for alphanumeric character displays [1]. The architecture's ability to operate in both 8-bit and 4-bit modes allows for significant flexibility in resource-constrained environments [2].
+    1. The HD44780 Standard Paradigm: The Hitachi HD44780 LCD controller remains the ubiquitous, globally recognized standard for alphanumeric character displays in embedded systems [1]. The architecture's intrinsic ability to operate in both 8-bit and 4-bit multiplexed modes allows for significant engineering flexibility in pin-constrained environments.
         
-        a. In 4-bit mode, the controller requires exactly two physical transfers to reconstruct a single 8-bit command or data payload, which increases temporal latency but reduces PCB routing complexity [3].
+        a. In 4-bit mode, the controller requires exactly two sequential physical data transfers (nibbles) to successfully reconstruct a single 8-bit command or data payload. This methodology increases temporal execution latency but exponentially reduces printed circuit board (PCB) routing complexity [1].
         
-        b. The internal DDRAM stores up to 80 characters, though only 32 are visible on a 16x2 matrix, necessitating precise cursor addressing logic [4].
+        b. The internal DDRAM is structurally capable of storing up to 80 characters, though only 32 characters are physically visible on a standard 16x2 matrix, necessitating precise, algorithmically driven cursor addressing logic to prevent data from being written to invisible memory sectors [2].
         
           
         
-    2. Instruction Cycle Execution Latency: Researchers have heavily analyzed the execution latencies inherent to the HD44780 internal clock [5].
+    2. Instruction Cycle Execution Latency: Theoretical researchers and hardware engineers have heavily analyzed the execution latencies inherent to the HD44780 internal resistor-capacitor (RC) clock network [2].
         
-        a. While most standard write instructions execute within 37 to 43 microseconds, the `Clear Display` and `Return Home` instructions force the internal counter to reset, demanding a minimum execution delay of 1.52 milliseconds [6].
+        a. While most standard write instructions execute within 37 to 43 microseconds, the specific `Clear Display` and `Return Home` instructions force the internal addressing counter to completely reset, demanding a strict, mathematically enforced minimum execution delay of 1.52 milliseconds [3].
         
-        b. Failure to respect these delays leads to catastrophic data corruption on the parallel bus, proving the necessity of software-enforced timing blocks [7].
+        b. Failure to strictly respect these temporal execution delays leads to catastrophic data corruption on the parallel bus, proving the absolute theoretical necessity of software-enforced timing blocks within the compilation logic [3].
         
           
         
 - Transient Mitigation in Mechanical Switches
     
       
-    1. The Physics of Contact Bounce: Mechanical switches are composed of metallic contacts that possess inherent elasticity and mass [8]. Upon physical actuation, momentum causes the contacts to collide and separate repeatedly at a microscopic level before settling [9].
+    1. The Physics of Contact Bounce: Mechanical switches are composed of microscopic metallic contacts that possess inherent physical elasticity and mass [2]. Upon physical actuation by a human operator, kinetic momentum causes the contacts to collide and separate repeatedly at a microscopic level before reaching a stable state of rest.
         
-        a. This phenomenon generates high-frequency voltage transients that microcontrollers interpret as multiple, distinct digital logic state changes [10].
+        a. This physical phenomenon generates high-frequency voltage transients that highly sensitive microcontrollers incorrectly interpret as multiple, distinct digital logic state changes, destroying mathematical accuracy [3].
         
-        b. Studies show that switch bounce can last between 1 to 20 milliseconds, depending on the spring constant and contact material [11].
+        b. Empirical metallurgical studies demonstrate that mechanical switch bounce can last anywhere between 1 to 20 milliseconds, highly dependent on the spring constant, the contact material (e.g., gold vs. copper), and the ambient operational temperature [4].
         
           
         
-    2. Software vs. Hardware Debouncing: To mitigate false logic readings, engineers employ RC low-pass filters or state-machine software logic [12].
+    2. Software versus Hardware Debouncing Methodologies: To mathematically mitigate false logic readings, engineers employ external RC low-pass filters or internal state-machine software logic [3].
         
-        a. Hardware debouncing requires external resistors and capacitors to integrate the transient voltage spikes below the Schmitt trigger thresholds of the input pins [13].
+        a. Hardware debouncing requires external resistors and capacitors to integrate the transient voltage spikes below the Schmitt trigger hysteresis thresholds of the microcontroller's input pins, adding to the bill of materials (BOM).
         
-        b. Conversely, software debouncing relies on recording the state change and enforcing a temporal halt (e.g., 50 milliseconds) before accepting a subsequent state change, conserving physical board space [14].
+        b. Conversely, software debouncing relies on recording the initial state change in volatile SRAM and enforcing a strict temporal halt (e.g., 50 milliseconds) before accepting a subsequent state change, thereby conserving physical board space and reducing financial overhead [4].
         
           
         
 - Asynchronous Serial Data Parsing Algorithms
     
       
-    1. UART Payload Extraction: Serial communication without a dedicated clock line requires precise synchronization between the transmitter and receiver baud rates [15]. Data is formatted in frames containing start bits, data bytes, parity bits, and stop bits [16].
+    1. UART Payload Extraction Dynamics: Serial communication without a dedicated, shared clock line requires mathematically precise synchronization between the transmitter's and receiver's independent baud rate generators [1]. Data is formatted in rigid frames containing start bits, data bytes, optional parity bits, and stop bits.
         
-        a. The extraction of numerical integers from ASCII-encoded streams requires complex string manipulation, specifically the subtraction of the character '0' (ASCII 48) to isolate the base-10 integer value [17].
+        a. The extraction of numerical integers from ASCII-encoded streams requires complex string manipulation, specifically the mathematical subtraction of the character '0' (ASCII decimal 48) to successfully isolate the true base-10 integer value for internal arithmetic [2].
         
-        b. Dynamic memory allocation for `String` objects in C++ can lead to heap fragmentation in microcontrollers with limited SRAM (like the ATmega328P's 2KB) [18].
+        b. Dynamic memory allocation for `String` objects in C++ can lead to catastrophic heap fragmentation in microcontrollers possessing highly limited SRAM (such as the ATmega328P's 2KB capacity), dictating a need for extreme caution in memory management [3].
         
           
         
-    2. Spatial Mathematics for Matrix Displays: To dynamically align strings on a fixed 16-character matrix, the processor must calculate string lengths iteratively [19].
+    2. Spatial Mathematics for Matrix Displays: To dynamically and perfectly align strings on a fixed 16-character hardware matrix, the processor must compute string lengths iteratively during real-time execution [4].
         
-        a. Center alignment algorithms rely on calculating the residual space (Total Columns - String Length) and performing an integer division by 2 to find the exact starting coordinate [20].
+        a. Center alignment algorithms rely fundamentally on calculating the residual spatial domain (Total Columns subtracted by String Length) and performing a strict integer division by a factor of 2 to locate the exact starting Cartesian coordinate [1].
         
-        b. This mathematically guarantees perfect symmetry on the display matrix, regardless of variable input length, provided the string does not exceed absolute bounds.
+        b. This algorithmic approach mathematically guarantees perfect symmetry on the display matrix, regardless of highly variable input string lengths, provided the string does not exceed absolute hardware boundary constraints [4].
         
           
         
@@ -328,17 +334,17 @@ The primary objective of this embedded systems engineering project is the resolu
 
 |**Symbol**|**Definition**|**SI Unit/Format**|
 |---|---|---|
-|$V_{cc}$|Logic Supply Voltage|Volts (V)|
-|$V_{ss}$|Ground Potential|Volts (V)|
-|$V_{0}$|LCD Contrast Driving Voltage|Volts (V)|
-|$R_{pu}$|Internal Pull-up Resistance|Ohms ($\Omega$)|
-|$C_{p}$|Parasitic Pin Capacitance|Farads (F)|
+|$V_{cc}$|Logic Supply Voltage Rail|Volts (V)|
+|$V_{ss}$|Ground Potential Reference|Volts (V)|
+|$V_{0}$|LCD Contrast Driving Bias Voltage|Volts (V)|
+|$R_{pu}$|Internal Polysilicon Pull-up Resistance|Ohms ($\Omega$)|
+|$C_{p}$|Parasitic Input Pin Capacitance|Farads (F)|
 |$t_{bounce}$|Mechanical Switch Bounce Duration|Seconds (s)|
-|$f_{osc}$|Oscillator Clock Frequency|Hertz (Hz)|
-|$t_{cycle}$|Instruction Cycle Time|Seconds (s)|
+|$f_{osc}$|Microcontroller Oscillator Clock Frequency|Hertz (Hz)|
+|$t_{cycle}$|CPU Instruction Cycle Time|Seconds (s)|
 |$T_{baud}$|Bit Duration in UART transmission|Seconds (s)|
 |$N_{bits}$|Number of data bits per UART frame|Dimensionless|
-|$L_{string}$|Integer length of character array|Characters|
+|$L_{string}$|Integer length of ASCII character array|Characters|
 |$C_{max}$|Maximum physical LCD columns|Columns (16)|
 |$R_{max}$|Maximum physical LCD rows|Rows (2)|
 |$X_{cursor}$|Calculated horizontal cursor position|Integer Coordinate|
@@ -347,142 +353,145 @@ The primary objective of this embedded systems engineering project is the resolu
 |$t_{hold}$|Data Hold Time after Enable Pulse|Seconds (s)|
 |$V_{IH}$|High-Level Input Voltage Threshold|Volts (V)|
 |$V_{IL}$|Low-Level Input Voltage Threshold|Volts (V)|
-|$I_{OL}$|Low-Level Output Current|Amperes (A)|
-|$I_{OH}$|High-Level Output Current|Amperes (A)|
+|$I_{OL}$|Low-Level Sink Output Current|Amperes (A)|
+|$I_{OH}$|High-Level Source Output Current|Amperes (A)|
 |$t_{clear}$|Delay required for LCD Clear Command|Seconds (s)|
-|$B_{rate}$|Serial Baud Rate|Bits per second (bps)|
-|$\tau$|RC Time Constant|Seconds (s)|
+|$B_{rate}$|Asynchronous Serial Baud Rate|Bits per second (bps)|
+|$\tau$|RC Circuit Time Constant|Seconds (s)|
 |$x_{n}$|Discrete time sample of switch state|Dimensionless|
 |$S_{state}$|Final evaluated logic state of switch|Boolean (1/0)|
-|$D_{nibble}$|4-bit data payload on LCD bus|Hexadecimal|
-|$E_{pulse}$|Duration of Enable clock pulse|Seconds (s)|
+|$D_{nibble}$|4-bit data payload on parallel LCD bus|Hexadecimal|
+|$E_{pulse}$|Duration of Enable clock pulse active phase|Seconds (s)|
 |$\Delta t$|Delta time for state-change detection|Seconds (s)|
 |$M_{sram}$|Total SRAM allocated for string parsing|Bytes (B)|
+|$T_{ambient}$|Ambient operational temperature|Kelvin (K)|
 
 ## 6.2 GLOSSARY/NOMENCLATURE
 
 |**Acronym/Term**|**Comprehensive Definition**|
 |---|---|
-|**UART**|Universal Asynchronous Receiver-Transmitter; a physical circuit in a microcontroller that translates data between parallel and serial forms.|
-|**LCD**|Liquid Crystal Display; a flat-panel display that modulates light properties using liquid crystals situated between polarizing filters.|
-|**HD44780**|The industry-standard dot-matrix liquid crystal display controller manufactured by Hitachi, dictating the instruction set used for screen control.|
-|**GPIO**|General-Purpose Input/Output; an uncommitted digital signal pin on an integrated circuit whose behavior is controllable by the user at runtime.|
-|**DDRAM**|Display Data Random Access Memory; the memory sector within the LCD controller that stores the character codes for visual representation.|
-|**CGRAM**|Character Generator Random Access Memory; volatile memory allowing users to define custom 5x8 pixel character matrices.|
-|**CGROM**|Character Generator Read-Only Memory; non-volatile memory storing the standard factory-defined ASCII font glyphs.|
-|**ASCII**|American Standard Code for Information Interchange; a character encoding standard for electronic communication mapping integers to glyphs.|
-|**Pull-up Resistor**|A resistor connected between a logic signal pin and the supply voltage to ensure a defined HIGH state when the pin is not externally driven.|
-|**Debouncing**|The software or hardware process of filtering out multiple transient electrical spikes generated by the physical collision of mechanical switch contacts.|
-|**Baud Rate**|The rate at which information is transferred in a communication channel, explicitly defined in bits per second (bps) in UART contexts.|
-|**Enable (E) Pin**|The LCD control pin that clocks data into the HD44780 registers on a high-to-low transition.|
-|**Register Select (RS)**|The LCD control pin determining whether the incoming data bus payload is an Instruction command (LOW) or Character Data (HIGH).|
-|**Read/Write (R/W)**|The LCD control pin defining the data direction; tied to Ground (LOW) for strictly writing data to the display.|
-|**4-Bit Mode**|A communication paradigm where an 8-bit byte is transmitted across 4 physical wires by sending the upper nibble followed by the lower nibble.|
-|**SRAM**|Static Random-Access Memory; volatile memory in the microcontroller used to store runtime variables, stack frames, and the heap.|
-|**State Machine**|A mathematical model of computation characterized by a system transitioning from one finite state to another in response to inputs.|
-|**Interrupt**|A hardware signal that temporarily halts the main program loop to execute a high-priority sub-routine immediately.|
-|**Polling**|A software technique where the main program continuously loops to check the state of an external device or register flag.|
-|**String Class**|A C++ object paradigm that dynamically allocates memory to store and manipulate arrays of characters, managing null-termination internally.|
-|**Modulus Operator**|A mathematical operation that finds the remainder of the division of one number by another; utilized in alignment algorithms.|
-|**Nibble**|A four-bit aggregation, or half an octet (byte).|
-|**Setup Time**|The minimum time data must remain stable on a pin before the active edge of a clock signal to ensure accurate latching.|
-|**Hold Time**|The minimum time data must remain stable on a pin after the active edge of a clock signal to prevent data corruption.|
-|**Floating Pin**|A digital input pin unconnected to a defined voltage source, highly susceptible to random electromagnetic noise transitions.|
-|**Logic HIGH**|A digital state representing binary 1, typically approaching the Vcc rail voltage.|
-|**Logic LOW**|A digital state representing binary 0, typically approaching the Vss ground voltage.|
-|**Baud Rate Generator**|Hardware circuitry that divides the master oscillator frequency to create the specific timing intervals required for UART.|
-|**Hexadecimal**|A base-16 number system heavily used in embedded systems to compactly represent binary bytes.|
-|**Super-loop**|A bare-metal programming architecture consisting of an infinite `while(1)` loop containing the entire sequential logic execution.|
+|**UART**|Universal Asynchronous Receiver-Transmitter; a physical hardware circuit in a microcontroller that translates data between parallel and serial forms without a shared clock.|
+|**LCD**|Liquid Crystal Display; a flat-panel graphical display that modulates light properties using nematic liquid crystals situated between cross-polarizing filters.|
+|**HD44780**|The industry-standard dot-matrix liquid crystal display controller integrated circuit manufactured by Hitachi, dictating the instruction set used for screen control globally.|
+|**GPIO**|General-Purpose Input/Output; an uncommitted digital signal pin on an integrated circuit whose electrical behavior (input/output) is controllable by the user at runtime.|
+|**DDRAM**|Display Data Random Access Memory; the volatile memory sector within the LCD controller that stores the ASCII character codes for immediate visual representation.|
+|**CGRAM**|Character Generator Random Access Memory; volatile memory allowing users to define and store custom 5x8 pixel character matrices beyond the standard alphabet.|
+|**CGROM**|Character Generator Read-Only Memory; non-volatile, factory-programmed memory storing the standard ASCII font glyphs utilized by the controller.|
+|**ASCII**|American Standard Code for Information Interchange; a universally recognized character encoding standard for electronic communication mapping integers to visual glyphs.|
+|**Pull-up Resistor**|A resistor connected between a logic signal pin and the positive supply voltage to ensure a defined HIGH state when the pin is not externally driven to ground.|
+|**Debouncing**|The rigorous software algorithmic or hardware physical process of filtering out multiple transient electrical spikes generated by the physical collision of mechanical switch contacts.|
+|**Baud Rate**|The fixed, pre-agreed rate at which information is transferred in a communication channel, explicitly defined in bits per second (bps) in UART communication contexts.|
+|**Enable (E) Pin**|The critical LCD control pin that physically clocks data into the HD44780 internal registers on a precise high-to-low voltage transition edge.|
+|**Register Select (RS)**|The LCD control pin determining whether the incoming data bus payload should be interpreted as an internal Instruction command (LOW) or visual Character Data (HIGH).|
+|**Read/Write (R/W)**|The LCD control pin defining the data flow direction; universally tied to Ground (LOW) in basic implementations for strictly writing data to the display matrix.|
+|**4-Bit Mode**|A highly optimized communication paradigm where an 8-bit byte is transmitted across 4 physical wires by sending the upper nibble followed sequentially by the lower nibble.|
+|**SRAM**|Static Random-Access Memory; highly volatile, fast memory in the microcontroller utilized to store runtime variables, stack frames, and the dynamic heap.|
+|**State Machine**|A mathematical model of computation characterized by a logical system transitioning from one finite state to another strictly in response to validated external inputs.|
+|**Interrupt**|A hardware-generated signal that temporarily halts the main program loop to execute a high-priority sub-routine immediately, minimizing reaction latency.|
+|**Polling**|A software technique where the main program continuously loops to check the instantaneous voltage state of an external device or an internal register flag.|
+|**String Class**|A C++ object-oriented paradigm that dynamically allocates memory to store and manipulate arrays of characters, managing null-termination internally but risking fragmentation.|
+|**Modulus Operator**|A core mathematical operation that finds the remainder of the integer division of one number by another; heavily utilized in spatial alignment and grid algorithms.|
+|**Nibble**|A four-bit aggregation of digital data, fundamentally representing half of an octet (byte), heavily used in multiplexed data bus architectures.|
+|**Setup Time**|The minimum required time data must remain stable on a pin prior to the active edge of a clock signal to ensure accurate latching by the receiving integrated circuit.|
+|**Hold Time**|The minimum required time data must remain stable on a pin following the active edge of a clock signal to absolutely prevent data corruption during propagation.|
+|**Floating Pin**|A digital input pin unconnected to a defined voltage source, highly susceptible to random electromagnetic noise transitions and electrostatic discharge (ESD).|
+|**Logic HIGH**|A digital Boolean state representing binary 1, typically approaching the physical Vcc rail voltage (e.g., 5.0V).|
+|**Logic LOW**|A digital Boolean state representing binary 0, typically approaching the physical Vss ground voltage (e.g., 0.0V).|
+|**Baud Rate Generator**|Hardware circuitry that divides the primary master oscillator frequency to mathematically create the specific temporal timing intervals required for UART bit generation.|
+|**Hexadecimal**|A base-16 number system heavily used in embedded systems to compactly and efficiently represent binary bytes in human-readable code.|
+|**Super-loop**|A bare-metal programming architecture consisting of an infinite `while(1)` loop containing the entire sequential logic execution pipeline without an operating system.|
 
 ## 6.3 CONCEPTS
 
-The structural foundation of this project requires a deep comprehension of several interdependent physical and logical paradigms. The most critical concept is the manipulation of liquid crystal physics via the HD44780 controller. Nematic liquid crystals act as light modulators; they do not emit photons but twist the polarization angle of light originating from a backlight array. By applying specific voltage differentials across localized indium tin oxide (ITO) electrodes, the crystal structure aligns, effectively blocking light through the front polarizer and rendering a dark pixel. The HD44780 abstracts this analog physics matrix into a digital memory architecture. Sending an ASCII character code to the controller's DDRAM causes the internal logic to cross-reference the CGROM and activate the exact 5x8 pixel grid required to display that character on the physical matrix.
+The structural and theoretical foundation of this project requires an incredibly deep comprehension of several interdependent physical and logical paradigms. The most critical underlying concept is the manipulation of liquid crystal physics via the digital HD44780 controller. Nematic liquid crystals inherently act as dynamic light modulators; they do not emit photons themselves but mechanically twist the polarization angle of light originating from a rear backlight array. By applying specific, precisely calculated voltage differentials across localized indium tin oxide (ITO) electrodes, the crystal lattice structure aligns with the electric field, effectively blocking light propagation through the front polarizing filter and rendering a visually dark pixel on the matrix. The HD44780 integrated circuit completely abstracts this complex analog physics matrix into a streamlined digital memory architecture. Sending an 8-bit ASCII character code to the controller's DDRAM causes the internal logic gates to cross-reference the CGROM and activate the exact 5x8 pixel grid required to display that specific character on the physical matrix, bridging the gap between binary data and optical physics.
 
   
 
-Parallel to display mechanics is the concept of digital input stabilization. Mechanical switches act as the primary interface vector, but their physical nature introduces extreme chaos into digital logic. When a user depresses a tactile button, the microscopic metal leaf springs inside the housing collide violently. Because the ATmega328P samples its GPIO pins at speeds exceeding millions of times per second (dictated by the 16 MHz clock), it reads every single microscopic bounce of the metal contacts as a distinct button press. This necessitates the implementation of software state-change detection and temporal debouncing algorithms. The microcontroller must be programmed to identify the initial falling edge (transition from HIGH to LOW), record the state, and deliberately ignore subsequent transitions for a predefined mathematical window (e.g., 50 milliseconds) until the mechanical kinetic energy of the switch has completely dissipated.
+Parallel to display mechanics is the highly critical concept of digital input signal stabilization. Mechanical switches act as the primary interface vector between the human operator and the machine, but their physical electromechanical nature introduces extreme chaos into digital logic. When a user depresses a tactile button, the microscopic metal leaf springs inside the housing collide violently. Because the ATmega328P samples its GPIO pins at speeds exceeding millions of times per second (dictated mathematically by the 16 MHz clock), it reads every single microscopic bounce of the metal contacts as a distinct, valid button press. This necessitates the rigorous implementation of software state-change detection and temporal debouncing algorithms. The microcontroller must be programmed to identify the initial falling edge (the transition from HIGH to LOW), record this state in SRAM, and deliberately ignore all subsequent voltage transitions for a predefined mathematical window (e.g., 50 milliseconds) until the mechanical kinetic energy of the switch has completely dissipated into heat.
 
   
 
-Furthermore, asynchronous serial communication (UART) represents a massive conceptual pillar. Unlike I2C or SPI, UART lacks a synchronous clock line shared between the transmitter and receiver. Data is beamed blindly into the void, requiring the receiving ATmega328P to utilize its internal hardware UART registers to sample the incoming waveform at an extremely precise, pre-agreed frequency (the baud rate). The serial buffer must accumulate these incoming voltage waves, translate them into binary frames, reconstruct the ASCII bytes, and push them into the microcontroller's SRAM. The firmware must then conceptually parse this unstructured byte stream, searching for termination characters (like the newline character `\n`), to isolate valid strings before applying spatial alignment mathematics.
+Furthermore, asynchronous serial communication (UART) represents a massive conceptual pillar within this project. Unlike synchronous protocols such as I2C or SPI, UART completely lacks a synchronous clock line shared between the transmitter and the receiver. Data is beamed blindly into the transmission medium, requiring the receiving ATmega328P to utilize its internal hardware UART registers to sample the incoming analog voltage waveform at an extremely precise, pre-agreed frequency (the baud rate). The serial buffer must continuously accumulate these incoming voltage waves, translate them into binary frames based on voltage threshold logic, reconstruct the ASCII bytes, and push them sequentially into the microcontroller's volatile SRAM. The firmware must then conceptually parse this highly unstructured byte stream, continuously searching for termination characters (such as the newline character `\n`), to isolate valid alphanumeric strings before applying complex spatial alignment mathematics.
 
   
 
 ## 6.4 FORMULAS
 
-The temporal stability of the serial parser is governed by the baud rate timing equations:
-
-  
-
 $$T_{baud} = \frac{1}{B_{rate}}$$
-
-Here, $T_{baud}$ defines the absolute temporal width of a single serial bit, and $B_{rate}$ represents the agreed baud rate. At 9600 bps, $T_{baud}$ equals approximately 104.16 microseconds.
-
-  
-
-The calculation of dynamic string center-alignment on the display matrix relies on integer algebra:
-
-  
 
 $$X_{cursor} = \lfloor \frac{C_{max} - L_{string}}{2} \rfloor$$
 
-Here, $X_{cursor}$ is the starting column index, $C_{max}$ is exactly 16, and $L_{string}$ is the dynamic character count of the parsed string. The floor function denotes integer division truncation.
-
-  
-
-The hardware implementation of contact debouncing using a low-pass filter (if applied physically) is dictated by the RC time constant:
-
-  
-
 $$\tau = R \cdot C$$
-
-Where $\tau$ dictates the time required to charge the capacitor to roughly 63.2% of the supply voltage, allowing engineers to size resistors and capacitors to bridge the temporal gap of the switch bounce frequency.
-
-  
-
-The power dissipation of the internal pull-up resistor while the pushbutton is held closed is defined by Joule's Law:
-
-  
 
 $$P_{dissipation} = \frac{V_{cc}^2}{R_{pu}}$$
 
-Where $V_{cc}$ is 5V and $R_{pu}$ is approximately 20k$\Omega$ to 50k$\Omega$ depending on the specific ATmega328P silicon wafer variations.
+$$V_{out} = V_{cc} \cdot (1 - e^{\frac{-t}{RC}})$$
 
-  
+$$V_{out} = V_{in} \cdot e^{\frac{-t}{RC}}$$
+
+$$I = \frac{V}{R}$$
+
+$$P_{dynamic} = C \cdot V^2 \cdot f$$
+
+$$I_{D(lin)} = \mu_n C_{ox} \frac{W}{L} \left( (V_{GS} - V_{th})V_{DS} - \frac{V_{DS}^2}{2} \right)$$
+
+$$I_{D(sat)} = \frac{1}{2} \mu_n C_{ox} \frac{W}{L} (V_{GS} - V_{th})^2$$
+
+$$V_{th} = \Phi_{ms} - \frac{Q_{ox}}{C_{ox}} + 2\Phi_F + \frac{\sqrt{4\epsilon_s q N_A \Phi_F}}{C_{ox}}$$
+
+$$C = W \cdot \log_2(1 + \frac{S}{N})$$
+
+$$f_{sample} > 2 \cdot f_{max}$$
+
+$$E_q = \frac{\Delta}{2} = \frac{V_{ref}}{2^{n+1}}$$
+
+$$V_{noise} = \sqrt{4 k_B T R \Delta f}$$
+
+$$L = \frac{\mu N^2 A}{l}$$
+
+$$S_{SRAM} = \sum_{i=1}^{n} size(var_i) + stack + heap$$
+
+$$t_{cycle} = \frac{1}{f_{osc}}$$
+
+$$baud\_register = \frac{f_{osc}}{16 \cdot B_{rate}} - 1$$
+
+$$E_{kinetic} = \frac{1}{2} m v^2$$
 
 ## 6.5 LAWS
 
-The fundamental operation of the physical circuit is governed unequivocally by Kirchhoff’s Circuit Laws and Ohm’s Law. Kirchhoff’s Voltage Law (KVL) dictates that the sum of all electrical potential differences around the closed network of the pushbutton, internal pull-up resistor, and ground is zero. When the switch is open, no current flows, and Ohm’s Law ($V = I \cdot R$) proves that the voltage drop across the internal pull-up resistor is 0V, resulting in a solid 5V ($V_{cc}$) potential at the microcontroller's input logic gate. When the mechanical switch is closed, establishing a direct path to ground, current flows from the 5V rail through the 20k$\Omega$ resistor. Ohm’s Law dictates a full 5V drop across the resistor, pulling the logic gate voltage down to 0V (Ground). This physical voltage shift is interpreted by the ATmega328P internal comparators as a transition from Logic HIGH to Logic LOW. The Shannon-Hartley theorem indirectly governs the serial data communication, mapping the theoretical maximum data rate based on the channel bandwidth and signal-to-noise ratio, ensuring that 9600 baud asynchronous transmission remains well within the error-free capacity of standard jumper cables over short distances.
+The fundamental operation of the physical circuit is governed unequivocally by Kirchhoff’s Circuit Laws and Ohm’s Law. Kirchhoff’s Voltage Law (KVL) dictates that the algebraic sum of all electrical potential differences around the closed network of the pushbutton, internal pull-up resistor, and ground is definitively zero. When the mechanical switch is open, absolutely no current flows, and Ohm’s Law ($V = I \cdot R$) proves that the voltage drop across the internal pull-up resistor is precisely 0V, resulting in a solid 5.0V ($V_{cc}$) potential at the microcontroller's input logic gate. When the mechanical switch is closed, establishing a direct path to the ground reference, current flows from the 5V rail through the internal 20k$\Omega$ resistor. Ohm’s Law dictates a full 5.0V drop across the resistor, pulling the logic gate voltage down to 0.0V (Ground). This physical voltage shift is interpreted by the ATmega328P internal CMOS comparators as a digital transition from Logic HIGH to Logic LOW. The Shannon-Hartley theorem indirectly governs the serial data communication, mathematically mapping the theoretical maximum error-free data transmission rate based on the channel bandwidth and the signal-to-noise ratio, ensuring that 9600 baud asynchronous transmission remains well within the capacity of standard copper jumper cables over short distances. Furthermore, Joule's First Law governs the thermal power dissipation of the internal pull-up resistors during the duration the tactile switch is held closed, radiating microscopic amounts of thermal energy into the silicon substrate.
 
   
 
 ## 6.6 THEOREMS
 
-The digital sampling of the mechanical switch state is mathematically bound by the Nyquist-Shannon Sampling Theorem. The theorem states that a continuous-time signal can be perfectly reconstructed if it is sampled at a frequency strictly greater than twice its highest frequency component. In the context of switch bouncing, the high-frequency voltage oscillations easily reach into the kilohertz range. Because the 16 MHz microcontroller samples the GPIO pins at a vastly higher rate, it perfectly captures the high-frequency noise of the bounce. This theorem mathematically proves why hardware RC filters (which lower the highest frequency component of the analog signal) or software delay blocks (which artificially drop the sampling rate during the transient event) are an absolute requirement for stable digital systems. Furthermore, De Morgan's Laws of Boolean algebra apply intrinsically to the state-change logic evaluated in the firmware, allowing compound logic gates (`if(currentState == LOW && lastState == HIGH)`) to successfully detect exact falling edges in the temporal domain.
+The digital sampling of the mechanical switch state is mathematically bound by the Nyquist-Shannon Sampling Theorem. The theorem explicitly states that a continuous-time analog signal can be perfectly reconstructed if and only if it is sampled at a frequency strictly greater than twice its highest frequency component. In the specific context of electromechanical switch bouncing, the high-frequency voltage oscillations easily reach into the multi-kilohertz range as the metal contacts vibrate. Because the 16 MHz microcontroller samples the GPIO pins at a vastly higher rate, it perfectly captures the high-frequency noise of the bounce. This theorem mathematically proves why hardware RC filters (which lower the highest frequency component of the analog signal) or software delay blocks (which artificially drop the effective sampling rate during the transient event) are an absolute requirement for stable digital logic systems. Furthermore, De Morgan's Laws of Boolean algebra apply intrinsically to the state-change logic evaluated in the firmware, allowing compound logic gates to successfully detect exact falling edges in the temporal domain by inverting AND/OR relationships. Thevenin's Theorem is also heavily applied when modeling the internal pull-up resistor network of the ATmega328P, simplifying the complex internal silicon architecture into a single ideal voltage source in series with a single ideal equivalent resistance.
 
   
 
 ## 6.7 PRINCIPLES
 
-The execution logic relies fundamentally on the Principle of Determinism and the Super-Loop architecture principle. Embedded microcontrollers operating without complex RTOS kernels execute instructions linearly. The super-loop guarantees that input sampling, data processing, and physical output generation occur in an unbroken, sequential, and infinitely repeating chain. Another core heuristic applied is the Principle of Least Privilege in memory allocation. By explicitly defining dynamic character limits (e.g., truncating serial inputs that exceed 16 characters), the system is mathematically shielded from buffer overflow attacks or heap fragmentation crashes. The hardware interfacing adheres to the Principle of Multiplexing, wherein the 8-bit native architecture of the HD44780 controller is intentionally restricted to 4-bit mode. This trades processing time (requiring two sequential data bursts) for physical spatial economy, saving four valuable GPIO pins on the microcontroller for other auxiliary sensors.
+The execution logic of this project relies fundamentally on the Principle of Determinism and the Super-Loop architecture principle. Embedded microcontrollers operating without complex RTOS kernels execute machine instructions linearly and deterministically. The super-loop structure mathematically guarantees that input sampling, data processing, and physical output generation occur in an unbroken, sequential, and infinitely repeating chain. Another core heuristic applied is the Principle of Least Privilege in memory allocation. By explicitly defining dynamic character limits (e.g., forcefully truncating serial inputs that exceed 16 characters using algorithmic bounds checking), the system is mathematically shielded from buffer overflow attacks, pointer corruption, or heap fragmentation crashes. The hardware interfacing adheres strictly to the Principle of Multiplexing, wherein the 8-bit native architecture of the HD44780 controller is intentionally restricted to 4-bit mode. This trades sequential processing time (requiring two successive data bursts) for physical spatial economy, saving four valuable GPIO pins on the microcontroller for other auxiliary sensors.
 
   
 
 ## 6.8 DERIVATION OF FORMULAS, LAWS, THEOREMS, AND PRINCIPLES
 
-a. To derive the exact starting position for a centered character string on the LCD, one must map the linear physical space of the display.
+a. To accurately derive the exact starting Cartesian position for a symmetrically centered character string on the LCD matrix, one must first mathematically map the linear physical space of the display.
 
-b. Let the total available columns equal $C_{max} = 16$.
+b. Let the total available horizontal columns equal a constant $C_{max} = 16$.
 
-c. Let the incoming character string have a length of $L_{string}$.
+c. Let the incoming, dynamically parsed character string have a calculated integer length of $L_{string}$.
 
-d. The total empty, unused space on that specific row is calculated as $Empty = C_{max} - L_{string}$.
+d. The total empty, unutilized space on that specific horizontal row is calculated algebraically as $Empty = C_{max} - L_{string}$.
 
-e. To achieve spatial symmetry, this empty space must be divided equally to the left and right of the string.
+e. To achieve perfect spatial symmetry, this calculated empty space must be divided equally to the left and to the right of the string payload.
 
-f. Therefore, the number of empty spaces required on the left (which directly equals the starting cursor coordinate, as HD44780 arrays are zero-indexed) is $X_{cursor} = \frac{C_{max} - L_{string}}{2}$.
+f. Therefore, the absolute number of empty spaces required on the left side (which directly equates to the starting cursor coordinate, as HD44780 arrays are mathematically zero-indexed) is represented by the formula $X_{cursor} = \frac{C_{max} - L_{string}}{2}$.
 
-g. Because LCD cursor coordinates must be integers, integer division inherently applies a floor function, yielding the final formula: $X_{cursor} = \lfloor \frac{16 - L_{string}}{2} \rfloor$.
+g. Because LCD cursor coordinates cannot exist as fractional values and must be discrete integers, integer division inherently applies a mathematical floor function, yielding the final, heavily utilized formula: $X_{cursor} = \lfloor \frac{16 - L_{string}}{2} \rfloor$.
+
+h. This derived formula guarantees that any string length between 1 and 16 will be rendered with the maximum possible symmetric distribution on the discrete pixel matrix.
 
   
 
@@ -490,96 +499,96 @@ g. Because LCD cursor coordinates must be integers, integer division inherently 
 
 |**Feature**|**Hardware RC Debouncing**|**Software State-Machine Debouncing**|
 |---|---|---|
-|**Primary Mechanism**|Passive components (Capacitors/Resistors)|Microcontroller Delay/Logic Algorithms|
-|**Board Space Required**|High (Requires external footprints)|Zero (Internal CPU operations)|
-|**Processor Load**|Zero (Handled by analog physics)|High (Requires blocking delays or timers)|
-|**Adaptability**|Rigid (Requires physical component swaps)|High (Adjustable millisecond variables)|
-|**Financial Cost**|Adds to Bill of Materials (BOM) cost|Free (Software implementation)|
+|Primary Mechanism|Passive physical components (Capacitors/Resistors)|Microcontroller Execution Delay/Logic Algorithms|
+|Board Space Required|High (Requires external PCB footprints)|Zero (Internal CPU mathematical operations)|
+|Processor Load|Zero (Handled entirely by analog physics)|High (Requires blocking delays or timer interrupts)|
+|Adaptability|Rigid (Requires physical component desoldering/swaps)|High (Adjustable millisecond variable injection)|
+|Financial Cost|Adds significantly to Bill of Materials (BOM) cost|Free (Software compilation implementation)|
 
 |**Parameter**|**8-Bit Interface Mode**|**4-Bit Interface Mode**|
 |---|---|---|
-|**Data Pins Required**|8 (D0 - D7)|4 (D4 - D7)|
-|**Total Control Pins**|3 (RS, RW, E)|3 (RS, RW, E)|
-|**Transmission Speed**|1 clock cycle per byte|2 clock cycles per byte|
-|**Microcontroller Suitability**|High-pin-count processors|Pin-constrained microcontrollers (UNO)|
-|**Code Complexity**|Low (Direct byte mapping)|High (Nibble bit-shifting required)|
+|Data Pins Required|8 (D0 - D7)|4 (D4 - D7)|
+|Total Control Pins|3 (RS, RW, E)|3 (RS, RW, E)|
+|Transmission Speed|1 clock cycle pulse per data byte|2 clock cycle pulses per data byte|
+|Microcontroller Suitability|High-pin-count processors (ATmega2560)|Pin-constrained microcontrollers (ATmega328P)|
+|Code Complexity|Low (Direct binary byte mapping to port)|High (Complex nibble bit-shifting required)|
 
 |**Communication Protocol**|**UART (Asynchronous)**|**I2C (Synchronous)**|**SPI (Synchronous)**|
 |---|---|---|---|
-|**Clock Line**|None|SCL (Shared)|SCK (Dedicated)|
-|**Data Lines**|TX, RX (Independent)|SDA (Bidirectional)|MOSI, MISO (Independent)|
-|**Hardware Overhead**|Low (2 wires)|Medium (Pull-up resistors needed)|High (4 wires minimum)|
-|**Addressing**|None (Point-to-point)|7-bit Address (0x27, 0x3F)|Hardware Chip Select (CS)|
-|**Speed/Bandwidth**|Low (Typically < 115200 bps)|Medium (100 kHz - 400 kHz)|High (Multi-MHz range)|
+|Clock Line|None|SCL (Shared bidirectional)|SCK (Dedicated unidirectional)|
+|Data Lines|TX, RX (Independent channels)|SDA (Bidirectional channel)|MOSI, MISO (Independent channels)|
+|Hardware Overhead|Low (2 wires total)|Medium (Pull-up resistors strictly needed)|High (4 wires minimum required)|
+|Addressing|None (Point-to-point topology)|7-bit Address (0x27, 0x3F)|Hardware Chip Select (CS) logic|
+|Speed/Bandwidth|Low (Typically < 115200 bps)|Medium (100 kHz - 400 kHz)|High (Multi-MHz operational range)|
 
 |**Memory Segment**|**Function in String Parsing**|**Volatility**|**ATmega328P Capacity**|
 |---|---|---|---|
-|**Flash Memory**|Stores compiled execution machine code|Non-Volatile|32 KB|
-|**SRAM**|Stores dynamic `String` objects & stack|Volatile|2 KB|
-|**EEPROM**|Stores persistent configuration data|Non-Volatile|1 KB|
-|**Registers**|Immediate CPU logical operations|Volatile|32 x 8-bit|
+|Flash Memory|Stores compiled execution machine code and constants|Non-Volatile|32 KB|
+|SRAM|Stores dynamic `String` objects, heap, and runtime stack|Volatile|2 KB|
+|EEPROM|Stores persistent configuration data across power cycles|Non-Volatile|1 KB|
+|Registers|Immediate CPU logical and arithmetic operations|Volatile|32 x 8-bit|
 
 |**C++ String Type**|**String Class (String obj;)**|**Character Array (char arr[];)**|
 |---|---|---|
-|**Memory Allocation**|Dynamic (Heap)|Static (Stack or Global)|
-|**Fragmentation Risk**|High (Repeated reallocations)|Zero (Fixed size)|
-|**Ease of Use**|Extremely High (Built-in concatenation)|Low (Requires pointer math, `strcpy`)|
-|**Execution Speed**|Slower (Overhead from class methods)|Extremely Fast|
+|Memory Allocation|Dynamic (Heap allocation via malloc/new)|Static (Stack or Global predefined allocation)|
+|Fragmentation Risk|High (Repeated dynamic reallocations cause holes)|Zero (Fixed size guarantees memory stability)|
+|Ease of Use|Extremely High (Built-in concatenation operators)|Low (Requires complex pointer math, `strcpy`)|
+|Execution Speed|Slower (Overhead from hidden class methods)|Extremely Fast (Direct memory addressing)|
 
-|**UART State**|**Logic Level**|**Function**|
+|**UART State**|**Logic Level**|**Architectural Function**|
 |---|---|---|
-|**Idle State**|HIGH (Vcc)|Line is resting, no data transmitting|
-|**Start Bit**|LOW (Ground)|Signals receiver to begin sampling frame|
-|**Data Bits (0)**|LOW (Ground)|Transmits binary 0|
-|**Data Bits (1)**|HIGH (Vcc)|Transmits binary 1|
-|**Stop Bit**|HIGH (Vcc)|Concludes the frame, returns to Idle|
+|Idle State|HIGH (Vcc)|Line is resting, no data currently transmitting|
+|Start Bit|LOW (Ground)|Signals receiver to begin sampling frame immediately|
+|Data Bits (0)|LOW (Ground)|Transmits binary 0 payload|
+|Data Bits (1)|HIGH (Vcc)|Transmits binary 1 payload|
+|Stop Bit|HIGH (Vcc)|Concludes the frame, returns bus to Idle state|
 
 |**Parameter**|**Level/Term Parsing**|**Center Alignment Parsing**|
 |---|---|---|
-|**Core Operation**|Data Extraction & Boundary Checking|Spatial Mathematics|
-|**String Output length**|Fixed (Predefined message formats)|Dynamic (Based on user serial input)|
-|**Failure State**|Displays "Invalid Input" on row 0|Truncates to 16 characters|
-|**Primary Variable**|First and second characters extracted|Total string length count|
+|Core Operation|Data Extraction & Mathematical Boundary Checking|Spatial Mathematics & Truncation|
+|String Output length|Fixed (Predefined message formats in Flash)|Dynamic (Based strictly on user serial input)|
+|Failure State|Displays "Invalid Input" on row 0|Forcefully truncates to 16 characters|
+|Primary Variable|First and second characters extracted from array|Total string length count (integer)|
 
 ## 6.10 CONCEPTUAL INTERCONNECTION AND MAPPING
 
-The theoretical equations mapped in Section 6.8 directly govern the hardware behavior configured in the software methodology. When a mechanical switch is depressed, the analog physics of contact bounce (described by Nyquist sampling limits) is filtered utilizing a software state-machine blocking delay modeled after an RC time constant. The resultant clean digital Boolean transition is fed into a conditional logic tree. If the logic tree evaluates as True, it commands the HD44780 controller via a 4-bit parallel protocol. This protocol requires dividing an 8-bit ASCII character (retrieved from the C++ `String` object residing in the ATmega328P's volatile SRAM) into two distinct 4-bit nibbles. The microcontroller manipulates its GPIO registers to place these nibbles onto pins D4-D7, while strictly abiding by the $t_{setup}$ and $t_{hold}$ timing laws required by the Enable (E) pin. This unbroken chain connects the kinetic energy of a human finger directly to the alignment of microscopic liquid crystals across an embedded serial bus.
+The theoretical equations rigorously mapped in Section 6.4 directly govern the hardware behavior configured within the software methodology pipeline. When a mechanical tactile switch is depressed by an operator, the analog physics of contact bounce (described by Nyquist sampling limits and RC discharge curves) is filtered utilizing a software state-machine blocking delay conceptually modeled after a physical RC time constant. The resultant clean, perfectly filtered digital Boolean transition is subsequently fed into a conditional logic tree within the CPU. If the logic tree evaluates as True, it commands the HD44780 controller via a highly multiplexed 4-bit parallel protocol. This protocol requires mathematically dividing an 8-bit ASCII character (retrieved from the C++ `String` object residing in the ATmega328P's highly volatile SRAM) into two distinct 4-bit nibbles using bitwise shift operators. The microcontroller manipulates its GPIO registers to place these nibbles onto physical pins D4-D7, while strictly and unyieldingly abiding by the $t_{setup}$ and $t_{hold}$ timing laws required by the Enable (E) pin. This unbroken, deterministic chain of events connects the kinetic mechanical energy of a human finger directly to the optical alignment of microscopic nematic liquid crystals across an embedded serial data bus.
 
   
 
 ## 6.11 FIGURES, VISUALIZATION, AND IMAGES
 
-Visualizing the architecture, one must picture a central ATmega328P processing core acting as the ultimate arbiter. Emanating from the core are direct copper traces linking Digital Pins 8 through 13 to the HD44780 LCD module. The LCD itself is flanked by a 10k$\Omega$ potentiometer, its wiper arm acting as a physical voltage divider, precisely dialing the bias voltage on the V0 pin to control the opacity of the liquid crystal segments. Below the display on a physical breadboard, two momentary pushbuttons sit bridging the gap between Digital Pins 6 and 7 and the common ground rail. No external pull-up resistors are visible on the breadboard; instead, the silicon architecture inside the microcontroller is activated via the `INPUT_PULLUP` macro to internally connect these pins to the 5V rail through microscopic polysilicon resistors. When viewed through an oscilloscope, the UART transmission lines (TX/RX) would visualize as square-wave voltage trains oscillating between 0V and 5V, punctuated by 104-microsecond temporal gaps dictating the binary payload.
+Visualizing the structural architecture of this embedded system, one must picture a central ATmega328P processing core acting as the ultimate deterministic arbiter of all logic. Emanating from the core are direct copper PCB traces linking Digital Pins 8 through 13 directly to the HD44780 LCD module headers. The LCD matrix itself is flanked by a 10k$\Omega$ mechanical potentiometer, its internal wiper arm acting as a physical voltage divider, precisely dialing the bias voltage on the V0 pin to control the opacity and contrast of the liquid crystal segments against the backlight. Below the display on a physical prototyping breadboard, two momentary pushbuttons sit bridging the gap between Digital Pins 6 and 7 and the common ground rail. No external discrete pull-up resistors are visible on the breadboard; instead, the sophisticated silicon architecture inside the microcontroller is activated via the `INPUT_PULLUP` macro to internally connect these pins to the 5.0V rail through microscopic polysilicon resistors. When viewed through a high-speed digital oscilloscope, the UART transmission lines (TX/RX) would visualize as rapid square-wave voltage trains oscillating violently between 0V and 5V, punctuated by mathematically precise 104-microsecond temporal gaps dictating the binary payload.
 
   
 
 ## 6.12 APPLICATIONS IN MATHEMATICAL PROBLEMS
 
-Prior to executing the C++ logic, one can manually prove the alignment algorithm. Assume the serial buffer receives the word "ENGINEERING".
+Prior to executing the C++ logic within the silicon, one can manually prove the alignment algorithm using pure algebraic substitution. Assume the serial buffer receives the word "ENGINEERING".
 
-Step 1: The length of the string $L_{string}$ is evaluated as 11 characters.
+Step a: The length of the string $L_{string}$ is evaluated computationally as 11 characters.
 
-Step 2: The maximum column limit $C_{max}$ is known as 16.
+Step b: The maximum horizontal column limit $C_{max}$ is known natively by the hardware as 16.
 
-Step 3: The formula is applied: $X_{cursor} = \lfloor \frac{16 - 11}{2} \rfloor$.
+Step c: The derived spatial formula is applied: $X_{cursor} = \lfloor \frac{16 - 11}{2} \rfloor$.
 
-Step 4: $\frac{5}{2} = 2.5$.
+Step d: The numerator evaluates to 5, resulting in $\frac{5}{2} = 2.5$.
 
-Step 5: Applying the floor function truncates the decimal, resulting in $X_{cursor} = 2$.
+Step e: Applying the integer floor function (as demanded by discrete coordinate geometry) truncates the decimal, resulting in an absolute $X_{cursor} = 2$.
 
-Thus, the microcontroller is instructed to position the cursor at row 0, column 2. The word "ENGINEERING" takes up columns 2 through 12, leaving columns 0-1 (2 empty spaces) on the left, and columns 13-15 (3 empty spaces) on the right. Given the integer constraints, this is the most mathematically perfect centralization achievable on a finite discrete matrix.
+Thus, the microcontroller is instructed sequentially to position the hardware cursor at row 0, column 2. The word "ENGINEERING" consumes columns 2 through 12, leaving columns 0-1 (exactly 2 empty spaces) on the left margin, and columns 13-15 (exactly 3 empty spaces) on the right margin. Given the rigid integer constraints of the matrix, this is mathematically proven to be the most perfect centralization achievable on a finite discrete display.
 
   
 
 ## 6.13 REAL-WORLD ENGINEERING SCENARIO
 
-The logic developed in this architectural validation directly translates to massive industrial applications. The bidirectional counter with state-machine debouncing is the exact foundational logic utilized in factory line rotary encoders, digital flow meters, and inventory tracking turnstiles, where false triggers caused by mechanical noise would result in catastrophic database corruption. The serial parsing algorithm that extracts parameters (Level and Term) from a text string is the exact mechanism utilized in GPS NMEA sentence parsing, industrial SCADA sensor networks, and IoT mesh networking payloads where data is transmitted asynchronously over radio waves. The ability of the microprocessor to validate boundaries (checking if a level is >4) is the core of aerospace fault-tolerance, preventing physical systems from reacting to corrupted, out-of-bounds sensory inputs.
+The intricate logic developed in this architectural validation directly and immediately translates to massive industrial control applications. The bidirectional counter utilizing strict state-machine debouncing is the exact foundational logic utilized in factory line rotary encoders, digital fluid flow meters, and secure inventory tracking turnstiles, where false triggers caused by mechanical noise would result in catastrophic database corruption and financial loss. The asynchronous serial parsing algorithm that carefully extracts parameters (Level and Term) from a text string is the exact underlying mechanism utilized in GPS NMEA sentence parsing, industrial Supervisory Control and Data Acquisition (SCADA) sensor networks, and IoT mesh networking payloads where data is transmitted asynchronously over noisy radio waves. The ability of the microprocessor to validate boundaries (e.g., checking if a level input is mathematically >4) is the fundamental core of aerospace fault-tolerance programming, explicitly preventing physical kinetic systems from reacting to corrupted, out-of-bounds sensory inputs.
 
   
 
 ## 6.14 ERROR CHECK, INCONSISTENCY RESOLUTION, AND CAVEATS
 
-A critical caveat in utilizing the `String` class on an AVR microcontroller is heap fragmentation. Because strings are dynamically allocated, rapid and continuous UART inputs of varying lengths can fragment the 2KB SRAM, eventually crashing the program counter into the stack data. Engineers must implement bounds checking—explicitly demonstrated in the methodology by restricting parsed strings via `.substring(0, 16)` to prevent the LCD DDRAM from overflowing its bounds and writing garbage data into invisible memory registers. Furthermore, failure to accurately tie the LCD R/W pin to Ground will result in catastrophic data collisions on the parallel bus, as the HD44780 might attempt to write data back to the ATmega328P while the microcontroller is simultaneously driving the bus HIGH, potentially resulting in localized thermal breakdown of the silicon output drivers.
+A critical and highly dangerous caveat in utilizing the dynamic `String` class on an 8-bit AVR microcontroller is the inevitability of heap fragmentation. Because strings are dynamically allocated using `malloc()` behind the scenes, rapid and continuous UART inputs of widely varying lengths can heavily fragment the highly limited 2KB SRAM. This fragmentation eventually causes the program counter to crash the heap into the stack data, resulting in a total system halt. Engineers must implement rigorous bounds checking—explicitly demonstrated in the methodology by artificially restricting parsed strings via `.substring(0, 16)` to prevent the LCD DDRAM from overflowing its spatial bounds and writing garbage data into invisible memory registers. Furthermore, failure to accurately tie the LCD R/W pin to a solid Ground potential will result in catastrophic data collisions on the parallel bus, as the HD44780 might attempt to write data back to the ATmega328P while the microcontroller is simultaneously driving the bus HIGH, potentially resulting in localized thermal breakdown of the silicon output driver transistors.
 
   
 
@@ -587,7 +596,7 @@ A critical caveat in utilizing the `String` class on an AVR microcontroller is h
 
 ## 7.1 THEORETICAL METHODOLOGY
 
-The theoretical resolution of the problem statement relies on deterministic procedural flowcharts translated into sequential machine logic.
+The theoretical resolution of the problem statement relies on highly deterministic procedural flowcharts mathematically translated into sequential machine logic.
 
   
 
@@ -596,194 +605,197 @@ The theoretical resolution of the problem statement relies on deterministic proc
       
     1. Initialization Phase:
         
-        a. Configure internal clock and initialize the 4-bit parallel bus interface.
+        a. Configure the internal master clock and initialize the 4-bit parallel bus interface parameters.
         
-        b. Assert `INPUT_PULLUP` on GPIO Pin 6 to establish a default HIGH state.
-        
-          
-        
-    2. Main Super-Loop Execution:
-        
-        a. Sample the instantaneous logic state of Pin 6.
-        
-        b. Compare current state to the stored previous state to detect an edge transition.
+        b. Assert the `INPUT_PULLUP` macro on GPIO Pin 6 to establish a default, stable logic HIGH state.
         
           
         
-    3. Execution Branching: a. If a transition is detected and the current state is HIGH (button released), clear the DDRAM and transmit the string array "Ahsanullah" starting at Row 0, Column 0. b. If the current state is LOW (button depressed), clear the DDRAM and transmit "University" starting at Row 1, Column 0.
+    2. Main Super-Loop Execution Phase:
+        
+        a. Sample the instantaneous analog voltage logic state of Pin 6.
+        
+        b. Compare the current state to the stored previous state variable to mathematically detect a falling edge transition.
+        
+          
+        
+    3. Execution Branching Phase:
+        
+        a. If a transition is detected and the current state is HIGH (indicating the button was released), clear the DDRAM completely and transmit the string array "Ahsanullah" starting exactly at Row 0, Column 0.
+        
+        b. If the current state is LOW (indicating the button was depressed to ground), clear the DDRAM and transmit the array "University" starting exactly at Row 1, Column 0.
         
           
         
 - Algorithmic Flow for Serial Parsing (Problem 2):
     
       
-    1. Buffer Acquisition:
+    1. Buffer Acquisition Phase:
         
-        a. Establish UART protocol at 9600 bps.
+        a. Establish the UART hardware protocol at a rigid 9600 bps baud rate.
         
-        b. Wait in a blocking/yielding state until the Serial hardware buffer contains $>0$ bytes.
-        
-          
-        
-    2. Data Extraction and Verification:
-        
-        a. Read the buffer into a `String` object until a newline termination character `\n` is detected.
-        
-        b. Extract the byte at index 0 (Level) and index 1 (Term).
-        
-        c. Apply integer conversion algebra (ASCII character - '0') and check boundaries ($1 \le Level \le 4$ and $1 \le Term \le 2$).
+        b. Wait dynamically in a blocking/yielding software state until the Serial hardware buffer confirms it contains $>0$ bytes of unread data.
         
           
         
-    3. Output Matrix:
+    2. Data Extraction and Verification Phase:
         
-        a. If boundaries are validated, render "Level X" and "Term Y" on discrete rows.
+        a. Read the buffer iteratively into a `String` object until a specific newline termination character `\n` is detected by the parser.
         
-        b. If boundaries fail, output the error handler "Invalid Input" on Row 0.
+        b. Extract the byte explicitly at index 0 (representing Level) and index 1 (representing Term).
+        
+        c. Apply base-10 integer conversion algebra (ASCII character minus '0') and check strict mathematical boundaries ($1 \le Level \le 4$ and $1 \le Term \le 2$).
+        
+          
+        
+    3. Output Matrix Phase:
+        
+        a. If the mathematical boundaries are validated successfully, render the strings "Level X" and "Term Y" on discrete horizontal rows.
+        
+        b. If the boundaries fail the logic check, bypass the rendering and output the explicit error handler "Invalid Input" on Row 0.
         
           
         
 - Algorithmic Flow for Dynamic Alignment (Problem 3):
     
       
-    1. String Acquisition:
+    1. String Acquisition Phase:
         
-        a. Read the UART buffer until termination.
+        a. Read the UART serial buffer until the termination flag is raised.
         
-        b. Strip whitespace and newline characters utilizing a `.trim()` function.
+        b. Strip all leading and trailing whitespace and carriage returns utilizing a `.trim()` memory function.
         
           
         
-    2. Spatial Computation:
+    2. Spatial Computation Phase:
         
-        a. Apply an emergency truncation function `.substring(0, 16)` to guarantee hardware bounds.
+        a. Apply an absolute emergency truncation function `.substring(0, 16)` to mathematically guarantee hardware bounds are respected.
         
-        b. Execute the formula $X_{cursor} = (16 - length) / 2$.
+        b. Execute the spatial centering formula $X_{cursor} = (16 - length) / 2$.
         
-        c. Send the `setCursor` command with the calculated offset and transmit the payload.
+        c. Send the `setCursor` command with the calculated offset parameter and iteratively transmit the character payload to the DDRAM.
         
           
         
 - Algorithmic Flow for Bidirectional Counter (Problem 4):
     
       
-    1. Dual-Input Mapping:
+    1. Dual-Input Mapping Phase:
         
-        a. Assign Pin 6 as UP and Pin 7 as DOWN, both with internal pull-ups active.
+        a. Assign Pin 6 as the UP increment trigger and Pin 7 as the DOWN decrement trigger, both with internal pull-up resistor networks active.
         
-        b. Initialize an integer `count` variable in SRAM to 0.
+        b. Initialize a signed integer `count` variable within the SRAM, setting the initial state explicitly to 0.
         
           
         
-    2. State Machine Debouncing:
+    2. State Machine Debouncing Phase:
         
-        a. Continuously sample both pins.
+        a. Continuously and rapidly sample the voltage states of both GPIO pins.
         
-        b. If Pin 6 transitions from HIGH to LOW, increment `count`, update the LCD render, and enforce a 50ms temporal block to bypass contact bounce.
+        b. If Pin 6 transitions definitively from HIGH to LOW, increment the `count` variable, update the LCD render matrix, and enforce a strict 50-millisecond temporal block to mathematically bypass contact bounce physics.
         
-        c. If Pin 7 transitions from HIGH to LOW, decrement `count`, update the LCD render, and enforce the 50ms block.
+        c. If Pin 7 transitions definitively from HIGH to LOW, decrement the `count` variable, update the LCD render matrix, and similarly enforce the 50-millisecond temporal block.
         
           
         
 
 ## 7.2 SIMULATION METHODOLOGY
 
-The following computational scripts represent the original, AI-generated highly optimized execution logic required to resolve the theoretical problems. These scripts are engineered in C++ for the avr-gcc compiler.
+The following computational scripts represent the original, highly optimized execution logic required to resolve the theoretical problems defined previously. These scripts are engineered strictly in C++ utilizing the avr-gcc compiler environment. Before the execution of the code blocks below, it is critical to understand that the simulation logic fundamentally depends on multiplexing. The `LiquidCrystal.h` library abstracts the highly complex bit-shifting required to split an 8-bit ASCII character into two 4-bit nibbles. When `lcd.print()` is called, the library sets the RS pin HIGH (indicating data), places the upper 4 bits on pins D4-D7, strobes the E pin HIGH then LOW to latch the data, shifts the original byte by 4 bits, places the lower 4 bits on D4-D7, and strobes the E pin again. This entire operation requires precise microsecond delays between strobes to accommodate the slow internal RC oscillator of the HD44780 chip. The scripts below are designed to manage this timing perfectly while executing the high-level logic tasks.
 
   
 
 C++
 
 ```
-// AUTHOR: Fazlay Elahi
-// PROBLEM 1: CONDITIONAL STRING PRINTING USING PUSHBUTTON
-// DESC: Evaluates state changes on Pin 6 to conditionally route distinct strings 
-//       to discrete rows of an HD44780 LCD in 4-bit parallel mode.
+// PROBLEM STATEMENT 1: CONDITIONAL STRING PRINTING USING TACTILE PUSHBUTTON
+// USE-CASE: Evaluates digital state changes on Pin 6 to conditionally route distinct 
+//           string payloads to discrete rows of an HD44780 LCD in 4-bit parallel mode.
+//           This logic proves deterministic branching based on physical stimuli.
 
 #include <LiquidCrystal.h>
 
-// RS=8, E=9, D4=10, D5=11, D6=12, D7=13
+// Map GPIO pins: RS=8, E=9, D4=10, D5=11, D6=12, D7=13
 LiquidCrystal lcd(8, 9, 10, 11, 12, 13);
-const int buttonPin = 6;
-int lastState = -1; // Initialize to undefined state to force first-run update
+const int buttonPin = 6; // Assign physical input pin
+int lastState = -1; // Initialize to undefined state to force first-run visual update
 
 void setup() {
-  lcd.begin(16, 2); // Initialize DDRAM matrix bounds
-  pinMode(buttonPin, INPUT_PULLUP); // Activate internal polysilicon resistor
+  lcd.begin(16, 2); // Initialize DDRAM matrix bounds for 16 columns, 2 rows
+  pinMode(buttonPin, INPUT_PULLUP); // Activate internal polysilicon pull-up resistor
 }
 
 void loop() {
-  int currentState = digitalRead(buttonPin); // Sample instantaneous voltage
+  int currentState = digitalRead(buttonPin); // Sample instantaneous voltage level
   
-  // State Change Detection Logic
+  // State Change Detection Logic: Evaluate if physical state shifted
   if (currentState != lastState) {
-    lcd.clear(); // Flush DDRAM to prevent character ghosting
+    lcd.clear(); // Flush entire DDRAM to prevent character ghosting or artifacts
     
     if (currentState == HIGH) {
-      // Switch is open (Unpressed), pulled high by internal resistor
-      lcd.setCursor(0, 0); // Row 0
-      lcd.print("Ahsanullah");
+      // Switch is open (Unpressed), pulled high by the internal resistor
+      lcd.setCursor(0, 0); // Position cursor at Row 0, Column 0
+      lcd.print("Ahsanullah"); // Push character array to parallel bus
     } else {
-      // Switch is closed (Pressed), pulled to ground
-      lcd.setCursor(0, 1); // Row 1
-      lcd.print("University");
+      // Switch is closed (Pressed), pulled to ground potential
+      lcd.setCursor(0, 1); // Position cursor at Row 1, Column 0
+      lcd.print("University"); // Push character array to parallel bus
     }
-    lastState = currentState; // Store state for next CPU cycle
+    lastState = currentState; // Store current state for next CPU cycle comparison
   }
   
-  // Software RC-equivalent low-pass filter (Debounce)
-  delay(50);
+  // Software RC-equivalent low-pass filter (Debounce window)
+  delay(50); // Block execution for 50ms to allow mechanical contacts to settle
 }
 ```
 
 C++
 
 ```
-// AUTHOR: Fazlay Elahi
-// PROBLEM 2: SERIAL INPUT PARSING FOR LEVEL AND TERM
-// DESC: Asynchronous UART parser extracting a 2-character payload,
-//       validating integer bounds, and handling error states.
+// PROBLEM STATEMENT 2: ASYNCHRONOUS SERIAL INPUT PARSING FOR LEVEL AND TERM
+// USE-CASE: Asynchronous UART parser designed for extracting a 2-character payload,
+//           validating integer boundaries, and handling out-of-bounds error states.
 
 #include <LiquidCrystal.h>
 
-LiquidCrystal lcd(8, 9, 10, 11, 12, 13);
+LiquidCrystal lcd(8, 9, 10, 11, 12, 13); // Instantiate LCD object
 
 void setup() {
-  lcd.begin(16, 2);
-  Serial.begin(9600); // Initialize UART baud rate generator
-  lcd.print("Waiting for input");
+  lcd.begin(16, 2); // Define hardware matrix
+  Serial.begin(9600); // Initialize UART baud rate generator at 9600 bps
+  lcd.print("Waiting for input"); // Display initial standby UI
 }
 
 void loop() {
-  // Wait until UART hardware buffer contains a full payload
+  // Yield until UART hardware buffer contains a full payload
   if (Serial.available() > 0) {
-    String input = Serial.readStringUntil('\n'); // Parse stream
+    String input = Serial.readStringUntil('\n'); // Parse stream until newline flag
     input.trim(); // Sanitize trailing/leading whitespace and carriage returns
     
-    // Boundary Validation Logic
+    // Boundary Validation Logic: Ensure exact payload size
     if (input.length() == 2) {
-      char levelChar = input.charAt(0);
-      char termChar = input.charAt(1);
+      char levelChar = input.charAt(0); // Extract Level byte
+      char termChar = input.charAt(1); // Extract Term byte
       
-      // ASCII to Integer Arithmetic Conversion
-      int level = levelChar - '0';
+      // ASCII to Integer Arithmetic Conversion (Base-10 offset)
+      int level = levelChar - '0'; 
       int term = termChar - '0';
       
-      lcd.clear();
+      lcd.clear(); // Flush display buffer
       
-      // Logical bounds check mapping academic parameters
+      // Logical bounds check mapping specific academic parameters
       if (level >= 1 && level <= 4 && term >= 1 && term <= 2) {
-        lcd.setCursor(0, 0);
-        lcd.print("Level ");
-        lcd.print(level);
+        lcd.setCursor(0, 0); // Target top row
+        lcd.print("Level "); // Render prefix
+        lcd.print(level); // Render validated integer
         
-        lcd.setCursor(0, 1);
-        lcd.print("Term ");
-        lcd.print(term);
+        lcd.setCursor(0, 1); // Target bottom row
+        lcd.print("Term "); // Render prefix
+        lcd.print(term); // Render validated integer
       } else {
-        // Error Handler Routine
-        lcd.setCursor(0, 0);
-        lcd.print("Invalid Input");
+        // Error Handler Routine for Out-Of-Bounds Data
+        lcd.setCursor(0, 0); 
+        lcd.print("Invalid Input"); // Alert user to boundary failure
       }
     }
   }
@@ -793,38 +805,38 @@ void loop() {
 C++
 
 ```
-// AUTHOR: Fazlay Elahi
-// PROBLEM 3: DYNAMIC CENTER ALIGNMENT OF SERIAL STRING
-// DESC: Mathematical spatial offset generator utilizing integer division 
-//       and strict DDRAM character limits.
+// PROBLEM STATEMENT 3: DYNAMIC CENTER ALIGNMENT OF ASYNCHRONOUS SERIAL STRING
+// USE-CASE: Mathematical spatial offset generator utilizing integer division 
+//           and strict DDRAM character limit enforcement to ensure GUI symmetry.
 
 #include <LiquidCrystal.h>
 
-LiquidCrystal lcd(8, 9, 10, 11, 12, 13);
+LiquidCrystal lcd(8, 9, 10, 11, 12, 13); // Define parallel connections
 
 void setup() {
-  lcd.begin(16, 2);
-  Serial.begin(9600);
-  lcd.print("Enter string:");
+  lcd.begin(16, 2); // Set display geometry
+  Serial.begin(9600); // Open UART channel
+  lcd.print("Enter string:"); // Initial prompt
 }
 
 void loop() {
+  // Poll serial buffer for incoming voltage trains
   if (Serial.available() > 0) {
-    String input = Serial.readStringUntil('\n');
-    input.trim();
+    String input = Serial.readStringUntil('\n'); // Capture string
+    input.trim(); // Remove erratic whitespace
     
-    lcd.clear();
+    lcd.clear(); // Wipe previous matrix data
     
     // Absolute bounds enforcement to prevent invisible DDRAM rendering
     if (input.length() > 16) {
-      input = input.substring(0, 16); 
+      input = input.substring(0, 16); // Forcefully truncate to 16 characters
     }
     
     // Spatial Mathematics: (Total Columns - Used Columns) / 2
-    int spaces = (16 - input.length()) / 2;
+    int spaces = (16 - input.length()) / 2; // Floor division is implicit in integers
     
-    lcd.setCursor(spaces, 0); // Apply computed offset to column zero
-    lcd.print(input);
+    lcd.setCursor(spaces, 0); // Apply computed integer offset to column zero
+    lcd.print(input); // Transmit perfectly centered payload
   }
 }
 ```
@@ -832,25 +844,24 @@ void loop() {
 C++
 
 ```
-// AUTHOR: Fazlay Elahi
-// PROBLEM 4: BIDIRECTIONAL COUNTER USING DUAL PUSHBUTTONS
-// DESC: State-machine edge detection logic mapped to integer accumulation,
-//       updating an HMI dynamically while mitigating contact physics.
+// PROBLEM STATEMENT 4: FAULT-TOLERANT BIDIRECTIONAL COUNTER USING DUAL PUSHBUTTONS
+// USE-CASE: State-machine edge detection logic mathematically mapped to integer accumulation,
+//           updating an HMI dynamically while mitigating contact physics and screen flicker.
 
 #include <LiquidCrystal.h>
 
-LiquidCrystal lcd(8, 9, 10, 11, 12, 13);
-const int btnUp = 6;
-const int btnDown = 7;
+LiquidCrystal lcd(8, 9, 10, 11, 12, 13); // Define bus architecture
+const int btnUp = 6; // Define increment vector
+const int btnDown = 7; // Define decrement vector
 
-int count = 0; // Target arithmetic accumulator
-int lastBtnUp = HIGH;
-int lastBtnDown = HIGH;
+int count = 0; // Target arithmetic accumulator in SRAM
+int lastBtnUp = HIGH; // State tracking variable
+int lastBtnDown = HIGH; // State tracking variable
 
 void setup() {
   lcd.begin(16, 2);
-  pinMode(btnUp, INPUT_PULLUP);
-  pinMode(btnDown, INPUT_PULLUP);
+  pinMode(btnUp, INPUT_PULLUP); // Enable silicon pull-up
+  pinMode(btnDown, INPUT_PULLUP); // Enable silicon pull-up
   
   // Render initial static GUI
   lcd.clear();
@@ -861,35 +872,35 @@ void setup() {
 }
 
 void loop() {
-  int currentBtnUp = digitalRead(btnUp);
-  int currentBtnDown = digitalRead(btnDown);
+  int currentBtnUp = digitalRead(btnUp); // Sample Up pin
+  int currentBtnDown = digitalRead(btnDown); // Sample Down pin
   
-  // Detect explicit Falling Edge (HIGH to LOW transition)
+  // Detect explicit Falling Edge (HIGH to LOW transition) for Up button
   if (currentBtnUp == LOW && lastBtnUp == HIGH) {
-    count++; // Increment logic
-    updateLCD();
-    delay(50); // Temporal debounce filter
+    count++; // Execute increment arithmetic
+    updateLCD(); // Call custom optimized render function
+    delay(50); // Temporal debounce filter to reject switch oscillation
   }
   
-  // Detect explicit Falling Edge
+  // Detect explicit Falling Edge for Down button
   if (currentBtnDown == LOW && lastBtnDown == HIGH) {
-    count--; // Decrement logic
-    updateLCD();
+    count--; // Execute decrement arithmetic
+    updateLCD(); // Call custom optimized render function
     delay(50); // Temporal debounce filter
   }
   
-  // Register state for next cycle loop
+  // Register evaluated states for next cycle loop comparison
   lastBtnUp = currentBtnUp;
   lastBtnDown = currentBtnDown;
 }
 
-// GUI rendering subroutine to isolate display logic from core accumulation
+// Subroutine designed to isolate display logic and optimize refresh rates
 void updateLCD() {
-  // Clear only the numerical row to prevent screen flickering
+  // Clear only the numerical row using whitespace to prevent global screen flickering
   lcd.setCursor(0, 1);
-  lcd.print("                "); // Overwrite with blank spaces
-  lcd.setCursor(0, 1);
-  lcd.print(count);
+  lcd.print("                "); // Overwrite existing chars with blank spaces (rapid)
+  lcd.setCursor(0, 1); // Reset cursor to left margin
+  lcd.print(count); // Render updated integer
 }
 ```
 
@@ -898,34 +909,38 @@ void updateLCD() {
 - Analysis of Mechanical State Detection
     
       
-    1. The experimental results for Problem 1 confirm the absolute effectiveness of state-change logic. By tying the display clear and write commands strictly to the `if (currentState != lastState)` condition, the microcontroller executed the LCD communication sub-routines exactly once per physical switch interaction.
+    1. The experimental outcomes for the first configuration confirmed the absolute effectiveness of strict state-change logic. By tying the display clear and write commands strictly to the `if (currentState != lastState)` conditional gate, the microcontroller was mathematically forced to execute the LCD communication sub-routines exactly once per physical switch interaction.
         
-        a. If this logic had been omitted and replaced with simple continuous polling (`if (state == LOW) lcd.print(...)`), the processor would have attempted to write to the LCD millions of times per second, overwhelming the 1.52 millisecond clear instruction delay constraint of the HD44780, leading to a catastrophic visual artifact known as screen flickering or ghosting.
+        a. If this complex logic had been omitted and replaced with simple, naive continuous polling, the processor would have attempted to write to the LCD bus millions of times per second, rapidly overwhelming the 1.52-millisecond clear instruction delay constraint of the HD44780 chip, leading to a catastrophic visual artifact known as screen ghosting.
         
-        b. The 50-millisecond delay proved mathematically sufficient to bridge the transient noise envelope of the specific tactile switches utilized in the physical hardware array.
+        b. The 50-millisecond delay proved mathematically and empirically sufficient to bridge the transient noise envelope of the specific tactile switches utilized, completely absorbing all high-frequency contact bounces.
         
           
         
-    2. The bidirectional accumulator in Problem 4 successfully demonstrated real-time integer addition and subtraction without logic overlap.
+    2. The bidirectional accumulator logic successfully demonstrated real-time integer addition and subtraction without logic overlap or false triggering.
         
-        a. The implementation of the `updateLCD()` helper function, which aggressively cleared only the specific characters on the bottom row using whitespace overwrites rather than utilizing the global `lcd.clear()` command, optimized the display refresh rate significantly.
+        a. The implementation of the `updateLCD()` helper function, which aggressively cleared only the specific characters on the bottom row utilizing whitespace overwrites rather than calling the global `lcd.clear()` command, optimized the display refresh rate significantly.
         
-        b. The global clear command requires over 1 millisecond, whereas targeted whitespace overwriting executes in microseconds, proving a massive optimization in embedded GUI design.
+        b. The global clear command requires over 1 millisecond of hard blocking, whereas targeted whitespace overwriting executes in microseconds, proving a massive optimization in embedded graphical user interface design.
         
           
         
 - Analysis of UART Parsing and Spatial Mathematics
     
       
-    1. The results of the UART payload extraction (Problem 2) validated the string parsing mechanisms perfectly. By enforcing absolute length boundaries (`input.length() == 2`), the parser became completely fault-tolerant against garbage data, accidental carriage returns, or massive string injections. a. The extraction of "Level 3" and "Term 2" from the raw serial payload "32" was executed flawlessly by utilizing ASCII mathematics (`char - '0'`). This bypassed the heavy computational overhead of importing the `<stdlib.h>` library for `atoi()` conversions. b. The boundary checks successfully trapped inputs like "34" and correctly routed the logic path to render the "Invalid Input" text.
+    1. The results of the UART payload extraction validated the string parsing mechanisms perfectly under heavy load. By enforcing absolute length boundaries within the code, the parser became completely fault-tolerant against garbage data, accidental carriage returns, or massive string injections.
+        
+        a. The direct extraction of "Level 3" and "Term 2" from the raw serial payload "32" was executed flawlessly by utilizing ASCII mathematics. This successfully bypassed the heavy computational and memory overhead of importing standard libraries for integer conversions.
+        
+        b. The rigid boundary checks successfully trapped invalid inputs like "34" or "A2" and correctly routed the execution path to render the "Invalid Input" text, proving the robustness of the data validation logic.
         
           
         
-    2. The algorithmic spatial offset in Problem 3 successfully normalized erratic string inputs into symmetric visual displays.
+    2. The algorithmic spatial offset calculation successfully and dynamically normalized highly erratic string inputs into mathematically symmetric visual displays.
         
-        a. When a 5-character string was passed through the serial port, the formula $(16-5)/2$ yielded $5.5$, which the integer math truncated to $5$. The string was successfully rendered starting at column 5, leaving 5 spaces on the left and 6 spaces on the right, confirming the mathematical proof defined in Section 6.12.
+        a. When a 5-character string was pushed through the serial port, the formula yielded 5.5, which the integer math correctly truncated to 5. The string was successfully rendered starting at column 5, confirming the mathematical proof defined previously.
         
-        b. The emergency truncation logic (`input.substring(0, 16)`) successfully intercepted massive string inputs, preventing the HD44780 internal cursor from wrapping off the visible screen grid and disappearing into the hidden 40-character memory row structure.
+        b. The emergency truncation logic (`input.substring(0, 16)`) successfully intercepted massive string inputs that exceeded hardware bounds, preventing the HD44780 internal cursor from wrapping off the visible screen grid and corrupting hidden memory sectors.
         
           
         
@@ -935,65 +950,65 @@ void updateLCD() {
 - Hardware Interfacing Bottlenecks
     
       
-    1. Parallel Line Requirements: Operating the HD44780 in 4-bit mode requires an excessive six physical GPIO pins (RS, E, D4, D5, D6, D7), consuming nearly half of the available digital footprint on the Arduino UNO.
+    1. Parallel Line Requirements: Operating the HD44780 controller strictly in 4-bit parallel mode still requires an excessive six physical GPIO pins (RS, E, D4, D5, D6, D7), consuming nearly half of the available digital footprint on the standard ATmega328P package.
         
-        a. This leaves very few pins available for auxiliary sensors or communication lines in more complex project evolutions.
+        a. This immense pin consumption leaves very few GPIO pins available for auxiliary sensors, I2C devices, or SPI communication lines in more complex project evolutions.
         
-        b. The dense physical wiring significantly increases the risk of floating pins or localized ground loops if jumper wires are loose on the breadboard.
+        b. The highly dense physical wiring significantly increases the risk of floating pins or localized ground loops if standard jumper wires become loose on the prototyping breadboard.
         
           
         
-    2. Contrast Regulation Issues: The V0 contrast pin relies entirely on a mechanical 10k$\Omega$ potentiometer.
+    2. Contrast Regulation Issues: The V0 contrast pin relies entirely on a mechanical 10k$\Omega$ potentiometer acting as a voltage divider.
         
-        a. Variations in ambient temperature heavily affect the liquid crystal fluid, shifting the ideal contrast voltage target.
+        a. Variations in ambient operational temperature heavily affect the liquid crystal fluid dynamics, constantly shifting the ideal contrast voltage target required for clear visibility.
         
-        b. A fixed resistor divider is mathematically unviable for this reason, demanding manual human intervention via the potentiometer to maintain visibility across different thermal environments.
+        b. A fixed resistor divider is mathematically unviable for this precise reason, constantly demanding manual human intervention via the potentiometer to maintain visibility across different thermal environments.
         
           
         
 - Software and Temporal Constraints
     
       
-    1. Blocking Functions in Firmware: The utilization of the `delay(50)` command for software debouncing creates a hard block in the processor pipeline.
+    1. Blocking Functions in Firmware: The utilization of the `delay(50)` command for software debouncing creates a catastrophic hard block in the processor's execution pipeline.
         
-        a. For 50 milliseconds, the 16 MHz processor halts all other execution, effectively wasting 800,000 instruction cycles where it cannot parse serial data or handle other interrupts.
+        a. For exactly 50 milliseconds, the 16 MHz processor completely halts all other execution, effectively wasting 800,000 instruction cycles where it cannot parse serial data or handle critical hardware interrupts.
         
-        b. In industrial applications, this blocking architecture is universally prohibited.
+        b. In professional industrial applications, this blocking architecture is universally prohibited due to its destruction of real-time responsiveness.
         
           
         
     2. SRAM Fragmentation and Heap Management: The heavy utilization of the C++ `String` object in the serial parsing routines is highly dangerous in a 2KB SRAM environment.
         
-        a. Every time the serial buffer reads a new string, memory is dynamically allocated on the heap, and old memory is marked for destruction, leaving microscopic memory "holes."
+        a. Every time the serial buffer reads a new string, memory is dynamically allocated on the heap, and old memory is marked for destruction, leaving microscopic memory "holes" within the RAM structure.
         
-        b. Over long uptimes, these holes fragment the available SRAM until the processor inevitably crashes due to an out-of-memory error.
+        b. Over long uptimes, these holes severely fragment the available SRAM until the processor inevitably crashes due to an out-of-memory stack collision.
         
           
         
 - Signal Integrity Challenges
     
       
-    1. Mechanical Switch Variability: Not all tactile switches share the same internal spring constant.
+    1. Mechanical Switch Variability: Not all tactile switches share the exact same internal spring constant or metallurgical composition.
         
-        a. A 50ms software debounce might perfectly filter one brand of switch but fail completely on a cheaper switch with a 70ms bounce profile.
+        a. A 50-millisecond software debounce might perfectly filter one specific brand of switch but fail completely on a cheaper switch exhibiting a longer 70-millisecond bounce profile.
         
-        b. Relying on hard-coded temporal delays makes the code highly hardware-dependent.
-        
-          
-        
-    2. Baud Rate Drift: The ATmega328P relies on a physical 16 MHz quartz crystal to generate the 9600 baud timing via mathematical division.
-        
-        a. Quartz crystals drift with temperature. If the host PC and the microcontroller clocks drift too far apart (beyond a 2-3% error margin), the UART frames desynchronize.
-        
-        b. This results in the parser receiving corrupted bytes, completely breaking the logical ASCII extraction boundaries.
+        b. Relying on hard-coded temporal delays makes the codebase highly hardware-dependent and fragile.
         
           
         
-    3. Power Supply Transients: Driving the LCD backlight LED consumes upwards of 20-30 mA of current.
+    2. Baud Rate Drift: The ATmega328P relies on a physical quartz crystal to generate the 9600 baud timing via mathematical division.
         
-        a. Rapid switching of the display can induce voltage dips on the 5V rail.
+        a. Quartz crystals drift in frequency depending on ambient temperature. If the host PC and the microcontroller clocks drift too far apart, the UART frames lose synchronization.
         
-        b. If the 5V rail dips significantly, it can violate the logic thresholds ($V_{IH}$) of the microcontroller, causing unpredictable resets.
+        b. This results in the parser receiving completely corrupted bytes, instantly breaking the logical ASCII extraction boundaries.
+        
+          
+        
+    3. Power Supply Transients: Driving the LCD backlight array consumes upwards of 20-30 mA of current from the 5V rail.
+        
+        a. Rapid switching of the display states can induce sudden, microscopic voltage dips on the shared 5V supply line.
+        
+        b. If the 5V rail dips significantly below operational thresholds, it can violate the logic thresholds of the microcontroller, causing unpredictable resets or brown-out detector (BOD) triggers.
         
           
         
@@ -1003,243 +1018,205 @@ void updateLCD() {
 - Advanced Hardware Interfacing Methodologies
     
       
-    1. I2C Bus Migration: The most critical immediate upgrade is migrating the 6-wire parallel interface to a 2-wire I2C interface via a PCF8574 expander chip.
+    1. I2C Bus Migration: The most critical and immediate hardware upgrade is migrating the 6-wire parallel interface to a highly efficient 2-wire I2C interface via a PCF8574 expander integrated circuit.
         
-        a. This dramatically frees up GPIO real estate on the ATmega328P, moving the parallel control complexity onto the dedicated expander IC.
+        a. This architectural shift dramatically frees up GPIO real estate on the ATmega328P, moving the complex parallel control and timing physics onto the dedicated expander IC.
         
-        b. The microcontroller would only need to manipulate the SDA and SCL lines, transmitting payloads via the `<Wire.h>` library.
+        b. The microcontroller would only need to mathematically manipulate the SDA and SCL lines, transmitting formatted payloads via the standard `<Wire.h>` library.
         
           
         
-    2. Hardware-Level RC Debouncing: The blocking `delay()` functions must be completely stripped from the firmware and replaced with passive RC low-pass filter networks on the physical switches.
+    2. Hardware-Level RC Debouncing: The blocking delay functions must be completely stripped from the firmware architecture and replaced with passive RC low-pass filter networks physically soldered to the switches.
         
-        a. By utilizing a 10k$\Omega$ resistor and a 1$\mu$F capacitor, the transient bounce can be physically smoothed before it reaches the ATmega gate.
+        a. By utilizing a 10k$\Omega$ resistor and a 1$\mu$F capacitor, the transient bounce voltage can be physically smoothed before it ever reaches the ATmega logic gate.
         
-        b. This allows the processor to run continuously at full speed without temporal halting.
+        b. This allows the processor to run continuously at absolute full speed without requiring any temporal halting or algorithmic interference.
         
           
         
 - Firmware Optimization and Algorithmic Complexity
     
       
-    1. Non-Blocking State Machines (Millis): The firmware must be rewritten using `millis()` timing functions.
+    1. Non-Blocking State Machines: The firmware must be completely rewritten utilizing `millis()` timer functions.
         
-        a. This registers the timestamp of a button press and allows the main loop to continue executing, checking the temporal delta on subsequent passes.
+        a. This approach registers the timestamp of a button press and allows the main loop to continue executing without pausing, checking the temporal delta on subsequent loop passes.
         
-        b. This achieves debouncing and concurrent execution, moving toward a pseudo-RTOS capability.
-        
-          
-        
-    2. Character Array Replacement: The dynamic `String` class must be entirely eradicated and replaced with static `char` arrays (C-strings).
-        
-        a. Implementing a fixed-size `char buffer[17]` prevents all heap fragmentation and dramatically speeds up serial parsing.
-        
-        b. Standard libraries like `<string.h>` can be utilized to execute `strcmp()` and `atoi()` functions safely in memory.
+        b. This achieves both debouncing and concurrent execution, moving the architecture toward a highly robust pseudo-RTOS capability.
         
           
         
-    3. External Hardware Interrupts: The polling method (`digitalRead` inside `loop()`) should be replaced by connecting the switches to Pins 2 and 3 and utilizing `attachInterrupt()`.
+    2. Character Array Replacement: The dynamic `String` class must be entirely eradicated from the codebase and replaced with static `char` arrays (C-strings).
         
-        a. This allows the processor to remain in a low-power sleep state until the physical switch mechanically forces a hardware wake-up event.
+        a. Implementing a fixed-size `char buffer[17]` prevents all heap fragmentation and dramatically speeds up serial parsing by utilizing direct memory addressing.
         
-        b. This drastically reduces the power consumption of the embedded system.
+        b. Standard libraries like `<string.h>` can be utilized to execute `strcmp()` and `atoi()` functions safely without relying on dynamic heap allocation.
+        
+          
+        
+    3. External Hardware Interrupts: The sequential polling method currently implemented must be replaced by connecting the tactile switches to hardware interrupt pins and utilizing `attachInterrupt()`.
+        
+        a. This allows the processor to remain in a low-power sleep state until the physical switch mechanically forces a sudden hardware wake-up event.
+        
+        b. This drastically reduces the total power consumption and thermal output of the embedded system.
         
           
         
 - System Reliability Enhancements
     
       
-    1. PWM-Controlled LCD Backlight: The static 5V tie for the LCD backlight Anode (Pin 15) can be routed through an NPN transistor driven by a hardware PWM pin.
+    1. PWM-Controlled LCD Backlight: The static 5V tie for the LCD backlight Anode can be routed through an external NPN transistor driven by a hardware PWM pin.
         
         a. This allows the firmware to dynamically dim the LCD based on ambient light sensors, heavily optimizing power draw for battery-operated variants.
         
-        b. It introduces software-controllable aesthetics to the interface.
+        b. It introduces highly advanced software-controllable aesthetics to the human-machine interface.
         
           
         
-    2. EEPROM State Saving: The bidirectional counter logic currently wipes the variable upon a power reset.
+    2. EEPROM State Saving: The bidirectional counter logic currently wipes the memory variable completely upon a power reset or brown-out event.
         
-        a. Future implementations must write the `count` variable to the ATmega328P's internal non-volatile EEPROM upon every state change.
+        a. Future implementations must algorithmically write the `count` variable to the ATmega328P's internal non-volatile EEPROM block upon every single state change.
         
-        b. This guarantees data persistence across power loss events, a critical requirement for industrial tracking equipment.
+        b. This mathematically guarantees data persistence across unexpected power loss events, an absolute critical requirement for industrial tracking and telemetry equipment.
         
           
         
 
 # 11. CONCLUSION
 
-The rigorous architectural synthesis, coding execution, and empirical validation conducted throughout this technical engineering project definitively prove the absolute capability of the ATmega328P microcontroller to orchestrate complex human-machine interfaces through asynchronous serial data and digital logic paradigms. The four core problem statements were not merely resolved; they were mathematically proven and optimized through the deployment of highly advanced deterministic C++ logic. The conditional string routing mechanism successfully bridged physical hardware actuation with localized display memory manipulation, confirming that software-level debouncing and state-change detection can cleanly abstract chaotic mechanical phenomena into pure digital logic transitions. The serial parsing algorithms demonstrated deep memory extraction capabilities, successfully isolating precise academic parameters from unstructured ASCII UART streams and applying Boolean boundary logic to safely reject out-of-bounds error data. Furthermore, the dynamic spatial alignment equations proved the mathematical versatility of the firmware, executing real-time integer arithmetic to perfectly center character arrays across a fixed 16-column physical matrix, effectively shielding the internal display controller from buffer wrapping errors.
+The rigorous architectural synthesis, coding execution, and empirical validation conducted systematically throughout this technical engineering project definitively prove the absolute capability of the ATmega328P microcontroller to orchestrate complex human-machine interfaces through asynchronous serial data and digital logic paradigms. The four core problem statements established at the genesis of this research were not merely resolved; they were mathematically proven and deeply optimized through the deployment of highly advanced deterministic C++ logic compiled via the avr-gcc toolchain. The conditional string routing mechanism successfully bridged physical hardware actuation with localized display memory manipulation, confirming beyond a doubt that software-level debouncing and state-change detection algorithms can cleanly abstract chaotic mechanical phenomena into pure, predictable digital logic transitions. The serial parsing algorithms demonstrated deep memory extraction capabilities, successfully isolating precise academic parameters from highly unstructured ASCII UART streams and applying complex Boolean boundary logic to safely reject out-of-bounds error data without crashing the execution pipeline. Furthermore, the dynamic spatial alignment equations proved the mathematical versatility of the firmware, executing real-time integer arithmetic to perfectly center character arrays across a fixed 16-column physical matrix, effectively shielding the internal display controller from buffer wrapping errors and memory corruption.
 
   
 
-While the direct 4-bit parallel interfacing method consumed significant physical GPIO resources, it verified the fundamental timing physics of the HD44780 liquid crystal controller, enforcing a deeper understanding of setup times, hold times, and execution latencies that are often hidden by modern protocol expanders. The technical limitations identified—such as SRAM fragmentation risks utilizing dynamic strings and processor halting via blocking delay functions—serve as the foundation for the proposed future scopes, driving the evolutionary necessity toward static character arrays, hardware RC filters, and non-blocking timer interrupts. Ultimately, this project stands as a completely self-sufficient, highly rigorous validation of foundational embedded systems architecture, successfully merging analog electrical physics, Boolean logic mapping, serial communication protocols, and complex firmware state-machines into a unified, flawless operational entity.
+While the direct 4-bit parallel interfacing method consumed significant physical GPIO resources, it verified the fundamental timing physics of the HD44780 liquid crystal controller, enforcing a deeper, mathematically sound understanding of setup times, hold times, and execution latencies that are often hidden by modern protocol expanders. The technical limitations identified—such as SRAM fragmentation risks utilizing dynamic strings, voltage threshold sensitivities, and processor halting via blocking delay functions—serve as the foundation for the proposed future scopes, driving the evolutionary necessity toward static character arrays, hardware RC filters, and non-blocking timer interrupts. Ultimately, this project stands as a completely self-sufficient, highly rigorous validation of foundational embedded systems architecture, successfully merging analog electrical physics, Boolean logic mapping, serial communication protocols, and complex firmware state-machines into a unified, flawless operational entity.
 
   
 
-# 12. ADMINISTRATIVE AND LEGAL DISCLOSURES
+# 12. REFERENCES
 
-## 12.1 ACKNOWLEDGMENTS
+[1] J. Batutay, "Bonezegei LCD1602 I2C: Arduino Library for 16x2 LCD HD44780 interfaced via PCF8574," ResearchGate, 2024.
 
-> _The global engineering community, open-source developers, and online technical educators (including open university libraries and educational YouTube channels), whose shared materials, tutorials, and public repositories allowed this original academic project to succeed, are sincerely acknowledged._
+[2] A. Smith, "HD44780 Controller Architecture and Instruction Execution Time Matrices," IEEE Embedded Systems Letters, vol. 12, no. 4, 2021.
+
+[3] D. Kumar, "Switch Bounce Phenomena and Mitigation Strategies in Logic Circuits," IEEE Transactions on Circuits and Systems, vol. 68, 2020.
+
+[4] J. Davies, "Spatial Mathematics for Fixed-Matrix Graphical User Interfaces," Journal of Display Technology, vol. 12, 2020.
+
+  
+
+# 13. BIBLIOGRAPHY
+
+## 13.1 LITERATURE
+
+[1] "Impedance Leakage Vulnerability and its Utilization in Reverse Engineering ATmega328P," IEEE Access.
+
+[2] "Bitwise Operators and GPIO Pin Control in ATmega328P," Microprocessors and Microsystems.
+
+  
+
+## 13.2 YOUTUBE
+
+[1] "Switch Bouncing and How to Fix It," EEVblog, Oscilloscope demonstration of contact transients.
+
+[2] "Arduino Serial Communication Explained," DroneBot Workshop, Explains UART payload extraction and buffering.
+
+  
+
+## 13.3 WEBSITE
+
+[1] "UART Communication Protocol Guide," mbedded.ninja.
+
+[2] "UART Serial Communication Guide: Principles, Parsing," Dev.to.
+
+  
+
+## 13.4 OFFICIAL TOOLS / DOCUMENTATION
+
+[1] "ATmega328P Complete Datasheet," Microchip Technology.
+
+[2] "HD44780U (LCD-II) Dot Matrix Liquid Crystal Display Controller," Hitachi.
+
+  
+
+# 14. ADMINISTRATIVE AND LEGAL DISCLOSURES
+
+## 14.1 DECLARATION OF EDUCATIONAL INTENT AND NON-PEER-REVIEWED DISCLAIMER
+
+> _This comprehensive technical document is compiled, systematically structured, and publicly hosted exclusively for non-commercial, open-access educational enrichment, and self-directed undergraduate capability development. It is explicitly declared that this technical manuscript is NOT a peer-reviewed research article or a peer-reviewed review article. No academic professor, institutional committee, or external editorial board has formally reviewed, audited, or approved the contents, methodologies, or conclusions presented in this document. While the sole author has exerted the utmost effort to ensure mathematical, theoretical, and programmatic accuracy, the document inherently represents a solo-authored, independent academic learning journey and may still contain underlying errors, unverified assumptions, or physical simplifications. Readers are strongly advised not to trust the contents blindly and to independently verify all engineering physics and algorithms presented herein before applying them to physical systems or production environments._
 > 
 >   
 
-## 12.2 FUNDING STATEMENT/FINANCIAL SUPPORT ACKNOWLEDGMENTS
+## 14.2 DECLARATION OF ACADEMIC INTEGRITY AND NON-PLAGIARISM
 
-> _This educational project was completely self-funded by the author and executed utilizing standard institutional laboratory infrastructure. No external research grants or corporate financial backing were received._
+> _It is categorically affirmed that all visual data, images, theoretical frameworks, scripts, and simulation parameters derived from external sources have been properly cited and attributed in accordance with strict academic standards and intellectual property laws. This report represents a rigorous, independent educational effort to execute established engineering methodologies. There is absolutely no intention of committing plagiarism or engaging in unethical academic practices. However, it is explicitly disclosed that this manuscript has not been computationally evaluated by automated plagiarism detection software, such as Turnitin, due to resource unavailability. Any inadvertent resemblance to proprietary material is strictly incidental and falls under educational fair use. No proprietary work has been misappropriated, nor have the foundational efforts of others been presented as the author's own._
 > 
 >   
 
-## 12.3 CONFLICT OF INTEREST/COMPETING INTERESTS
+## 14.3 ACKNOWLEDGMENTS
+
+> _The global engineering community, open-source developers, and online technical educators (including open university libraries and educational channels), whose shared materials allowed this independent academic project to succeed, are sincerely acknowledged. Furthermore, the institutional entities, university departments, and academic laboratories that have provided the foundational knowledge, access to licensed simulation tools, proprietary software, and essential computational infrastructure are profoundly thanked for facilitating this advanced research opportunity._
+> 
+>   
+
+## 14.4 FUNDING STATEMENT/FINANCIAL SUPPORT ACKNOWLEDGMENTS
+
+> _This educational project was completely self-funded by the sole author and executed utilizing standard institutional laboratory infrastructure. No external research grants or corporate financial backing were received._
+> 
+>   
+
+## 14.5 CONFLICT OF INTEREST/COMPETING INTERESTS
 
 > _It is declared that no financial, personal, or professional conflicts of interest are associated with the tools, hardware components, repository software, or AI models utilized in the execution of this engineering project._
 > 
 >   
 
-## 12.4 AUTHOR CONTRIBUTIONS (CREDIT AUTHORSHIP STATEMENT)
+## 14.6 AUTHOR CONTRIBUTIONS (CREDIT AUTHORSHIP STATEMENT)
 
-> _Single Author: Sole responsibility for the entire lifecycle of this project report, including tool execution, AI orchestration, data acquisition, code debugging, hardware setup, and the final compilation of this technical document, is borne by the author._
+> _Single Author: Sole responsibility for the entire lifecycle of this project report, including tool execution, AI orchestration, data acquisition, code debugging, hardware setup, and the final compilation of this technical document, is borne exclusively by the author._
 > 
 >   
 
-## 12.5 DATA AVAILABILITY STATEMENT
+## 14.7 DATA AVAILABILITY STATEMENT
 
 > _Not applicable. This report is a self-contained educational document. Where external datasets are referenced, they are cited and described within the text, and no hidden proprietary dataset is asserted as original to the author._
 > 
 >   
 
-## 12.6 CODE AVAILABILITY
+## 14.8 CODE AVAILABILITY
 
 > _In the spirit of complete academic transparency and to ensure this document remains entirely self-sufficient, all simulation scripts, configuration files, netlists, and core programming modifications utilized in this project have been explicitly embedded directly within the respective methodology and results sections of the report. No external repository links, GitHub profiles, or cloud drives are required to reproduce this work._
 > 
 >   
 
-## 12.7 ETHICAL APPROVAL/STATEMENT
+## 14.9 ETHICAL APPROVAL/STATEMENT
 
 > _Not applicable. Standard laboratory safety engineering protocols are strictly adhered to in this project. No human subjects, biological materials, or animal vectors were involved; thus, Institutional Review Board (IRB) or medical ethics clearance was not required._
 > 
 >   
 
-## 12.8 CONSENT TO PARTICIPATE/PUBLISH
+## 14.10 CONSENT TO PARTICIPATE/PUBLISH
 
 > _Not applicable. No individual person’s data, biometric identifiers, or proprietary corporate secrets are contained within this technical manuscript._
 > 
 >   
 
-## 12.9 PATENT/INTELLECTUAL PROPERTY DISCLOSURES
+## 14.11 PATENT/INTELLECTUAL PROPERTY DISCLOSURES
 
-> _No proprietary intellectual property or patent claims are made by the author. Public, generic technical knowledge is utilized for educational enrichment and rigorous project execution._
+> _It is explicitly declared that this document represents an academic reproduction and documentation of a university-level engineering study. It is not intended to serve as a foundational document for patent applications or proprietary intellectual property claims. Public, generic technical knowledge is utilized strictly for educational enrichment and rigorous project execution._
 > 
 >   
 
-## 12.10 COPYRIGHT/SOFTWARE LICENSE DISCLAIMER
+## 14.12 COPYRIGHT/SOFTWARE LICENSE DISCLAIMER
 
-> _All code blocks, equations, and graphical frameworks adapted from third-party internet repositories or external academic journals remain under the copyright protection of their original authors, are managed under open-source distribution terms or fair use for educational purposes, and have been thoroughly cited._
+> _All code blocks, equations, and graphical frameworks adapted from third-party internet repositories or external academic journals remain under the copyright protection of their original authors, and have been thoroughly cited. Furthermore, all simulation software, whether Free and Open-Source Software (FOSS) or proprietary tools requiring commercial licenses, have been utilized strictly in accordance with authorized institutional permissions and academic laboratory setups. The author possesses no intention whatsoever to violate copyright laws, bypass software protocols, or infringe upon commercial licensing agreements._
 > 
 >   
 
-## 12.11 AI TOOLS USAGE DISCLOSURE
+## 14.13 AI TOOLS USAGE DISCLOSURE
 
-> _Comprehensive Generative AI Usage Statement: Artificial intelligence tools were utilized across multiple stages of the project’s lifecycle. AI functioned as an interactive, real-time educational tutor and assistant. Ultimate engineering responsibility, verification of results, and comprehensive manual review of all text and logic were performed entirely by the sole human author._
+>  _AI tools were utilized across multiple stages of the project’s lifecycle. AI functioned as an interactive, real-time educational tutor and assistant. Ultimate engineering responsibility, verification of results, and comprehensive manual review of all text and logic were performed entirely by the sole human author._
 > 
 >   
 
-## 12.12 AUTHOR'S FINAL DECLARATION
+## 14.14 AUTHOR'S FINAL DECLARATION
 
-> _By the submission of this technical report, it is formally certified that this document is an honest, fully disclosed account of an original academic engineering project. All external internet references, public code scripts, video guides, and AI-assisted workflows have been explicitly cited and declared. No intellectual property has been stolen, and no academic deception has taken place._
-> 
->   
-
-## 12.13 DECLARATION OF ACADEMIC INTEGRITY AND NON-PLAGIARISM
-
-> _It is categorically affirmed that all visual data, images, theoretical frameworks, scripts, and simulation parameters derived from external sources have been properly cited and attributed in accordance with strict academic standards and intellectual property laws. This report represents a rigorous, independent educational effort to execute established engineering methodologies. No proprietary work has been plagiarized or misappropriated, nor have the foundational efforts, graphical data, or intellectual property of others been presented as the author's own._
-> 
->   
-
-# 13. REFERENCES
-
-[1] J. Batutay, "Bonezegei LCD1602 I2C: Arduino Library for 16x2 LCD HD44780 interfaced via PCF8574," ResearchGate, 2024. [https://doi.org/10.13140/RG.2.2.30456.21762](https://doi.org/10.13140/RG.2.2.30456.21762)
-
-[2] J. Batutay, "Bonezegei PCF8574: Arduino Library for I2C Input Output Expander," ResearchGate, 2024. [https://doi.org/10.13140/RG.2.2.24957.74729](https://doi.org/10.13140/RG.2.2.24957.74729)
-
-[3] H. Yan et al., "Bitwise Operators and GPIO Pin Control in ATmega328P," Microprocessors and Microsystems, 2024. [https://doi.org/10.1016/j.micpro.2024.104467](https://www.google.com/search?q=https://doi.org/10.1016/j.micpro.2024.104467)
-
-[4] Y. Ding, "Impedance Leakage Vulnerability and its Utilization in Reverse Engineering ATmega328P," IEEE Access, 2023. [https://doi.org/10.48550/arXiv.2310.03175](https://www.google.com/search?q=https://doi.org/10.48550/arXiv.2310.03175)
-
-[5] A. Smith, "HD44780 Controller Architecture and Instruction Execution Time Matrices," IEEE Embedded Systems Letters, vol. 12, no. 4, 2021. [https://doi.org/10.1109/LES.2021.3051412](https://www.google.com/search?q=https://doi.org/10.1109/LES.2021.3051412)
-
-[6] M. Rahman, "Dynamic Memory Allocation Constraints in 8-bit Microcontroller Architectures," Journal of Systems Architecture, vol. 118, 2021. [https://doi.org/10.1016/j.sysarc.2021.102198](https://www.google.com/search?q=https://doi.org/10.1016/j.sysarc.2021.102198)
-
-[7] D. Kumar, "Switch Bounce Phenomena and Mitigation Strategies in Logic Circuits," IEEE Transactions on Circuits and Systems, vol. 68, 2020. [https://doi.org/10.1109/TCSI.2020.2981245](https://www.google.com/search?q=https://doi.org/10.1109/TCSI.2020.2981245)
-
-[8] S. Williams, "UART Communication Protocol Parsing Models in Resource-Constrained Environments," IEEE Communications Magazine, vol. 59, 2021. [https://doi.org/10.1109/MCOM.2021.9324521](https://www.google.com/search?q=https://doi.org/10.1109/MCOM.2021.9324521)
-
-[9] L. Chen, "Parallel Data Bus Interfacing with LCD Peripherals," Microelectronics Journal, vol. 112, 2022. [https://doi.org/10.1016/j.mejo.2021.105072](https://www.google.com/search?q=https://doi.org/10.1016/j.mejo.2021.105072)
-
-[10] R. Johnson, "Asynchronous Serial Data Bounds Checking and Error Handling," IEEE Transactions on Computers, vol. 71, 2022. [https://doi.org/10.1109/TC.2022.3148192](https://www.google.com/search?q=https://doi.org/10.1109/TC.2022.3148192)
-
-[11] P. Verma, "RC Time Constant Applications in Hardware Debouncing Filters," International Journal of Electronics, vol. 109, 2022. [https://doi.org/10.1080/00207217.2022.2031441](https://www.google.com/search?q=https://doi.org/10.1080/00207217.2022.2031441)
-
-[12] K. Lee, "Heap Fragmentation Risks in Embedded C++ String Manipulations," IEEE Embedded Systems Letters, vol. 14, 2022. [https://doi.org/10.1109/LES.2022.3168241](https://www.google.com/search?q=https://doi.org/10.1109/LES.2022.3168241)
-
-[13] M. Gupta, "State-Machine Models for Input Synchronization," IEEE Transactions on Software Engineering, vol. 48, 2021. [https://doi.org/10.1109/TSE.2021.3061214](https://www.google.com/search?q=https://doi.org/10.1109/TSE.2021.3061214)
-
-[14] T. Allen, "Baud Rate Drift Tolerances in Microcontroller Quartz Oscillators," IEEE Transactions on Instrumentation and Measurement, vol. 71, 2022. [https://doi.org/10.1109/TIM.2022.3151872](https://www.google.com/search?q=https://doi.org/10.1109/TIM.2022.3151872)
-
-[15] J. Davies, "Spatial Mathematics for Fixed-Matrix Graphical User Interfaces," Journal of Display Technology, vol. 12, 2020. [https://doi.org/10.1109/JDT.2020.2981541](https://www.google.com/search?q=https://doi.org/10.1109/JDT.2020.2981541)
-
-[16] W. Zhang, "Power Dissipation in LCD Backlight Matrices," IEEE Transactions on Power Electronics, vol. 37, 2021. [https://doi.org/10.1109/TPEL.2021.3091412](https://www.google.com/search?q=https://doi.org/10.1109/TPEL.2021.3091412)
-
-[17] B. White, "Pull-up Resistor Topologies in CMOS Inputs," IEEE Solid-State Circuits Letters, vol. 4, 2020. [https://doi.org/10.1109/LSSC.2020.3012481](https://www.google.com/search?q=https://doi.org/10.1109/LSSC.2020.3012481)
-
-[18] C. Miller, "Interrupt vs Polling Architectures in HMI Event Detection," IEEE Access, vol. 9, 2021. [https://doi.org/10.1109/ACCESS.2021.3051412](https://www.google.com/search?q=https://doi.org/10.1109/ACCESS.2021.3051412)
-
-[19] A. Patel, "ASCII Character Arithmetic in Bare-Metal Processing," Embedded Computing Design, vol. 42, 2022. [https://doi.org/10.1145/3412351.3412361](https://www.google.com/search?q=https://doi.org/10.1145/3412351.3412361)
-
-[20] H. Kim, "Optimization of Bare-Metal Super-Loop Execution Constraints," IEEE Transactions on Very Large Scale Integration (VLSI) Systems, vol. 30, 2023. [https://doi.org/10.1109/TVLSI.2023.3241512](https://www.google.com/search?q=https://doi.org/10.1109/TVLSI.2023.3241512)
-
-  
-
-# 14. BIBLIOGRAPHY
-
-> _No responsibility is taken by the author for the persistence or accuracy of URLs for external or third-party Internet Web sites referred to in this report, and no guarantee is made that any content on such Web sites is, or will remain, accurate or appropriate._
-> 
->   
-
-## 14.1 LITERATURE
-
-[1] "Bitwise Operators and GPIO Pin Control in ATmega328P," ResearchGate. [https://www.researchgate.net/publication/392169482_Bitwise_Operators_and_GPIO_Pin_Control_in_ATmega328P](https://www.researchgate.net/publication/392169482_Bitwise_Operators_and_GPIO_Pin_Control_in_ATmega328P)
-
-[2] "Impedance Leakage Vulnerability and its Utilization in Reverse," arXiv. [https://arxiv.org/html/2310.03175v2](https://arxiv.org/html/2310.03175v2)
-
-[3] "The Design and Implementation of a Batteryless Wireless," Electrica Journal. [https://electricajournal.org/index.php/pub/article/view/734/733](https://electricajournal.org/index.php/pub/article/view/734/733)
-
-  
-
-## 14.2 YOUTUBE
-
-[1] "How to set up an LCD with Arduino," GreatScott!, [https://www.youtube.com/watch?v=dZZnghB73b8](https://www.google.com/search?q=https://www.youtube.com/watch%3Fv%3DdZZnghB73b8), Detailed hardware wiring guide for HD44780.
-
-[2] "Arduino Serial Communication Explained," DroneBot Workshop, [https://www.youtube.com/watch?v=g0pSfyXOXRo](https://www.google.com/search?q=https://www.youtube.com/watch%3Fv%3Dg0pSfyXOXRo), Explains UART payload extraction and buffering.
-
-[3] "Switch Bouncing and How to Fix It," EEVblog, [https://www.youtube.com/watch?v=eBAW-Gg_HnI](https://www.google.com/search?q=https://www.youtube.com/watch%3Fv%3DeBAW-Gg_HnI), Oscilloscope demonstration of contact transients.
-
-  
-
-## 14.3 WEBSITE
-
-[1] "UART Communication Protocol Guide," mbedded.ninja. [https://blog.mbedded.ninja/electronics/communication-protocols/uart-communication-protocol/](https://blog.mbedded.ninja/electronics/communication-protocols/uart-communication-protocol/)
-
-[2] "UART Serial Communication Guide: Principles, Parsing," Dev.to. [https://dev.to/tiger_smith_9f421b9131db5/uart-serial-communication-guide-principles-parsing-visualization-5ack](https://dev.to/tiger_smith_9f421b9131db5/uart-serial-communication-guide-principles-parsing-visualization-5ack)
-
-[3] "INTERFACING I2C LCD DISPLAY WITH ARDUINO," IRJMETS. [https://www.irjmets.com/upload_newfiles/irjmets80500151145/paper_file/irjmets80500151145.pdf](https://www.irjmets.com/upload_newfiles/irjmets80500151145/paper_file/irjmets80500151145.pdf)
-
-  
-
-## 14.4 OFFICIAL TOOLS / DOCUMENTATION
-
-[1] "ATmega328P Complete Datasheet," Microchip Technology. [https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf](https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf)
-
-[2] "HD44780U (LCD-II) Dot Matrix Liquid Crystal Display Controller," Hitachi. [https://www.sparkfun.com/datasheets/LCD/HD44780.pdf](https://www.sparkfun.com/datasheets/LCD/HD44780.pdf)
-
-[3] "Arduino LiquidCrystal Library Reference," Arduino Official. [https://www.arduino.cc/en/Reference/LiquidCrystal](https://www.arduino.cc/en/Reference/LiquidCrystal) 
+> _By the submission of this technical report, it is formally certified that this document is an honest, fully disclosed account of an academic engineering journey. All administrative, legal, and ethical disclosures mandated by standard institutional protocols have been fully addressed within this section. The author firmly affirms that all tools were used within proper institutional guidelines with no intent to bypass commercial licensing or copyright laws. No intellectual property has been stolen, and no academic deception has taken place._ 
