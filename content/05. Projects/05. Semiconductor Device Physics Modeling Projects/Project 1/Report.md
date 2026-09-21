@@ -1,4 +1,3 @@
-
 ## Project Report: 1D Ideal Silicon P-N Junction Diode (Equilibrium Electrostatics)
 
 ---

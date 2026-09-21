@@ -4,7 +4,7 @@
 
 ## 1. Project Statement
 
-==This project evaluates the design, implementation, and field-mitigation efficacy of a 2D short-channel NMOSFET incorporating Lightly Doped Drain (LDD) extensions== [15.3]. As transistors scale toward the nanoscale limits evaluated in Project 14, abrupt doping transitions at the channel-drain interface create severe lateral electric field peaks. These localized peaks cause hot-carrier injection (HCI), localized impact ionization, and severe short-channel degradation [14.1, 15.1]. The engineering challenge centers on modifying the structure editor scripts to insert intermediate doping buffer regions [15.3]. This report focuses on comparing the internal electric field distributions of standard and LDD-engineered architectures to demonstrate field-spreading capabilities using the Synopsys Sentaurus TCAD (Version N-2017.09) Ecosystem [15.1].
+This project evaluates the design, implementation, and field-mitigation efficacy of a 2D short-channel NMOSFET incorporating Lightly Doped Drain (LDD) extensions [15.3]. As transistors scale toward the nanoscale limits evaluated in Project 14, abrupt doping transitions at the channel-drain interface create severe lateral electric field peaks. These localized peaks cause hot-carrier injection (HCI), localized impact ionization, and severe short-channel degradation [14.1, 15.1]. The engineering challenge centers on modifying the structure editor scripts to insert intermediate doping buffer regions [15.3]. This report focuses on comparing the internal electric field distributions of standard and LDD-engineered architectures to demonstrate field-spreading capabilities using the Synopsys Sentaurus TCAD (Version N-2017.09) Ecosystem [15.1].
 
 ---
 
