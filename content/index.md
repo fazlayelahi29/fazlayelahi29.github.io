@@ -1,7 +1,7 @@
 <center><u>**Welcome to fazlayelahi29.github.io**</u></center>
 
-![[Image 1.jpg]]
+<center></center>![[Image 1.jpg|392]]
 
-![[Image 2.png]]
+<center></center>![[Image 2.png|392]]
 
 
