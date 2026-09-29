@@ -12,7 +12,8 @@ Welcome to fazlayelahi29.github.io
 
 **Junior Year Undergraduate Student pursuing BSc (Engg.) in EEE at AUST | Semiconductor Device Physics Modeling | VLSI Circuits & Systems Design**
 
-Department of Electrical and Electronic Engineering (EEE), Ahsanullah University of Science and Technology (AUST), 141 & 142, Love Road, Tejgaon Industrial Area, Dhaka-1208, Bangladesh.
+
+Undergraduate electrical engineering student engaged in nanoscale **Semiconductor Device Physics Modeling** and applied **Hardware Systems Design**. Capable of executing finite-element **TCAD** drift-diffusion electrostatics and maintaining foundational familiarity with **VLSI EDA** workflows. Translates theoretical material behaviors into measurable circuit-level parameters, supported by laboratory execution in analog integrated circuits, analog electronics, electrical machineries, and numerical analysis.
   
 ---
 # CONTACT
@@ -26,560 +27,653 @@ Department of Electrical and Electronic Engineering (EEE), Ahsanullah University
 
 ---
 
-# ABOUT
+# EDUCATION
 
-## EDUCATION
+**Ahsanullah University of Science and Technology (AUST)**
 
-**A. AHSANULLAH UNIVERSITY OF SCIENCE AND TECHNOLOGY (AUST) | DHAKA, BANGLADESH**
-
-  
-
-1. **Degree:** Bachelor of Science in Electrical and Electronic Engineering (EEE).
-    
-      
-    
-2. **Timeline:** Expected Graduation by December 2028.
-    
-      
-    
-3. **Academic Coursework and Progression:**
-    
-      
-    - Academic progression encompasses foundational engineering mathematics, physics, and chemistry, leading directly into advanced electrical engineering modules.
-        
-          
-        
-    - Core coursework involves Semiconductor Device Physics, VLSI Design, Analog Integrated Circuits, Digital Electronics I, Signals and Linear Systems, Electrical Properties of Materials, Electromagnetics, and Power Systems I.
-        
-          
-        
-    - Theoretical classroom instruction is continuously applied through practical laboratory execution. Completed laboratory coursework spans Analog Electronics, Programming Languages, Energy Conversion, and Measurement and Instrumentation.
-        
-          
-        
-4. **Organizational Affiliations at AUST:**
-    
-      
-    - Student Member, IEEE Electron Device Society (EDS) AUST Student Branch Chapter.
-        
-          
-        
-    - General Member, AUST Research and Publication Club, AUST Career Development Club, AUST Innovation and Design Club, AUST Programming and Informatics Club, and AUST Robotics Club.
-        
-          
-        
-    - Student Member, IEOM Society AUST Student Chapter and IMechE AUST Student Chapter.
-        
-          
-        
-
-**B. KHULNA PUBLIC COLLEGE | KHULNA, BANGLADESH**
+Tejgaon, Dhaka-1208, Bangladesh
 
   
 
-1. **Cultural and Extracurricular Foundations:**
-    
-      
-    - Participation in annual cultural and literary competitions involved dedicated training in classical vocal music, securing placements in Rabindra Sangeet, Nazrul Geeti, and Deshattokbodhok Gaan.
-        
-          
-        
-    - Service as a Rover Scout within the Bangladesh Scouts at Khulna Public College involved structured team discipline, community service, and field training operations.
-        
-          
-        
-
-## RESEARCH AND PUBLICATION
-
-**A. SEMICONDUCTOR DEVICE PHYSICS AND TCAD MODELING**
-
-  
-
-1. **Sub-3nm Forksheet and RibbonFET Scaling (Team Robert Noyce):** Finite-element simulations were executed to analyze sub-5nm quantum confinement and electrostatic short-channel effect (SCE) suppression. Dielectric wall (DW) coupling, Drain-Induced Barrier Lowering (DIBL), and subthreshold swing improvements were quantified for advanced nanoscale logic. This research was presented as the Lead TCAD Modeler for Team Robert Noyce at Innoventure 25, securing the Runners-Up position in the PosterPitch segment arranged by the AUST Innovation and Design Club.
+- **Degree:** Bachelor of Science in Engineering, Electrical and Electronic Engineering (EEE)
     
       
     
-2. **Ferroic HZO AlGaN/GaN NC-HEMTs (Team Jack Kilby):** Wide-bandgap High-Electron-Mobility Transistors (HEMTs) integrating a Ferroic $HfO_2\text{-}ZrO_2$ bilayer gate dielectric were simulated. Negative capacitance kinetics were mapped to document an 8-order-of-magnitude reduction in gate leakage current alongside a boost in ON-current. These findings were presented as a Finalist at Innoventure 25.
+- **Current Standing:** Junior Year Undergraduate Student (Nov 2022 – Present)
     
       
     
-3. **Ultra-Thin Body Silicon FDSOI (Team Gordon Moore):** 1D and 2D quantum confinement corrections, bandgap widening, and effective mass modifications in Ultra-Thin Body (UTB) devices scaled down to a 3nm channel thickness were modeled utilizing Schrödinger-Poisson solvers. The simulation data was showcased as a Finalist at Innoventure 25.
+- **Expected Graduation:** December 2028
     
       
     
-4. **Sustainable Power HEMTs and Electrothermal Stability (Team Takashi Mimura):** Avalanche breakdown, current collapse suppression, and self-heating kinetics in AlGaN/GaN power architectures integrating $HfZrO_x$ and $BaTiO_3$ high-k dielectrics were modeled. This research was presented as a Finalist at Material Fest 1.0, a scientific poster presentation competition organized by the Material Research Society (MRS) Student Chapter at the University of Dhaka.
+- **Academic Coursework:** Established a foundational understanding of core electrical engineering mechanics. Relevant coursework successfully completed or currently enrolled in includes Signals and Systems, Digital Signal Processing, Communication Engineering, Engineering Electromagnetics, Power Systems, Electrical Machineries, Digital Electronics, and theoretical and laboratory coursework in Analog Electronics. Formal university coursework in VLSI Design and Analog Integrated Circuits has not yet been undertaken.
+    
+      
+    
+- **Organizational Affiliations:** Student Member, IEEE Electron Device Society (EDS) AUST Student Branch Chapter; General Member, AUST Research and Publication Club, AUST Career Development Club, AUST Innovation and Design Club, AUST Programming and Informatics Club, and AUST Robotics Club; Student Member, IEOM Society AUST Student Chapter and IMechE AUST Student Chapter.
     
       
     
 
-**B. SMART GRID AND SUSTAINABLE TRANSPORTATION RESEARCH**
+**Government B.L. College**
+
+Daulatpur, Khulna-9209, Bangladesh
 
   
 
-1. **V2G Integration (Team Recursion):** Bidirectional Vehicle-to-Grid (V2G) frameworks, Advanced Metering Infrastructure (AMI), and AC/DC converter scaling required to optimize decentralized EV battery energy storage networks were researched and modeled. The findings were presented at the Poster Pavilion 2.0 and Research Revelry segments during the IEEE PES Day 2024 Celebration, securing the 1st Runner-Up position.
+- **Degree:** Higher Secondary Certificate (HSC), Science Group (Jun 2018 – Jun 2020)
     
       
     
-2. **Infrastructure Evolution (Team AUST Fountainhead):** A research-based presentation titled "Infrastructure Evolution: From Egyptian Pyramids to Sustainable Development Goals" was developed and presented for the IEEE BUBT Student Branch.
-    
-      
-    
-3. **Sustainable Transportation Essay:** An academic scientific essay titled "Advancing Sustainable Transportation for Bangladeshi Cities: A Comprehensive Strategy for a Greener Future" was authored and submitted to the IEEE BUBT Student Branch essay writing competition.
+- **Grade Achieved:** GPA 5.00 / 5.00 (Golden A+)
     
       
     
 
-**C. FIRST-PRINCIPLES COMPUTATIONAL MATERIAL SCIENCE**
+**Khulna Public College**
+
+Boyra, Khulna-9000, Bangladesh
 
   
 
-1. **Density Functional Theory (DFT) Investigations:** Density Functional Theory was utilized to investigate Transition Metal Dichalcogenides (TMDs) and MXenes. Atomic properties including half-metallicity, spin-polarization, and spin-orbit coupling were mathematically calculated.
+- **Secondary School Certificate (SSC), Science Group:** Jan 2016 – Apr 2018 | Grade: GPA 5.00 / 5.00 (A+)
     
       
     
-2. **Computational Execution:** Quantum ESPRESSO was compiled and operated on a dual-boot Ubuntu Linux environment. Tools such as PWTK, XCrySDen, VESTA, and BURAI were utilized to execute lattice optimizations and structural relaxations. First Principle Study Calculations based on DFT and DFT+U were also conducted via the Materials Square platform.
+- **Junior School Certificate (JSC):** Jan 2015 – Dec 2015 | Grade: GPA 5.00 / 5.00 (Golden A+)
+    
+      
+    
+- **Primary School Certificate (PSC):** Jan 2012 – Dec 2012 | Grade: GPA 5.00 / 5.00 (Golden A+)
+    
+      
+    
+- **Cultural and Extracurricular Foundations:** Participated in annual cultural and literary competitions, securing placements in Rabindra Sangeet, Nazrul Geeti, and Deshattokbodhok Gaan. Completed service as a Rover Scout within the Bangladesh Scouts, focusing on team discipline and field operations.
     
       
     
 
-**D. FORMAL PUBLICATION TRAINING**
+**Ananda Multimedia School**
 
-  
-
-1. **Abartan Thesis Course:** The "Abartan's Thesis & Research Publication Course" (TP-SM-055) was completed, covering formal training in academic thesis writing, research methodology formulation, and peer-review publication standard protocols.
-    
-      
-    
-
-## PROJECTS
-
-_(Note: Complete documentation, simulation scripts, circuit schematics, and technical analyses for all projects listed below are available directly on my personal website, which serves as a self-sufficient and comprehensive digital archive: [https://fazlayelahi29.github.io/](https://fazlayelahi29.github.io/?utm_source=gemini))_
-
-  
-
-**A. SEMICONDUCTOR DEVICE PHYSICS MODELING PROJECTS**
+Khulna-9300, Bangladesh
 
   
 
-1. **Simulation Portfolio:** Over 30 distinct simulation-based projects have been designed and executed, establishing semiconductor device physics modeling as a primary engineering focus.
-    
-      
-    
-2. **Scope of Execution:** Utilizing Synopsys Sentaurus TCAD, these projects range from fundamental 2D drift-diffusion simulations to 3D modeling of sub-3nm nodes, exploring multi-gate architectures such as FinFET, GAAFET, NCFET, and TFET under specific operational constraints.
+- **Education Level:** Kindergarten / Foundational Education (2006 – 2009)
     
       
     
 
-**B. APPLICATION-SPECIFIC INTEGRATED CIRCUITS (ASIC) AND FOSS VLSI DESIGN**
+# RESEARCH AND PUBLICATIONS
+
+**A. CURRENT RESEARCH INTERESTS**
 
   
 
-1. **FOSS EDA Workflows:** Multiple projects focusing on CMOS VLSI ASIC design have been executed utilizing Free and Open Source Silicon (FOSS) tools.
+- **Semiconductor Device Physics Modeling:** Directing focus toward finite-element drift-diffusion and hydrodynamic modeling of nanoscale transistor architectures. Analyzing electrostatics and carrier transport mechanisms across **FinFET, Gate-All-Around FET (GAAFET), RibbonFET, Forksheet FET, Nanosheet FET, Complementary FET (CFET), Reconfigurable FET (RFET), Negative Capacitance FET (NCFET), Tunnel FET (TFET), Carbon Nanotube FET (CNTFET), Ferroelectric FET (FeFET)**, and **Current Aperture Vertical Electron Transistors (CAVET)**. Actively integrating **Physics-Informed Neural Network (PINN)** surrogate models to accelerate electrostatic convergence mapping and predict structural behavior under varied boundary conditions.
     
       
     
-2. **Scope of Execution:** Digital logic design, synthesis, and place-and-route workflows were established to build custom ASICs, demonstrating the capacity to build synthesis pipelines independent of proprietary software constraints.
+- **Semiconductor Device Compact Modeling & SPICE Modeling:** Translating physical device behaviors into robust circuit-level parameters. Utilizing **Verilog-A** hardware description language alongside standard frameworks like **BSIM-CMG** to extract scalable SPICE parameters for accurate analog and digital circuit simulations. This interest incorporates the application of **Physics-Informed Neural Network (PINN)** architectures to optimize parameter extraction workflows.
+    
+      
+    
+- **Wide and Ultra-Wide Bandgap Materials:** Evaluating compounds including **GaN, SiC, Ga₂O₃, AlN, BN, and Diamond**, engineering structural configurations specifically for High-Electron-Mobility Transistor (**HEMT**) systems such as AlGaN/GaN and AlGaAs/GaAs heterojunctions.
+    
+      
+    
+- **Spintronics and Spintronic Devices:** Investigating electron spin as an alternative state variable for logic and memory applications. Exploring magnetic tunnel junctions (**MTJ**), spin-orbit torque dynamics, and the physical mechanisms governing non-volatile spintronic topologies.
+    
+      
+    
+- **VLSI Design and Application-Specific Integrated Circuits (ASIC):** Focus includes understanding the digital physical design workflows necessary for custom silicon layouts, covering fundamental RTL synthesis, standard-cell mapping, static timing analysis, and floorplanning concepts.
+    
+      
+    
+- **Field Programmable Gate Arrays (FPGA) Implementation:** Targeting digital hardware design and hardware description programming methodologies on FPGA fabrics to execute digital prototyping and evaluate reconfigurable computing algorithms.
+    
+      
+    
+- **Device Reliability and Electrothermal Behavior:** Investigating physical deterioration and structural reliability, focusing on Time-Dependent Dielectric Breakdown (**TDDB**), Hot Carrier Injection (**HCI**), Negative Bias Temperature Instability (**NBTI**), self-heating kinetics, and trapping/de-trapping scattering effects.
     
       
     
 
-**C. ANALOG INTEGRATED CIRCUIT DESIGN AND ANALYSIS**
+**B. PUBLICATIONS**
 
   
 
-1. **Analog IC Portfolio:** Over 10 individual projects focused entirely on analog integrated circuit design and analysis have been completed.
+- **Current Status:** Currently, there are zero peer-reviewed research articles, review articles, or conference proceedings published to date.
     
       
     
-2. **Scope of Execution:** Synopsys HSPICE is utilized to design and simulate the behavior of analog blocks at the transistor level. Transient responses, AC frequency sweeps, DC operating points, and PVT (Process, Voltage, Temperature) corner analyses are performed to verify integrated circuit behavior.
+- **Context and Progression:** Active preparation is underway to submit structural research for formal peer review and publication. The foundation established through independent exploration experiences is being systematically converted into academic manuscripts aligned with core research interests.
     
       
     
 
-**D. ANALOG ELECTRONICS PROJECTS**
+# PROJECTS
+
+_Detailed documentation, including technical analyses, simulation scripts, and parameter outputs for the following projects, is available on the personal website ([https://fazlayelahi29.github.io/](https://fazlayelahi29.github.io/)). The website is under construction, and documentation will be progressively uploaded. Executing these independent projects laid the foundational context for my current research interests._
 
   
 
-1. **Discrete Analog Portfolio:** Over 20 discrete analog electronics projects have been executed.
-    
-      
-    
-2. **Scope of Execution:** Tools including Cadence OrCAD PSpice and LTspice are utilized to design, construct, and simulate analog circuits. Examples include designing RLC Band Pass Filters to isolate specific frequency ranges and verifying Thevenin’s theorem. Additionally, a Common Collector BJT Amplifier circuit was constructed using physical components, with the experimental oscilloscope results directly verified against OrCAD simulations.
-    
-      
-    
-
-**E. DIGITAL ELECTRONICS PROJECTS**
+**1. SEMICONDUCTOR DEVICE PHYSICS MODELING**
 
   
 
-1. **Digital Design Portfolio:** Over 15 projects in the domain of digital electronics and logic design have been completed.
+- **Scope & Execution:** Systematically executed simulation-based projects to evaluate electrostatic mechanics and carrier transport. Due to computational limits of the available workstation hardware, finite-element modeling remains firmly confined to 2D simulations.
     
       
     
-2. **Scope of Execution:** Combinational and sequential logic circuits, finite state machines, and datapath architectures were implemented. Boolean logic was translated into structural and behavioral HDL code, and verified using Intel Quartus and QuestaSim prior to hardware deployment on physical FPGA boards.
+- **RibbonFET and Forksheet FET Architectures:** Evaluated scaling potentials of sub-3nm nodes in **Synopsys Sentaurus TCAD**, mapping multidimensional carrier transport and observing dielectric wall (DW) coupling to suppress short-channel effects. Showcased as **Runners-Up** at _Innoventure 25_ (Team Robert Noyce).
+    
+      
+    
+- **AlGaN/GaN HEMTs utilizing Ferroelectric HZO:** Modeled a Ferroic **HfO2-ZrO2 bilayer** gate dielectric to leverage negative capacitance (NC) kinetics, boosting ON-current and mitigating severe gate leakage currents. Evaluated non-isothermal electrothermal behaviors. Presented as a **Finalist** at _Innoventure 25_ (Team Jack Kilby).
+    
+      
+    
+- **Ultra-Thin Body Silicon FDSOI:** Explored 1D and 2D quantum confinement corrections via Schrödinger-Poisson solvers to establish theoretical scaling trends down to a 3nm silicon channel. Showcased as a **Finalist** at _Innoventure 25_ (Team Gordon Moore).
+    
+      
+    
+- **Sustainable Power HEMTs:** Engineered device contouring and drift region doping profiles to maximize breakdown voltage. Investigated avalanche breakdown and electrothermal stability in AlGaN/GaN architectures. Showcased as a **Finalist** at _Material Fest 1.0_ (Team Takashi Mimura).
+    
+      
+    
+- **Carbon Nanotube Field Effect Transistor (CNTFET):** Independent research focused on ballistic transport mechanisms and compact modeling of nanoscale carbon electronics. Mapped the 1D Density of States (DOS) and analyzed how chirality dictates energy bandgaps. Authored a technical article presented at the AUST Center for Nanotechnology.
     
       
     
 
-**F. MICROCONTROLLERS AND MICROPROCESSORS**
+**2. ANALOG INTEGRATED CIRCUITS**
 
   
 
-1. **Embedded Systems Portfolio:** Over 20 embedded systems projects have been designed and executed utilizing microcontrollers and microprocessors.
+- **Scope & Goal:** Foundational projects executed to understand transistor-level behaviors in integrated environments.
     
       
     
-2. **Scope of Execution:** Sensor interfacing, low-level control logic writing, and memory allocation were performed targeting STM32 architectures, ESP32 modules, and standard Arduino Uno and Arduino Nano platforms to bridge digital logic with physical mechanical outputs.
+- **Technical Architecture:** Utilized **Synopsys HSPICE** to construct netlists for analog topologies. Designed current mirrors and differential pairs, extracting DC operating points and executing AC frequency sweeps to observe baseline integrated analog behaviors.
     
       
     
 
-**G. NUMERICAL ANALYSIS AND TECHNIQUES**
+**3. ANALOG ELECTRONICS**
 
   
 
-1. **Computational Algorithms Portfolio:** Over 20 projects specifically focused on numerical analysis, mathematical modeling, and algorithm development have been completed.
+- **Scope & Goal:** Discrete analog electronics projects designed, simulated, and physically verified through laboratory implementations.
     
       
     
-2. **Scope of Execution:** MATLAB is utilized to write and execute numerical techniques. Algorithms were designed to solve differential equations, perform matrix inversions, and process data sets for broader engineering and physics applications.
+- **Technical Architecture & Outcome:** Utilized **Cadence OrCAD PSpice** and **LTspice** to design cascaded BJT and MOSFET amplifier configurations, establishing DC biasing points and generating Bode plots. Practical implementations included designing and soldering an RLC Band Pass Filter to isolate specific frequency ranges and physically verify Thevenin’s theorem. Built a Common Collector BJT Amplifier circuit on a breadboard, verifying transient behavior via oscilloscope against OrCAD simulations.
     
       
     
 
-**H. POWER SYSTEM ANALYSIS**
+**4. DIGITAL ELECTRONICS**
 
   
 
-1. **Power Grid Portfolio:** Multiple projects have been executed within the domain of power system analysis.
+- **Scope & Goal:** Hardware modeling projects completed to understand fundamental digital hardware operations and logic execution.
     
       
     
-2. **Scope of Execution:** Software tools are utilized to model power flow, analyze symmetrical and asymmetrical faults, and evaluate the stability of grid infrastructures and transmission networks under varied load configurations.
+- **Technical Architecture & Outcome:** Modeled combinational logic (multiplexers, decoders) and sequential logic (flip-flops, finite state machines) using **Verilog HDL**. Executed logic verification via **Intel QuestaSim**, observing signal transitions across testbenches before targeting physical FPGA development boards.
     
       
     
 
-**I. ELECTRICAL MACHINES AND ENERGY CONVERSION ANALYSIS**
+**5. SPINTRONIC DEVICE PHYSICS (MTJ AND STT-MRAM)**
 
   
 
-1. **Synchronous Motor Efficiency Analysis:** Operational efficiency was calculated, specific load testing was performed, and the dynamic mechanical behavior of a synchronous motor was analyzed under varying excitation and load conditions.
+- **Scope & Goal:** Foundational theoretical research into the operational characteristics of Magnetic Tunnel Junctions (MTJs) and Spin-Transfer Torque Magnetic Random-Access Memory (STT-MRAM).
     
       
     
-2. **Single Phase Capacitor Start Induction Motor Analysis:** Load characteristics, slip behavior, and starting torque parameters of a single-phase induction motor were evaluated, translating theoretical machine dynamics into measurable laboratory results.
+- **Technical Architecture & Outcome:** Investigated Tunneling Magnetoresistance (TMR) ratios and precessional dynamics driven by spin-transfer torque utilizing Object-Oriented MicroMagnetic Framework (**OOMMF**) micromagnetic simulations.
     
       
     
 
-**J. SOFTWARE ENGINEERING AND OBJECT-ORIENTED PROGRAMMING (C++)**
+**6. SILICON PHOTONICS BASED ADVANCED SEMICONDUCTOR PACKAGING & COMPUTATIONAL ELECTROMAGNETICS**
 
   
 
-1. **Food Ordering System and Invoice Generator:** A fully functional C++ ordering and billing system was engineered using the Code::Blocks environment. Commercial business logic was translated into functional software behavior capable of calculating localized VAT and TAX, dynamically generating text-based invoices based on object-oriented programming principles.
+- **Scope & Goal:** Independent research exploring the intersection of computational electromagnetics and advanced heterogeneous semiconductor packaging to analyze optical interconnects.
     
       
     
-2. **C++ Medical Systems Suite:** Comprehensive Object-Oriented Programming (OOP) based C++ programs utilizing structured data arrays were developed. A Medical Appointment System was engineered to handle patient scheduling alongside a discrete Medical Fees Calculation System designed for automated billing operations.
+- **Technical Architecture & Outcome:** Analyzed glass interposers targeting a bandwidth density of 160 Tbps/mm2. Modeled the optimization of 45-degree metal-coated micromirrors for vertical out-of-plane coupling utilizing the **ANSYS Lumerical Suite** (FDTD Solutions, MODE).
     
       
     
 
-**K. AUTONOMOUS SWARM ROBOTICS**
+**7. RECONFIGURABLE COMPUTING AND HARDWARELESS AI ACCELERATORS**
 
   
 
-1. **Swarm Integration:** Coordinated swarm robotics systems capable of decentralized task execution, spatial awareness, and dynamic multi-agent communication were designed and engineered. This hardware and software integration project achieved recognition across multiple national-level robotics competitions.
+- **Hardwareless AI Accelerator Environment:** Designed a software-based testing environment on Windows OS (using WSL2) to bridge artificial intelligence models and silicon fabrication. Converted neural network weights from **TensorFlow** into fixed-point numerical representations (ap_fixed<16,6>) utilizing **hls4ml** and **AMD Vitis HLS**. Executed cycle-accurate simulations utilizing **Vivado XSim** and **Verilator**.
+    
+      
+    
+- **Architectural Prototyping of CNNs:** Analyzed the deployment of trained Convolutional Neural Network (CNN) models onto FPGA fabrics. Authored architectural analysis documenting the physical logic-gate limitations of legacy Altera DE2 development boards.
     
       
     
 
-**L. CANSAT AND AEROSPACE ENGINEERING**
+**8. QUANTUM COMPUTING ALGORITHM RESEARCH**
 
   
 
-1. **CanSat Development:** Logic programming, control structure design, and hardware integration were executed for a functional CanSat prototype. The project focused primarily on establishing reliable telemetry systems and aerospace data acquisition protocols.
+- **Scope & Goal:** Conducted basic independent exploration into quantum mechanics applied to computational logic operations.
+    
+      
+    
+- **Technical Architecture & Outcome:** Installed the IBM Qiskit framework to run simple foundational quantum circuit simulations in Python. Translated linear algebra into executable quantum logic gates (Hadamard, CNOT, Pauli-X/Y/Z) and observed basic phase interference.
     
       
     
 
-**M. ARDUINO-NANO-BASED ROBO RACING BOT**
+**9. FIRST-PRINCIPLES INVESTIGATION OF ADVANCED 2D MATERIALS (TMDs AND MXenes)**
 
   
 
-1. **Hardware Integration:** Logic, control algorithms, and physical hardware integration were designed for a robotic racing platform. This embedded system was deployed competitively at the AUST Mechcellence 1.0 event, resulting in a Certificate of Participation from the AUST Mechanical Society.
+- **Scope & Goal:** Exploratory initiative focused on computational material science utilizing Density Functional Theory (DFT) to analyze Transition Metal Dichalcogenides (TMDs) and MXenes.
+    
+      
+    
+- **Technical Architecture & Outcome:** Compiled **Quantum ESPRESSO** on a dual-boot Ubuntu environment, executing rudimentary structural relaxations before encountering computational hardware limits. Conducted a rigorous literature review mapping the trajectory of the field.
     
       
     
 
-**N. LINE FOLLOWER ROBOT**
+**10. DIGITAL SIGNAL PROCESSING (DSP)**
 
   
 
-1. **Sensor Calibration:** A functional line follower robot was engineered and calibrated utilizing an Arduino Uno microcontroller. Infrared sensor arrays were integrated to enable real-time path correction and control logic execution.
+- **Scope & Goal:** Completed introductory projects to understand foundational digital signal processing concepts.
+    
+      
+    
+- **Technical Architecture & Outcome:** Utilized basic Python scripting to implement simple signal filtering, transform analysis, and waveform processing to interface with theoretical DSP coursework.
     
       
     
 
-## HARD SKILLS
-
-**A. SEMICONDUCTOR DEVICE PHYSICS MODELING AND COMPACT MODELING**
+**11. ELECTRICAL MACHINERIES AND ENERGY CONVERSION**
 
   
 
-1. **Synopsys Sentaurus TCAD:** Utilized for technology computer-aided design (including sde, sdevice, sprocess, svisual, and SWB) to perform finite-element meshing, solve coupled drift-diffusion and Poisson equations, and extract precise I-V and C-V characteristics for semiconductor nodes.
+- **Scope & Goal:** Conducted physical laboratory analyses to observe the electromechanical operational parameters of heavy electrical machines.
     
       
     
-2. **Compact and SPICE Modeling:** Utilized to model semiconductor device behaviors and extract parameters for circuit simulation, bridging the gap between physical TCAD structures and functional integrated circuit design.
+- **Technical Architecture & Outcome:** Calculated the operational efficiency and dynamic mechanical behavior of a synchronous motor under specific varying load tests. Evaluated the load characteristics, slip behavior, and starting torque parameters of a single-phase capacitor start induction motor in a controlled laboratory environment.
     
       
     
 
-**B. CMOS VLSI DIGITAL DESIGN, ASIC, FPGA, AND FOSS EDA TOOLS**
+**12. POWER SYSTEM ANALYSIS AND SMART GRID INTEGRATION**
 
   
 
-1. **Free and Open Source Silicon (FOSS) EDA Tools:** Applied to implement complete RTL-to-GDSII workflows, managing the synthesis, placement, and routing of custom ASIC designs.
+- **Power System Analysis:** Utilized mathematical algorithms and simulation software to compute bus admittance matrices, perform Newton-Raphson load flow analysis, and evaluate symmetrical and asymmetrical fault conditions across multi-bus transmission networks.
     
       
     
-2. **FPGA Platforms and HDL:** Verilog HDL and SystemVerilog are utilized to design custom digital logic. Designs are synthesized and mapped onto hardware using Intel Quartus Prime Lite and Web Edition Design Software, targeting platforms such as the Altera DE2 Cyclone II EP2C35F672C6 FPGA Development Board.
-    
-      
-    
-3. **Simulation and Verification:** QuestaSim is utilized alongside other verification environments to ensure logic correctness prior to hardware deployment.
+- **Electric Vehicle Integration into Smart Grid:** Theorized structural protocols for bidirectional energy flow via Vehicle-to-Grid (V2G) technology. Modeled V2G management frameworks to analyze how optimizing charging schedules promotes peak shaving. Delivered dual poster presentations titled "Integration of Electric Vehicles into Smart Grid" and "A Design of a Sustainable Transportation Future" at the _IEEE PES Day 2024 Research Revelry Segment_, securing a **1st Runner-Up** award (Team Recursion).
     
       
     
 
-**C. ANALOG INTEGRATED CIRCUIT DESIGN AND ANALOG ELECTRONICS**
+**13. MICROCONTROLLERS AND MICROPROCESSORS**
 
   
 
-1. **Synopsys HSPICE:** Executed for rigorous transistor-level simulations of analog integrated circuits, performing AC/DC sweeps, transient analyses, and PVT corner analysis.
+- **Scope & Goal:** Embedded systems projects developed to interface logic control with the physical environment through sensor and actuator integration.
     
       
     
-2. **Cadence OrCAD and PSpice:** Applied to design, simulate, and verify discrete analog electronic circuits, analyzing frequency responses and signal conditioning parameters.
-    
-      
-    
-3. **LTspice, Proteus, EasyEDA, and TinkerCad:** Utilized for simulation, testing, and PCB layout design of analog and mixed-signal circuit boards prior to physical manufacturing.
+- **Technical Architecture & Outcome:** Deployed basic **C/C++** control logic across **STM32** architectures, **ESP32** ecosystems, **Arduino Uno**, and **Arduino Nano** platforms. Tasks included General-Purpose Input/Output (GPIO) interfacing, Analog-to-Digital (ADC) conversion, and establishing serial communication protocols (UART, I2C, SPI) to actuate motor drivers.
     
       
     
 
-**D. MICROCONTROLLERS, MICROPROCESSORS, AND EMBEDDED SYSTEMS**
+**14. AUTONOMOUS SWARM ROBOTICS**
 
   
 
-1. **Hardware Architectures:** Programming and logic deployment across STM32 microprocessors, ESP32 ecosystems, and standard Arduino Uno/Nano platforms. Hardware targets are integrated with C/C++ control loops to manage physical sensors and mechanical outputs.
+- **Scope & Goal:** Engineered coordinated swarm robotics systems capable of decentralized task execution.
+    
+      
+    
+- **Technical Architecture & Outcome:** Focused hardware and software integration on multi-agent collaboration and collision avoidance algorithms. Secured multiple prizes across various national-level robotics competitions.
     
       
     
 
-**E. NUMERICAL ANALYSIS AND PROGRAMMING LANGUAGES**
+**15. LINE FOLLOWER ROBOT**
 
   
 
-1. **MATLAB:** Utilized for designing algorithms, applying numerical techniques, and solving computational matrices, differential equations, and models related to power systems and general engineering.
+- **Scope & Goal:** Engineered a mobile line follower robot utilizing an Arduino Uno microcontroller for precise track navigation. Basic familiarity with the Robot Operating System (ROS) and CoppeliaSim was gained during early exploratory phases.
     
       
     
-2. **C++ (Object-Oriented Programming):** Applied to architect modular software systems, utilizing classes, inheritance, and data structures to build administrative, mathematical, and data-processing tools.
-    
-      
-    
-3. **Python:** Utilized for general scripting, data parsing, and automating routine computational workflows.
+- **Technical Architecture & Outcome:** Programmed infrared sensor arrays with Proportional-Integral-Derivative (PID) control logic loops to enable real-time path correction.
     
       
     
 
-**F. COMPUTATIONAL MATERIAL SCIENCE**
+**16. ARDUINO-NANO-BASED ROBO RACING BOT**
 
   
 
-1. **Quantum ESPRESSO and Materials Square:** Operated to calculate Density Functional Theory (DFT) parameters, modeling the atomic lattices of transition metals and 2D materials.
+- **Scope & Goal:** Written and physically integrated logic and control algorithms into a fast-response robotic racing platform. Basic conceptual exploration of ROS was applied during hardware ideation.
     
       
     
-2. **PWTK, XCrySDen, VESTA, and BURAI:** Utilized for input generation, structural relaxation, and visualization of atomic crystalline structures.
+- **Technical Architecture & Outcome:** Calibrated motor outputs and sensor-to-actuation response times. Deployed competitively at the _AUST Mechcellence 1.0_ event, yielding a Certificate of Participation.
     
       
     
 
-**G. DIGITAL INFRASTRUCTURE, OPERATING SYSTEMS, AND DOCUMENTATION**
+**17. CANSAT**
 
   
 
-1. **Linux and Virtualization:** Technical software environments are deployed and managed across Ubuntu Linux and Red Hat Enterprise Linux (RHEL). Windows Subsystem for Linux (WSL), VMware Workstation Pro, and VMware Workstation Player are operated to maintain strict separation of EDA and TCAD toolchains.
+- **Scope & Goal:** Developed logic programming, control structure design, and hardware integration for a functioning CanSat prototype to explore aerospace telemetry.
     
       
     
-2. **Technical Typesetting:** Advanced $\text{\LaTeX}$ document engineering (including custom `.cls`/`.sty`, TikZ, BibTeX) and TeXstudio are used to format academic research papers, reports, and mathematical proofs.
-    
-      
-    
-3. **Scripting and Web:** Bash (Unix shell) and Microsoft Windows PowerShell scripts are written to automate environment variables. WordPress CMS backends are managed, and Tcl Scripting Language/Tcl/Tk are utilized for specific EDA tool interactions.
+- **Technical Architecture & Outcome:** Centered focus on establishing telemetry links and interfacing environmental sensors (pressure, temperature) for data acquisition.
     
       
     
 
-## SOFT SKILLS
-
-**A. ORGANIZATIONAL AND INTERPERSONAL COMPETENCIES**
+**18. NUMERICAL ANALYSIS AND TECHNIQUES**
 
   
 
-1. **Written Communication:** Managing formal editorial standards, technical writing, and drafting comprehensive structural documentation.
+- **Scope & Goal:** Projects focused on numerical analysis and mathematical algorithm modeling to support fundamental engineering calculations.
     
       
     
-2. **General Communication:** Articulating complex technical requirements and managing cross-functional team dialogues.
-    
-      
-    
-3. **Program and Event Management:** Overseeing large-scale technical tracks and coordinating extensive logistical operations.
-    
-      
-    
-4. **Event Planning:** Structuring timelines, managing vendor relations, and executing resource allocation for academic events.
-    
-      
-    
-5. **Media Engagement and Community Building:** Managing digital public relations, optimizing web presence, and fostering technical communities.
+- **Technical Architecture & Outcome:** Authored **MATLAB** scripts to construct numerical algorithms. Coded iterative solvers (Newton-Raphson, Gauss-Seidel) to perform matrix inversions, ordinary differential equation (ODE) computation, and numerical integration.
     
       
     
 
-**B. PEDAGOGICAL AND PUBLIC SPEAKING COMPETENCIES**
+**19. SOFTWARE ENGINEERING AND OBJECT-ORIENTED PROGRAMMING (C++)**
 
   
 
-1. **Conference Speaking:** Delivering technical presentations and defending complex simulation data sets before academic panels.
+- **Scope & Goal:** Developed software architectures focusing on basic Object-Oriented Programming (OOP) paradigms within the **Code::Blocks IDE**.
     
       
     
-2. **Seminar Delivery:** Structuring and presenting Educational Seminars, Technical Seminars, Training Seminars, and Seminar Presentations.
+- **Technical Architecture & Outcome:** Engineered a **C++** Food Ordering System to process order inputs and calculate taxes. Engineered a discrete C++ Medical Systems Suite, leveraging OOP classes to manage patient scheduling logic.
     
       
     
 
-## PROFESSIONAL WORK EXPERIENCES
-
-**A. IEEE AUST STUDENT BRANCH (IASB)**
+**20. ENGINEERING RESEARCH METHODOLOGY & TECHNICAL PRESENTATIONS**
 
   
 
-1. **Content Writer and Publication Coordinator (Feb 2024 – Present):** End-to-end editorial workflows, academic event reporting, and digital archives are directed for the branch. All technical event documentation, social media outputs, and formal publications are maintained in strict adherence to IEEE global branding and technical standards.
+- **SDGs and Infrastructure Innovation:** Developed a macro-analytical research presentation mapping technological interventions against the United Nations Sustainable Development Goals. Showcased the presentation titled "Infrastructure Evolution" for the IEEE BUBT Student Branch. Authored an academic essay titled "Advancing Sustainable Transportation for Bangladeshi Cities".
     
       
     
-2. **Webmaster (Mar 2025 – Present):** The institutional WordPress web infrastructure for the branch is managed. Search Engine Optimization (SEO), digital security hardening, and routine database maintenance are implemented to scale the organizational visibility of the branch.
-    
-      
-    
-3. **Awards Received:** The "Content Writer and Publication Coordinator Award" was received from the IEEE AUST Student Branch. Additionally, the "Certificate of Achievement for contribution as Future Champs' 3.0" was awarded by the branch.
+- **Academic Methodology Training:** Completed the "Abartan's Thesis & Research Publication Course" (TP-SM-055) to build structural awareness of formal academic writing and research methodology.
     
       
     
 
-**B. WE FOR US FOUNDATION**
+# HARD SKILLS
+
+**1. SEMICONDUCTOR DEVICE PHYSICS MODELING AND COMPACT MODELING**
 
   
 
-1. **Human Resource Officer (Oct 2022 – Present):** Comprehensive volunteer recruitment workflows are directed, internal HR policies are authored and implemented, and organizational conflict resolution protocols are managed.
+- **Synopsys Sentaurus TCAD:** Operational capability with modules including `sde`, `sdevice`, `sprocess`, and `svisual` to perform 2D finite-element meshing, define doping profiles, and solve coupled drift-diffusion and Poisson equations.
     
       
     
-2. **Active Member and Volunteer (Jun 2017 – Present):** Years have been dedicated to grassroots community service. During the COVID-19 pandemic, emergency fundraising logistics were mobilized and managed, assisting in the securing and distribution of approximately 300,000 BDT in crisis relief funds to vulnerable communities.
+- **Compact Modeling:** Familiar with utilizing **Verilog-A** hardware description language to construct analytical models, leveraging standard frameworks like **BSIM-CMG** to extract scalable SPICE parameters.
     
       
     
 
-**C. AUST INNOVATION AND DESIGN CLUB (AUST IDC)**
+**2. ANALOG INTEGRATED CIRCUITS AND ANALOG ELECTRONICS**
 
   
 
-1. **Junior Executive of MindSparks-23 (May 2023 – Jul 2023):** Real-time logistical coordination, physical space management, and crisis mitigation were executed for high-pressure technical robotics tracks. Responsibility was held for the Junior Executive role overseeing both the "Robo Soccer Segment" and the "Line Follower Robot Segment" during the MindSparks23 event.
+- **Synopsys HSPICE:** Utilized to execute fundamental transistor-level netlist simulations, extracting DC operating points, transient responses, and performing PVT parameter analysis.
+    
+      
+    
+- **Cadence OrCAD, PSpice, and LTspice:** Utilized to design and simulate discrete analog electronic circuits, extract AC frequency response Bode plots, and verify active filtering.
     
       
     
 
-## INDUSTRIAL EXPOSURE AND VISITING TOUR EXPERIENCES
-
-**A. NATIONAL SEMICONDUCTOR AND TECH SYMPOSIA**
+**3. VLSI EDA TOOLS**
 
   
 
-1. **BEAR Summit and National Semiconductor Symposium 2025:** On July 16-17, 2025, attendance was marked at this national event held at the National Science and Technology Complex in Agargaon, Dhaka. Following formal registration, participation occurred in dialogues networking the Bangladeshi semiconductor diaspora, government sectors, and national academia.
+- **FOSS VLSI Toolchains:** Basic conceptual familiarity with open-source Electronic Design Automation (EDA) tools. Understanding their high-level purposes within standard digital physical design flows (synthesis, routing) without executing complete RTL-to-GDSII layouts.
     
       
     
 
-**B. TECHNICAL WORKSHOPS AND INDUSTRIAL TRAINING**
+**4. FPGA AND DIGITAL DESIGN**
 
   
 
-1. **Industrial Automation Technology Workshop:** A rigorous day-long training workshop on Industrial Automation Technology conducted by Ulterior Engineering Ltd. was completed. Direct exposure was gained to industry-standard Programmable Logic Controllers (PLC), Human-Machine Interfaces (HMI), Variable Frequency Drives (VFD), SCADA systems, and Motor Control Center (MCC) implementations.
+- **Hardware Description Languages:** Application of **Verilog HDL** and **SystemVerilog** syntax for structural and behavioral logic programming.
     
       
     
-2. **Drone Architecture Workshop:** A Certificate of Participation was secured for the "Drone: Make and Fly your Drone" workshop organized by the AUST Innovation and Design Club, involving hands-on exposure to Unmanned Aerial Vehicle (UAV) flight control logic, aerodynamics, and motor telemetry.
+- **Digital EDA Tools:** Utilization of **Intel Quartus Prime** for FPGA logic mapping, combined with **Intel QuestaSim** for basic digital logic verification.
     
       
     
 
-**C. PROFESSIONAL DEVELOPMENT**
+**5. PROGRAMMING, NUMERICAL ANALYSIS, AND DSP**
 
   
 
-1. **LifeSpring Training:** The 15-hour psychological and personal development course "Purify with Yahia Amin" at LifeSpring was completed, focusing on focus, resilience, and disciplined working styles in high-pressure environments.
+- **MATLAB:** Utilized for coding numerical analysis algorithms, processing matrices, and solving differential equations relevant to engineering models.
+    
+      
+    
+- **C++:** Basic proficiency in structured Object-Oriented Programming (OOP).
+    
+      
+    
+- **Python:** Basic familiarity utilized for simple digital signal processing (DSP) operations, quantum circuit simulations (Qiskit), and general scripting.
     
       
     
 
-## ENTREPRENEURSHIPS AND STARTUPS
-
-**A. GLUINO PRIVATE LIMITED**
+**6. MICROCONTROLLERS AND EMBEDDED SYSTEMS**
 
   
 
-1. **Role:** Founder and Ecosystem Architect (Jan 2020 – Present).
+- **Hardware Architectures:** Basic logic deployment across **STM32**, **ESP32**, and **Arduino Uno/Nano** platforms to interface with external hardware via SPI, I2C, and UART. Familiarity with exploratory environments like **ROS** and **CoppeliaSim**.
     
       
     
-2. **Operations:** This interdisciplinary social enterprise was founded to bridge STEM education, technical content, and research culture. Three specialized divisions were architected and are currently managed:
-    
-      
-    - **Gluino Academy:** Dedicated to providing accessible and mathematically rigorous technical pedagogy.
-        
-          
-        
-    - **Gluino Originals:** Focused on translating complex engineering parameters into multimedia technical content.
-        
-          
-        
-    - **Gluino SPARKS:** An interdisciplinary research incubator that trains undergraduate engineering cohorts in computational literacy, structured technical writing, and documentation related to theoretical device physics.
-        
-          
-        
 
-**B. AMRA AGAMIR FOUNDATION**
+**7. COMPUTATIONAL MATERIAL SCIENCE**
 
   
 
-1. **Role:** Co-Founder (Apr 2020 – Sep 2021).
+- **Density Functional Theory Tools:** Basic operational familiarity with **Quantum ESPRESSO**, **PWTK**, **XCrySDen**, and **BURAI** for atomic lattice generation and structural visualization.
     
       
     
-2. **Operations:** This grassroots community welfare organization was co-founded. Local operations were directed, and a fundraising initiative was led that raised approximately 100,000 BDT to provide critical relief supplies during the global pandemic.
+
+**8. DIGITAL INFRASTRUCTURE AND OPERATING SYSTEMS**
+
+  
+
+- **Linux and Virtualization:** Operating technical software across **Ubuntu Linux** and **Red Hat Enterprise Linux (RHEL)**, utilizing Windows Subsystem for Linux (**WSL**), **VMware** Workstation Pro, and VMware Workstation Player.
     
       
     
+
+**9. LATEX SCRIPTING AND DOCUMENTATION**
+
+  
+
+- **Technical Typesetting:** Proficient in **$\text{\LaTeX}$ Document Engineering**, implementing custom `.cls`/`.sty` package configurations, utilizing **TikZ** for vector graphics, and employing **BibTeX** for reference management.
+    
+      
+    
+
+# SOFT SKILLS
+
+- **Written Communication:** Drafting structural technical documentation, managing formal editorial standards, and finalizing reports.
+    
+      
+    
+- **General Communication:** Articulating technical concepts, authoring project proposals, and participating in cross-functional dialogues.
+    
+      
+    
+- **Program and Event Management:** Overseeing technical competition tracks, managing logistics, and coordinating event operations.
+    
+      
+    
+- **Conference Speaking:** Defending simulation data sets and delivering structured technical presentations before academic audiences.
+    
+      
+    
+- **Seminar Delivery:** Structuring pedagogical content and delivering Educational and Technical Seminars.
+    
+      
+    
+
+# PROFESSIONAL WORK EXPERIENCES
+
+**AUST INNOVATION AND DESIGN CLUB (AUST IDC)**
+
+  
+
+- **Junior Executive of MindSparks-23 (May 2023 – Jul 2023):** Executed logistical coordination and physical space management for technical robotics tracks. Assumed specific administrative responsibility for the "Robo Soccer Segment" and "Line Follower Robot Segment" during the MindSparks23 event.
+    
+      
+    
+
+**IEEE AUST STUDENT BRANCH (IASB)**
+
+  
+
+- **Content Writer and Publication Coordinator (Feb 2024 – Present):** Directed editorial workflows and digital archives for the branch, ensuring technical documentation aligns with institutional formatting standards. Conferred the "Content Writer and Publication Coordinator Award" in March 2025.
+    
+      
+    
+- **Webmaster (Mar 2025 – Present):** Maintained the institutional WordPress web infrastructure, focusing on digital security protocols, plugin updates, and database optimization.
+    
+      
+    
+- **Prior Recognition:** Awarded the "Certificate of Achievement for contribution as Future Champs' 3.0" in July 2023.
+    
+      
+    
+
+**WE FOR US FOUNDATION**
+
+  
+
+- **Human Resource Officer (Oct 2022 – Present):** Systematically coordinated volunteer recruitment workflows and authored internal HR protocols.
+    
+      
+    
+- **Active Member and Volunteer (Jun 2017 – Present):** Performed grassroots community service regularly. Assisted in mobilizing emergency fundraising logistics during the COVID-19 pandemic, facilitating the organized distribution of approximately 300,000 BDT in crisis relief funds.
+    
+      
+    
+
+# INDUSTRIAL EXPOSURE AND VISITING TOUR EXPERIENCES
+
+- **BEAR Summit and National Semiconductor Symposium (2025 & 2026):** Attended these national events held at the National Science and Technology Complex in Agargaon, Dhaka. Gained direct exposure to current dialogues regarding semiconductor supply chains, local fabrication constraints, and integration across government and academic institutions.
+    
+      
+    
+- **Industrial Automation Technology Workshop:** Completed a day-long training workshop on Industrial Automation Technology, conducted by Ulterior Engineering Ltd., observing industry-standard PLC, HMI, VFD, SCADA, and MCC hardware integration.
+    
+      
+    
+- **Drone Architecture Workshop:** Obtained a Certificate of Participation for the "Drone: Make and Fly your Drone" workshop organized by the AUST Innovation and Design Club.
+    
+      
+    
+- **LifeSpring Training:** Completed the psychological development course "Purify with Yahia Amin" at LifeSpring to understand focus and resilience methodologies essential in high-pressure operational environments.
+    
+      
+    
+
+# ENTREPRENEURSHIP AND STARTUPS
+
+- **Gluino Private Limited (Founder and Ecosystem Architect):** Established the organization in January 2020 to provide structured technical content. Architected divisions including Gluino Academy for pedagogy, Gluino Originals for media production, and Gluino SPARKS, an incubator aimed at improving undergraduate technical writing and computational documentation.
+    
+      
+    
+- **Amra Agamir Foundation (Co-Founder):** Co-founded this community welfare organization, assisting in local operations and executing the organized distribution of relief supplies during the global pandemic between April 2020 and September 2021.
+    
+      
+    
+
+# LANGUAGE PROFICIENCY
+
+- **English:** Highly Proficient / Professional Working Proficiency
+    
+      
+    
+- **Bengali:** Native / Bilingual Proficiency
+    
+      
+    
+
+# RECOMMENDATIONS AND REFERENCES
+
+- **Dr. Pran Kanai Saha**, Professor, EEE, AUST | saha.eee@aust.edu
+    
+      
+    
+- **Dr. Monjur Morshed**, Professor, EEE, AUST | monjurm@aust.edu
+    
+      
+    
+- **Dr. Safayat-Al-Imam**, Associate Professor, EEE, AUST | safayat_imam.eee@aust.edu
+    
+      
+    
+- **Mr. Muhammad Jakaria Rahimi**, Associate Professor, EEE, AUST | mjrahimi.eee@aust.edu
+    
+      
+    
+- **Dr. Samee Azad**, Assistant Professor, EEE, AUST | samazad.eee@aust.edu
+    
+      
+    
+- **Dr. Monzurul Islam Dewan**, Assistant Professor, EEE, AUST | monzur.dewan@aust.edu
+    
+      
+    
+- **Ms. Oli Lowna Baroi**, Assistant Professor, EEE, AUST | oli.eee@aust.edu
+    
+      
+    
+- **Ms. Hridi Juberi**, Lecturer (Grade-I), EEE, AUST | hridi.eee@aust.edu
 
 ---
 
