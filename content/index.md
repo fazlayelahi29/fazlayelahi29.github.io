@@ -49,7 +49,7 @@ https://www.aust.edu/
     
       
     
-- **Academic Coursework:** Established a foundational understanding of core electrical engineering mechanics. Relevant coursework successfully completed or currently enrolled in includes Signals and Systems, Digital Signal Processing, Communication Engineering, Engineering Electromagnetics, Power Systems, Electrical Machineries, Digital Electronics, and theoretical and laboratory coursework in Analog Electronics. Formal university coursework in VLSI Design and Analog Integrated Circuits has not yet been undertaken.
+- **Mention-worthy Academic Coursework:** Signals and Systems, Digital Signal Processing, Communication Engineering, Engineering Electromagnetics, Power Systems, Electrical Machineries, Digital Electronics, and Analog Electronics. 
     
       
     
@@ -163,9 +163,9 @@ Khalishpur Housing Estate, Khalishpur, Khulna-9000, Bangladesh
 
 # PROJECTS
 
-_Detailed documentation, including technical analyses, simulation scripts, and parameter outputs for the following projects, is available on the personal website ([https://fazlayelahi29.github.io/](https://fazlayelahi29.github.io/)). The website is under construction, and documentation will be progressively uploaded. Executing these independent projects laid the foundational context for my current research interests._
-
-  
+> Detailed documentation for the following projects—including technical analyses, simulation scripts, and parameter outputs—is available on my personal website https://fazlayelahi29.github.io/ 
+> 
+> This repository is continually updated as project data is finalized. Executing these independent endeavors established the critical foundation for my current research trajectory.
 
 **1. SEMICONDUCTOR DEVICE PHYSICS MODELING**
 
@@ -661,7 +661,11 @@ _Detailed documentation, including technical analyses, simulation scripts, and p
     
       
     
-- **Dr. Safayat-Al-Imam**, Associate Professor, EEE, AUST | safayat_imam.eee@aust.edu
+- **Dr. Monzurul Islam Dewan**, Assistant Professor, EEE, AUST | monzur.dewan@aust.edu 
+    
+      
+    
+- **Dr. Samee Azad**, Assistant Professor, EEE, AUST | samazad.eee@aust.edu 
     
       
     
@@ -669,15 +673,7 @@ _Detailed documentation, including technical analyses, simulation scripts, and p
     
       
     
-- **Dr. Samee Azad**, Assistant Professor, EEE, AUST | samazad.eee@aust.edu
-    
-      
-    
-- **Dr. Monzurul Islam Dewan**, Assistant Professor, EEE, AUST | monzur.dewan@aust.edu
-    
-      
-    
-- **Ms. Oli Lowna Baroi**, Assistant Professor, EEE, AUST | oli.eee@aust.edu
+- **Dr. Safayat-Al-Imam**, Associate Professor, EEE, AUST | safayat_imam.eee@aust.edu
     
       
     
@@ -687,9 +683,13 @@ _Detailed documentation, including technical analyses, simulation scripts, and p
 
 # PROJECTS TIMELINE 
 
-(Note: The following historical project timeline documents a progression of structural engineering analyses, theoretical explorations, and computational simulations that directly form the foundation for current technical capabilities. While these academic endeavors have not yet yielded formally published, peer-reviewed scientific papers, the exhaustive investigations, poster presentations, technical article submissions, and internal project reports cultivated a rigorous standard of engineering expertise and strict analytical discipline.)
-
-  
+> Detailed documentation for the following projects—including technical analyses, simulation scripts, and parameter outputs—is available on my personal website https://fazlayelahi29.github.io/ 
+> 
+> This repository is continually updated as project data is finalized. Executing these independent endeavors established the critical foundation for my current research trajectory.
+> 
+>   
+> 
+> _(Note: The timeline below chronicles a progression of semiconductor device modeling, theoretical explorations, and compact circuit simulations. While these specific academic projects preceded formal peer-reviewed publication, the exhaustive methodology required for the associated poster presentations, technical articles, and internal reports fundamentally shaped my analytical discipline and technical capabilities.)_ 
 
 ## July 2026 - July 2026 | Semiconductor Device Physics Modeling on Carbon Nanotube Field Effect Transistor (CNTFET)
 
@@ -1136,140 +1136,26 @@ _Detailed documentation, including technical analyses, simulation scripts, and p
 
 ---
 
-# STATEMENT OF PURPOSE 
+# PERSONAL STATEMENT 
 
-My name is Fazlay Elahi. I am a junior-year undergraduate student pursuing a Bachelor of Science in Electrical and Electronic Engineering (EEE) at Ahsanullah University of Science and Technology (AUST) in Dhaka, Bangladesh. My academic focus encompasses semiconductor device physics modeling, analog and digital integrated circuits, embedded systems, and numerical analysis. Over the course of my undergraduate studies, I have engaged in theoretical research, physical hardware prototyping, and software development, utilizing a variety of simulation environments, programming languages, and hardware platforms.
-
-  
-
-**FOUNDATIONAL EXTRACURRICULAR ACTIVITIES**
-
-Prior to my undergraduate studies, my education at Khulna Public College involved participation in standardized competitions and structured extracurricular programs. In 2012, I participated in the Regional Bangladesh Mathematical Olympiad. From 2011 to 2016, I was actively involved in classical vocal music, regularly participating in and receiving recognition for performances in Rabindra Sangeet, Nazrul Geeti, and Deshattokbodhok Gaan. Alongside these activities, I served as a Rover Scout with the Bangladesh Scouts from January 2014 to December 2017. During this time, I also studied several instruments, including the acoustic guitar, electric guitar, harmonium, piano, and tabla.
+I remember the exact sound of my laptop fan maxing out—a desperate, high-pitched whine before the system violently crashed. I was sitting alone in my room in Dhaka, attempting to run a Density Functional Theory simulation on a dual-boot Ubuntu partition. For months, I had spent countless hours independently deciphering the quantum mechanics of Transition Metal Dichalcogenides and compiling open-source Quantum ESPRESSO frameworks. I had reached out to doctoral candidates and professors globally, seeking mentorship in computational material science, only to be met with institutional skepticism or pervasive silence. Yet, without access to a High-Performance Computing cluster, the massive Brillouin zone sampling completely overwhelmed my hardware. That system crash could have been an ending. Instead, it became the defining pivot of my academic life.
 
   
 
-**COMPUTATIONAL MATERIAL SCIENCE AND FIRST-PRINCIPLES STUDY**
-
-Between April 2023 and February 2024, I conducted an independent study focusing on First-Principles calculations and Density Functional Theory (DFT). To facilitate this research, I configured a dual-boot Ubuntu Linux operating system to compile and run Quantum ESPRESSO. The study was directed toward investigating the properties of Transition Metal Dichalcogenides (TMDs) and MXenes.
-
-The primary objective was to mathematically evaluate half-metallicity, spin-polarization, and spin-orbit coupling within these materials. I utilized supplementary analytical tools including PWTK (PWscf Tool Kit), XCrySDen, VESTA, and BURAI for input generation, structural relaxation, and visualization of the atomic lattices. Because first-principles calculations require significant computational overhead, the lattice optimizations and structural relaxations were restricted by the processing capabilities of my local hardware, as I did not have access to institutional High-Performance Computing (HPC) clusters. This hardware constraint directed my subsequent transition toward finite-element device simulation, which offered a more viable computational workload for my available systems.
+My undergraduate journey at Ahsanullah University of Science and Technology has not been a seamless narrative of perfect grades. Early in my academic career, I encountered severe hurdles, navigating semester drops and a cumulative GPA that does not accurately capture my intellectual velocity or my capacity for deep work. Standardized testing and rigid curricular pacing often felt misaligned with my autodidactic nature. However, rather than allowing traditional academic metrics to define my potential, I treated these setbacks as a crucible. I realized that true engineering is about optimizing within extreme constraints.
 
   
 
-**SEMICONDUCTOR DEVICE PHYSICS AND TCAD MODELING**
-
-Following the DFT study, my primary focus shifted to semiconductor device physics modeling. I adopted the Synopsys Sentaurus Technology Computer-Aided Design (TCAD) suite, utilizing tools such as sde for structure generation, sdevice for physics simulation, sprocess for fabrication emulation, svisual for data visualization, and Sentaurus Workbench (SWB) for project parameterization.
-
-To date, I have completed more than 30 distinct simulation-based projects exclusively within the domain of semiconductor device physics modeling using Sentaurus TCAD. These projects represent a progression from fundamental 2D electrostatic modeling to advanced 3D simulations of nanoscale transistor architectures. The structural models include FinFETs, Gate-All-Around FETs (GAAFET), Negative Capacitance FETs (NCFET), and Tunnel FETs (TFET). I have also simulated devices utilizing Wide and Ultra-Wide Bandgap (W/UWBG) materials, specifically Gallium Nitride (GaN), Silicon Carbide (SiC), Gallium Oxide (Ga_2O_3), and synthetic diamond.
-
-This TCAD modeling work served as the basis for my participation in the Innoventure 2025 competitions organized by the AUST Innovation and Design Club, where I participated in three separate poster pitch campaigns:
+When pure computational material science proved physically impossible on my limited hardware, I refused to surrender my passion for nanoscale physics. I executed a strategic pivot into semiconductor device physics modeling. I taught myself Synopsys Sentaurus TCAD—a mathematically intense, finite-element domain that allowed me to rigorously explore sub-3nm architectures, FinFETs, and wide-bandgap materials without requiring an institutional supercomputer. I traded the passive constraints of a traditional classroom for the absolute accountability of self-guided research, independently designing and executing over thirty distinct TCAD simulations. I built a comprehensive personal website from scratch to document every simulation script, theoretical justification, and parameter output, ensuring my capabilities were backed by undeniable, empirical execution rather than just a transcript.
 
   
 
-Team Robert Noyce: This project involved the simulation of sub-3nm Forksheet FET (FSFET) and RibbonFET architectures. The simulation quantified the effects of dielectric wall (DW) integration on the suppression of short-channel effects (SCE), specifically measuring metrics such as Drain-Induced Barrier Lowering (DIBL) and subthreshold swing. This entry received the Runners-Up placement in the competition.
-
-Team Jack Kilby: This project focused on integrating a Ferroic HfO_2\text{-}ZrO_2 (HZO) bilayer gate dielectric onto an AlGaN/GaN High-Electron-Mobility Transistor (HEMT). By parameterizing negative capacitance (NC) effects, the simulation recorded an 8-order-of-magnitude reduction in gate leakage, a proportional increase in ON-current, and an improved I_{on}/I_{off} ratio. This entry was selected as a Finalist.
-
-Team Gordon Moore: This project investigated 1D and 2D quantum confinement effects in Ultra-Thin Body (UTB) Fully Depleted Silicon-On-Insulator (FDSOI) devices scaled to a 3 nm channel thickness. The simulation utilized Schrödinger-Poisson solvers to evaluate bandgap modifications and effective mass alterations. This entry was also selected as a Finalist.
-
-Additionally, in August 2025, I participated in Material Fest 1.0, hosted by the University of Dhaka MRS Student Chapter, as part of Team Takashi Mimura. The project involved simulating sustainable wide-bandgap AlGaN/GaN power HEMTs utilizing high-k dielectrics, specifically HfZrO_x and BaTiO_3. The simulation analyzed electrothermal stability, current collapse suppression, and avalanche breakdown parameters under high-voltage conditions.
+This resilience was not forged overnight. Long before I modeled the electrostatics of stacked ribbon channels, my mindset was shaped by years of classical vocal training in Rabindra Sangeet and Nazrul Geeti, alongside the rigorous field discipline I learned as a Rover Scout. These formative experiences instilled in me an appreciation for acoustic resonance, harmonic analysis, and the quiet, sustained effort required to achieve mastery. I am someone who favors deep, isolated work over superficial, fleeting accomplishments.
 
   
 
-**ANALOG ELECTRONICS AND CIRCUIT SIMULATION**
-
-Parallel to semiconductor physics, I have completed at least 10 projects in the domain of analog electronics and analog integrated circuits. These projects involved schematic capture, circuit simulation, and printed circuit board (PCB) layout planning using electronic design automation (EDA) software, including Cadence OrCAD, PSpice, HSPICE, LTspice, and Proteus.
-
-Two specific laboratory projects highlight this workflow:
+However, my autodidactic survival also made me acutely aware of the systemic bottlenecks facing my peers. I believe that engineering is fundamentally a human endeavor; it is about building ecosystems where others can thrive despite institutional limitations. This conviction led me to found Gluino Private Limited, a social enterprise designed to bridge the gap in STEM pedagogy and incubate undergraduate research literacy. I wanted to ensure that other students facing similar hardware or mentorship constraints had the structural support to write, research, and understand theoretical device physics. My commitment to community resilience was further tested during the height of the COVID-19 pandemic. Operating as an HR Officer for the WE FOR US Foundation, I helped mobilize emergency fundraising logistics, facilitating the organized distribution of critical relief funds to vulnerable populations. Whether coordinating high-pressure robotics tracks for the AUST Innovation and Design Club or managing precise editorial workflows for the IEEE Student Branch, my objective has always been to construct frameworks that elevate collective potential.
 
   
 
-RLC Band Pass Filter Analysis (August 2023): As part of an Electrical Circuits II Open Ended Lab Project, I designed and constructed a physical RLC Band Pass Filter utilizing an AC supply. The objective was to isolate specific frequency ranges. The physical measurements were subsequently verified using Thevenin’s theorem and cross-referenced against simulation data generated in PSpice, Cadence OrCAD, and TinkerCad.
-
-Common Collector BJT Amplifier (February 2024): For an Analog Electronics Lab project, I constructed a Common Collector BJT Amplifier circuit. I analyzed the frequency response by measuring the physical hardware with an oscilloscope and variable power supplies. The empirical data was then compared against simulated models developed in Cadence OrCAD to evaluate gain parameters and impedance characteristics.
-
-  
-
-**DIGITAL ELECTRONICS, FOSS VLSI, AND ASIC DESIGN**
-
-My work in digital electronics encompasses hardware description languages, field-programmable gate arrays (FPGAs), and application-specific integrated circuit (ASIC) design flows. I have utilized Verilog HDL and SystemVerilog for register-transfer level (RTL) modeling, synthesizing logic via Intel Quartus Prime for targeting FPGA development boards such as the Altera DE2 Cyclone II EP2C35F672C6.
-
-In the domain of CMOS VLSI, I have executed projects utilizing Free and Open Source Silicon (FOSS) tools to navigate the ASIC design flow. This involved utilizing open-source synthesis, placement, and routing tools to map digital logic to standard-cell libraries.
-
-Furthermore, between April and June 2026, I engineered a software-based hardwareless AI accelerator prototyping environment. Utilizing the Windows Subsystem for Linux (WSL), I integrated hls4ml to convert PyTorch and TensorFlow neural network architectures into synthesizable fixed-point C++ code (utilizing formats such as ap_fixed<16,6>). I then generated cycle-accurate RTL using AMD Vitis High-Level Synthesis (HLS) and performed timing closure verification utilizing Vivado XSim and Verilator against TSMC 28nm constraints.
-
-  
-
-**MICROCONTROLLERS, ROBOTICS, AND EMBEDDED SYSTEMS**
-
-My embedded systems projects involve hardware-software integration using microcontrollers and microprocessors, specifically working with 8086 Assembly, ESP32, STM32, and Arduino architectures.
-
-  
-
-Robo Racing Bot (February 2023): For the AUST Mechcellence 1.0 event, I developed an Arduino-nano-based robotic racing platform. My responsibilities included programming the motor control logic and integrating the sensor hardware with the microcontroller chassis.
-
-Autonomous Swarm Robotics Integration: I designed and implemented logic and communication protocols for coordinated swarm robotics systems. The engineering focus was on decentralized task execution and dynamic multi-agent communication. These swarm models have been presented at multiple national-level robotics competitions.
-
-Aerospace Applications: I participated in the development of a CanSat project, managing the embedded control structures and telemetry integration, and I have also engineered basic Line Follower Robots utilizing the Arduino Uno platform.
-
-  
-
-**NUMERICAL ANALYSIS, SOFTWARE DEVELOPMENT, AND C++ OOP**
-
-To support computational problem solving, I have completed several projects focused on fundamental and advanced numerical analysis, writing algorithms in MATLAB and C++ to execute matrix operations and solve differential equations.
-
-In February 2024, as part of the Programming Language Lab course, I developed several software applications using C++ Object-Oriented Programming (OOP) principles within the Code::Blocks integrated development environment:
-
-  
-
-Food Ordering System and Invoice Generator: I engineered a commercial transaction simulator that processes user input for restaurant items, computes running totals, applies localized VAT and tax calculations, and dynamically generates formatted invoices. The project utilized structural OOP logic to manage the administrative data structures.
-
-Medical Systems Suite: I developed a set of C++ programs utilized for patient management. The software included a Medical Appointment scheduling module and a Medical Fees Calculation System, requiring the handling of persistent data variables and object-oriented architectural logic.
-
-  
-
-**POWER SYSTEMS AND ELECTRICAL MACHINES**
-
-My coursework in electrical energy conversion has involved practical analysis of industrial machinery and power grid infrastructure:
-
-  
-
-Single-Phase Capacitor Start Induction Motor (January 2024): I conducted laboratory tests to evaluate the load characteristics and starting torque behavior of the induction motor under varying operational states.
-
-Synchronous Motor Efficiency Analysis (July 2024): I performed load testing on a synchronous motor to calculate its operational efficiency. The project involved recording empirical data to analyze the dynamic behavior of the machine as the electrical load was varied.
-
-V2G Smart Grid Integration (April 2024): Working with Team Recursion, I researched the integration of Electric Vehicles into the Smart Grid, focusing on bidirectional Vehicle-to-Grid (V2G) systems, Advanced Metering Infrastructure (AMI), and AC/DC converter scaling parameters. This structural research poster received the 1st Runner-Up placement in the Research Revelry segment at the IEEE PES Day 2024 celebration.
-
-  
-
-**TECHNICAL DOCUMENTATION AND THE PERSONAL WEBSITE REPOSITORY**
-
-Due to the volume of output—comprising over 30 TCAD simulations, 10 analog electronics designs, numerous C++ applications, and multiple embedded robotics projects—it is not structurally possible to detail all simulation parameters, source code, and schematic captures within a standard curriculum vitae.
-
-To resolve this limitation, I have established a comprehensive personal website that serves as my primary digital repository. All projects across semiconductor modeling, analog ICs, digital electronics, FOSS VLSI, microprocessors, and power systems are documented in full on this site. The documentation includes technical analysis, methodology, simulation outputs, and code bases. This centralized approach replaces the need for fragmented GitHub repositories, providing a self-consistent and self-sufficient platform for evaluating my technical implementations.
-
-  
-
-**ORGANIZATIONAL INVOLVEMENT AND SERVICE**
-
-I am currently an undergraduate student, but I also hold memberships and organizational roles within several professional and institutional bodies:
-
-Gluino Private Limited: In January 2020, I founded Gluino Private Limited, a registered organization structured into three divisions: Gluino Academy (focused on educational curriculum), Gluino Originals (focused on technical media), and Gluino SPARKS. Gluino SPARKS operates as an incubator to assist undergraduate engineering students in understanding academic research formatting, methodology, and peer-reviewed publication guidelines.
-
-IEEE AUST Student Branch: I became a General Member in November 2022 and was recognized with the Future Champs' 3.0 award in July 2023. From February 2024 to the present, I have served as the Content Writer and Publication Coordinator, managing the branch's editorial outputs according to IEEE guidelines, receiving an award for this role in March 2025. Since March 2025, I have also held the position of Webmaster, managing the WordPress infrastructure, search engine optimization (SEO), and database maintenance for the branch's digital platform.
-
-AUST Innovation and Design Club (AUST IDC): Between May 2023 and July 2023, I acted as a Junior Executive for the MindSparks-23 event. My operational responsibilities included managing the physical logistics, scheduling, and technical arena setup for the "Robo Soccer" and "Line Follower Robot" competition segments.
-
-WE FOR US Foundation: I have been affiliated with the WE FOR US Foundation since June 2017. In October 2022, I assumed the role of Human Resource Officer. My responsibilities include managing volunteer recruitment and internal policy administration. During the COVID-19 pandemic, I participated in organizing emergency logistics and facilitating fundraising efforts totaling approximately 300,000 BDT.
-
-Professional Society Memberships: I hold active student memberships in the IEEE Electron Devices Society (EDS), the IEEE Power & Energy Society (PES), the IEEE Signal Processing Society (SPS) and IEEE Communications Society (ComSoc) Joint Student Branch Chapter, the IEOM Society, and IMechE. I am also a registered user on nanoHUB.org and Materials Square, utilizing these platforms for semiconductor and material science computations. In July 2025, I registered for and attended the BEAR Summit and National Semiconductor Symposium at the Bangladesh National Science and Technology Complex. In October 2023, I completed Abartan's "Thesis & Research Publication Course" to formalize my understanding of technical reporting.
-
-  
-
-**ACADEMIC SUMMARY AND OBJECTIVE**
-
-My current academic standing involves the continuation of my Bachelor of Science in Electrical and Electronic Engineering at AUST, where I have completed coursework in Digital Electronics, Power Systems, Signals and Linear Systems, Microprocessors, Electrical Properties of Materials, and Electromagnetics.
-
-My objective is to pursue research-driven Master of Science (M.Sc.) and Doctor of Philosophy (Ph.D.) programs in the United States, alongside relevant engineering roles within the semiconductor industry. My operational methodology spans device physics, TCAD process simulation, compact modeling, and SPICE-based circuit interpretation, with a specific concentration on how material properties, electrostatics, and device geometry parameters interact under functional conditions.
-
-
+Today, when I look at my trajectory, I do not see a student hindered by early academic struggles; I see an engineer who has been battle-tested. I have learned how to navigate academic ghosting, how to pivot strategically when silicon and finances hit a wall, and how to extract rigorous, publication-worthy data from constrained environments. A U.S. graduate research environment is inherently ambiguous, demanding scholars who can forge paths where blueprints do not exist and persevere when experiments fail. My unconventional journey has rigorously prepared me for this exact reality. I am not a researcher who expects a linear path to success. I am a builder who has learned how to forge my own tools, architect my own solutions, and relentlessly pursue the absolute physical limits of technology.

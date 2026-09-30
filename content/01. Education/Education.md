@@ -20,7 +20,7 @@ https://www.aust.edu/
     
       
     
-- **Academic Coursework:** Established a foundational understanding of core electrical engineering mechanics. Relevant coursework successfully completed or currently enrolled in includes Signals and Systems, Digital Signal Processing, Communication Engineering, Engineering Electromagnetics, Power Systems, Electrical Machineries, Digital Electronics, and theoretical and laboratory coursework in Analog Electronics. Formal university coursework in VLSI Design and Analog Integrated Circuits has not yet been undertaken.
+- **Mention-worthy Academic Coursework:** Signals and Systems, Digital Signal Processing, Communication Engineering, Engineering Electromagnetics, Power Systems, Electrical Machineries, Digital Electronics, and Analog Electronics. 
     
       
     
