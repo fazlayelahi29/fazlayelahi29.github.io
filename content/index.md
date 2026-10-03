@@ -147,9 +147,7 @@ Khalishpur Housing Estate, Khalishpur, Khulna-9000, Bangladesh
 
 > Detailed documentation for the following projects—including technical analyses, simulation scripts, and parameter outputs—is available on my personal website https://fazlayelahi29.github.io/ 
 > 
-> This repository is continually updated as project data is finalized. Executing these independent endeavors established the critical foundation for my current research trajectory.
-> 
-> This repository is continually updated as project data is finalized. Executing these independent endeavors established the critical foundation for my current research trajectory.
+> This repository is continually updated as project data is finalized. Executing these independent endeavors established the critical foundation for my current research trajectory. 
 
 ## Semiconductor Device Physics Modeling
 
