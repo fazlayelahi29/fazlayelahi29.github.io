@@ -1,13 +1,13 @@
 # Phase Sensitive Dynamic Filtering and Complex IIR Filter Synthesis for Energy-Preserving Signal Processing
 
 
-### Abstract
+## Abstract
 
 An in-depth reproduction and theoretical analysis of Phase-Sensitive Dynamic Filters (PSDF) is presented in this report. The fundamental limitations of traditional fixed bandpass filters, particularly their inability to be tuned in real-time without violating the inverse relationship between bandwidth and settling time, are examined. A conceptual model is implemented wherein Infinite Impulse Response (IIR) filters are utilized with long time constants and fast time-varying complex coefficients. It is demonstrated that by utilizing foreknowledge of the frequency and phase shifts of a given signal, energy is preserved across symbol transitions. The mathematical models and algorithmic implementations are provided, substantiating the efficacy of PSDFs in noise bandwidth compression and co-site interference rejection for full-duplex communication systems.
 
   
 
-### 1. Introduction and Theoretical Background
+## 1. Introduction and Theoretical Background
 
 In conventional communication systems, fixed bandpass filters are heavily relied upon; however, their fixed nature is inadequate for dynamically changing frequency resources. When the bandwidth of a filter is narrowed to reject excess noise, the settling time is proportionally elongated, as dictated by the fundamental relationship $\Delta f \cdot \tau_f = 1/2\pi$, where $\Delta f$ is the 3-dB passband and $\tau_f$ is the time constant. Consequently, traditional switched filter banks cannot switch at rates faster than the symbol rate of a signal without distorting the waveform during the required resettling period.
 
@@ -17,13 +17,13 @@ To circumvent this limitation, Phase-Sensitive Dynamic Filters (PSDF) are propos
 
   
 
-### 2. Mathematical Modeling of Complex IIR Filters
+## 2. Mathematical Modeling of Complex IIR Filters
 
 The PSDF architecture is mathematically abstracted as a time-varying complex IIR filter.
 
   
 
-#### 2.1. Dynamic Frequency Tunability
+### 2.1. Dynamic Frequency Tunability
 
 A traditional single-pole digital IIR lowpass filter is characterized by the transfer function $H[z] = \frac{a}{1 - bz^{-1}}$. It is observed that by substituting $z_{shift} = e^{-j\omega_c T}z$, the passband is effectively shifted from direct current (DC) to a specified center frequency $\omega_c$, yielding the complex transfer function:
 
@@ -35,39 +35,39 @@ $$H_{complex}[z] = \frac{a}{1 - be^{j\omega_c T}z^{-1}}$$
 
   
 
-#### 2.2. Phase Sensitivity and Nullification
+### 2.2. Phase Sensitivity and Nullification
 
 For phase-shift-keyed (PSK) signals, narrow passbands typically induce severe distortion at symbol transitions. It is demonstrated that phase sensitivity can be achieved by applying a complex coefficient $a' = a \cdot e^{-j\phi_i}$ in the feedforward path, where $\phi_i$ represents the instantaneous phase of the incoming signal. This operation effectively "nullifies" the phase of the input signal, compressing the wideband modulated signal into a continuous unmodulated sinusoid. The signal is subsequently filtered through the narrow passband, and the original phase is reconstructed at the output via the operation $z[n] = Re\{e^{j\phi_i}y[n]\}$.
 
   
 
-#### 2.3. Energy Preservation (Continuous Charging)
+### 2.3. Energy Preservation (Continuous Charging)
 
 Because the time constant $\tau_f$ of the single-pole complex filter is strictly dependent on the magnitude of the feedback coefficient $\vert{}b'\vert{}$ and not its phase, dynamically altering the phase of the coefficients eliminates the need for the filter to "resettle". The charge is continuously conserved across frequency and phase shifts, resulting in a continuous charging effect that prevents envelope collapse.
 
   
 
-### 3. Interference Suppression Characteristics
+## 3. Interference Suppression Characteristics
 
-#### 3.1. Noise Bandwidth Compression
+### 3.1. Noise Bandwidth Compression
 
 It is mathematically formulated that the noise power captured by a PSDF is reduced to $P_{N3} = \Delta f_{dyn} \cdot \frac{N_0}{2}$. By maintaining a long time constant, the effective noise bandwidth is compressed to a fraction of the modulated signal bandwidth, passing only the noise that falls strictly into the correlation band of the desired signal.
 
   
 
-#### 3.2. Full-Duplex Co-Site Interference Rejection
+### 3.2. Full-Duplex Co-Site Interference Rejection
 
 The PSDF model is highly applicable to Simultaneous Transmit and Receive (STAR) full-duplex systems where severe transmitter leakage corrupts the receiver. Since the transmitted signal's phase and frequency are known _a priori_, a dynamic notch filter is implemented to continuously decay the correlated leakage signal directly from the received path. It is shown that this method bypasses the necessity for complex adaptive amplitude matching required in traditional analog cancellation schemes.
 
   
 
-### 4. Algorithmic Implementations and Computational Scripts
+## 4. Algorithmic Implementations and Computational Scripts
 
 Two separate Python environments were developed to simulate the PSDF models against Binary Frequency-Shift Keying (BFSK) and Quadrature Phase-Shift Keying (QPSK) waveforms. The source code is provided in its entirety, supplemented by extreme technical explanations of the digital signal processing methodologies.
 
   
 
-#### 4.1. Implementation Version 1: Vectorized System Simulation
+### 4.1. Implementation Version 1: Vectorized System Simulation
 
 This script is constructed utilizing highly vectorized NumPy arrays and the `scipy.signal.hilbert` transform to process analytic signals. Discrete-time difference equations are computed sample-by-sample to evaluate transient charging effects, phase nullification constellations, and AM interference suppression.
 
@@ -467,7 +467,7 @@ plt.tight_layout()
 plt.show()
 ```
 
-#### 4.2. Implementation Version 2: Generalized State-Machine
+### 4.2. Implementation Version 2: Generalized State-Machine
 
 This script encapsulates the discrete-time equations into a unified algorithmic state-machine function `time_varying_filter`. This modular framework facilitates vectorized switching of the `CURRENT_WEIGHT`, `PREVIOUS_WEIGHT`, and `FEEDBACK` vectors, accurately simulating hardware-level coefficient adjustments. (_Note: The mathematical multiplication operators `*` omitted in the raw text have been semantically restored here to guarantee syntactic validity while preserving the original logic._)
 
@@ -729,6 +729,205 @@ plt.tight_layout()
 plt.show()
 ```
 
-### 5. Conclusion
+
+#### Design of the Phase-Sensitive Dynamic Filtering Algorithm
+
+The core algorithm is mathematically designed to decouple the filter settling time from the instantaneous symbol rate, thereby permitting symbol-synchronous tunability without the destruction of transient signal energy. The design is predicated on a recursive Infinite Impulse Response (IIR) structure where complex coefficients are dynamically manipulated in the time domain.
+
+  
+
+1. **Parameter Initialization:** The base feedforward ($a$) and feedback ($b$) coefficients are derived from a prototype lowpass filter governed by a specified normalized cutoff frequency and desired time constant. The time constant is intentionally configured to be significantly longer than the symbol period.
+    
+      
+    
+2. **Analytic Signal Conversion:** The incoming real-valued modulated signal is mathematically converted into its complex analytic representation (containing only positive frequencies) using a Hilbert transform.
+    
+      
+    
+3. **Dynamic Phase Nullification:** To process Phase Shift Keying (PSK) signals without inducing envelope collapse, the instantaneous phase of the incoming symbol ($\phi_i$) is extracted. The analytic signal is multiplied by a conjugated feedforward coefficient $a' = a \cdot e^{-j\phi_i}$. This operation nullifies the phase modulation, temporarily compressing the signal into an unmodulated continuous wave carrier.
+    
+      
+    
+4. **Frequency Synchronization (State Rotation):** The internal state memory of the filter is preserved across discrete symbol boundaries by synchronously rotating the feedback coefficient. The coefficient is updated continuously as $b' = b \cdot e^{j\omega_{c}T}$, where $\omega_c$ corresponds to the instantaneous carrier frequency of the current symbol.
+    
+      
+    
+5. **Recursive State Update:** A time-varying difference equation, $y[n] = a'x[n] + b'y[n-1]$, is evaluated iteratively. Because the magnitude of $b'$ remains strictly constant, the filter undergoes "continuous charging" across frequency and phase hops, retaining its transient energy rather than discharging and resettling.
+    
+      
+    
+6. **Phase Restoration and Output Extraction:** Following the recursive narrow-bandpass integration, the signal phase is mathematically reconstructed by multiplying the state output by $e^{j\phi_i}$. Finally, the real component is extracted to yield the filtered physical waveform, $z[n] = Re\{e^{j\phi_i}y[n]\}$.
+    
+      
+    
+
+#### Explanation of the Python Script Architecture
+
+The provided computational scripts are synthesized to validate the theoretical algorithm against varied digital modulation schemes (BFSK and QPSK) and interference scenarios. The code structure is partitioned into sequential analytical blocks.
+
+  
+
+- **Initialization and Transfer Function Analysis:**
+    
+    The script initializes by establishing a high-resolution frequency axis and mapping the z-domain polynomial equations. Complex exponential shifts are applied to standard lowpass and highpass prototypes. The `scipy.signal.lfilter` library is utilized in tandem with Fast Fourier Transforms (FFT) to compute and plot the asymmetric frequency responses of the shifted complex IIR bandpass and bandstop (notch) filters.
+    
+      
+    
+- **Time-Domain Signal Synthesis:**
+    
+    Digital baseband sequences are randomly generated to construct Continuous Phase Frequency Shift Keying (BFSK) and Quadrature Phase Shift Keying (QPSK) arrays. Additive White Gaussian Noise (AWGN) and Amplitude Modulated (AM) interferer arrays are mathematically superimposed onto these pristine signals to simulate severely degraded channel environments.
+    
+      
+    
+- **The State-Machine Core (Algorithmic Implementation):**
+    
+    In the generalized version of the script, the `time_varying_filter` function acts as the computational engine. It ingests the analytic signal arrays alongside pre-computed, vectorized coefficient arrays (`CURRENT_WEIGHT`, `PREVIOUS_WEIGHT`, `FEEDBACK`). A `for` loop iterates through the discrete time steps. For the "Switched" filter comparisons, a modulo operator forces the internal state variable to zero at every symbol boundary, simulating the catastrophic envelope collapse of traditional filters. For the "Dynamic" implementations, the state variable is continuously passed to the next iteration, executing the energy-preserving continuous charging/decaying mathematics.
+    
+      
+    
+- **Interference Suppression Execution:**
+    
+    For the full-duplex Simultaneous Transmit and Receive (STAR) simulation, the transmitter's randomized phase array is utilized as the known _a priori_ control sequence. The noisy circulator output is fed into the dynamic notch loop. Because the filter coefficients are rigidly locked to the known transmitter phase sequence, the high-power leakage is selectively decayed to zero within the state matrix, successfully isolating the uncorrelated, low-power received signal for extraction.
+    
+
+#### System Flowcharts
+
+##### A. High-Level Project Architecture Mind Map
+
+Plaintext
+
+```
++-------------------------------------------------------------------------+
+|                  PHASE-SENSITIVE DYNAMIC FILTERING (PSDF)               |
++-------------------------------------------------------------------------+
+                                    |
+          +-------------------------+-------------------------+
+          |                         |                         |
++-------------------+     +-------------------+     +-------------------+
+| 1. Filter Theory  |     | 2. Algorithm Core |     | 3. System Testing |
++-------------------+     +-------------------+     +-------------------+
+| - Complex Shift   |     | - IIR State Mach. |     | - AWGN Rejection  |
+| - Pole Placement  |     | - Phase Nullify   |     | - AM Suppression  |
+| - Asymmetry       |     | - Cont. Charging  |     | - STAR Isolation  |
++-------------------+     +-------------------+     +-------------------+
+```
+
+##### B. Dynamic Algorithm Signal Flow (The State Machine)
+
+Plaintext
+
+```
+               [Input Signal: x[n]]
+                        |
+                        V
+       +----------------------------------+
+       |   HILBERT TRANSFORM CONVERSION   |
+       |   (Yields Analytic Signal)       |
+       +----------------------------------+
+                        |
+      +-----------------V-----------------+
+      |        PHASE NULLIFICATION        |  <--- [Instantaneous Phase: Φ]
+      |  Multiply by Feedforward (a*e^-jΦ)| 
+      +-----------------------------------+
+                        |
+                        +-------------------------------+
+                        |                               |
+                        V                               |
+      +-----------------------------------+             |
+      |       RECURSIVE ADDITION          |             |
+      |       State = Input + Feedback    |             |
+      +-----------------------------------+             |
+                        |                               |
+                        V                               |
+      +-----------------------------------+             |
+      |        STATE PRESERVATION         |  <--- [Instantaneous Freq: ωc]
+      | Multiply by Feedback (b*e^jωcT)   |             |
+      +-----------------------------------+             |
+                        |                               |
+                        +-------(Loop to Next n)--------+
+                        |
+                        V
+      +-----------------------------------+
+      |        PHASE RESTORATION          |  <--- [Instantaneous Phase: Φ]
+      |    Multiply State by (e^jΦ)       |
+      +-----------------------------------+
+                        |
+                        V
+      +-----------------------------------+
+      |      REAL COMPONENT EXTRACTION    |
+      |         z[n] = Re{y[n]}           |
+      +-----------------------------------+
+                        |
+                        V
+               [Output Signal: z[n]]
+```
+
+##### C. Python Script Execution Pipeline
+
+Plaintext
+
+```
++=======================================================================+
+|                     PYTHON SCRIPT EXECUTION PIPELINE                  |
++=======================================================================+
+
+ [START] 
+   |
+   V
+ +-------------------------------------------------------------------+
+ | 1. ENVIRONMENT INITIALIZATION                                     |
+ |    - Import NumPy, SciPy, Matplotlib                              |
+ |    - Set IEEE-standard plot formatting (rcParams)                 |
+ +-------------------------------------------------------------------+
+   |
+   V
+ +-------------------------------------------------------------------+
+ | 2. TRANSFER FUNCTION SYNTHESIS (Figs 3 & 10)                      |
+ |    - Define fundamental cutoffs and normalized arrays             |
+ |    - Compute mathematically shifted complex IIR polynomials       |
+ |    - Render normalized magnitude spectrum plots                   |
+ +-------------------------------------------------------------------+
+   |
+   V
+ +-------------------------------------------------------------------+
+ | 3. BASEBAND SIGNAL GENERATION & CHANNEL SIMULATION                |
+ |    - Generate Pseudo-Random Bit Sequences (PRBS)                  |
+ |    - Modulate BFSK and QPSK waveforms                             |
+ |    - Inject Additive White Gaussian Noise (AWGN)                  |
+ |    - Superimpose Amplitude Modulated (AM) interfering tones       |
+ +-------------------------------------------------------------------+
+   |
+   V
+ +-------------------------------------------------------------------+
+ | 4. FILTERING STATE-MACHINE EXECUTION (Figs 8, 12, 13-18, 19)      |
+ |    +---------------------------------------------------------+    |
+ |    | - Run Switched Filter Loop (Flushes memory per symbol)  |    |
+ |    | - Run Dynamic Passband Loop (Maintains state matrix)    |    |
+ |    | - Run Dynamic Notch Loop (Decays correlated data)       |    |
+ |    +---------------------------------------------------------+    |
+ +-------------------------------------------------------------------+
+   |
+   V
+ +-------------------------------------------------------------------+
+ | 5. FULL-DUPLEX CO-SITE SUPPRESSION TEST (Figs 21 & 22)            |
+ |    - Combine high-power Tx Leakage with low-power Rx Signal       |
+ |    - Extract Tx phase coefficients to drive the Notch loop        |
+ |    - Isolate the pristine Rx output from the circulator node      |
+ +-------------------------------------------------------------------+
+   |
+   V
+ +-------------------------------------------------------------------+
+ | 6. VISUALIZATION & OUTPUT RENDERING                               |
+ |    - Compute exact FFTs for spectral comparison                   |
+ |    - Render Time-Domain continuous charging/decaying plots        |
+ |    - Render Constellation Phase Nullification plots               |
+ |    - Display all active figures (plt.show)                        |
+ +-------------------------------------------------------------------+
+   |
+ [END]
+```
+
+
+## 5. Conclusion
 
 It is concluded from the simulations that Phase-Sensitive Dynamic Filters overcome the fundamental transient bandwidth constraints of real-coefficient architectures. By dynamically rotating the phase of the IIR coefficients, symbol-synchronous switching is achieved without discharging the accumulated signal energy. This capability is proven to be highly advantageous for co-site full-duplex interference suppression, demonstrating superior noise selectivity while maintaining complete signal integrity. 
