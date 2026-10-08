@@ -15,7 +15,156 @@ In conventional communication systems, fixed bandpass filters are heavily relied
 
 To circumvent this limitation, Phase-Sensitive Dynamic Filters (PSDF) are proposed and computationally modeled. It is established that these filters can be tuned as fast as the symbol rate while maintaining time constants longer than the symbol periods, thereby allowing continuous charge preservation across multiple symbols.
 
+The algorithmic block diagrams for each discrete-time filter architecture detailed in the referenced research article are structurally represented below. The designs progress from fundamental prototype filters to the advanced Phase-Sensitive Dynamic Filters (PSDF), utilizing ASCII-based signal flowcharts to map the mathematical difference equations into hardware-equivalent logic models.
+
   
+
+### 1.1 Traditional Single-Pole IIR Lowpass Filter (Prototype)
+
+The foundational recursive structure is established by this standard first-order lowpass filter, utilizing strictly real coefficients. The output is computed by scaling the current input by the feedforward coefficient ($a$) and summing it with the delayed output scaled by the feedback coefficient ($b$).
+
+  
+
+Plaintext
+
+```
+               a (Feedforward)
+               |
+               v
+  x[n] -----> (X) -----> (+) ------------------------> y[n]
+                          ^                |
+                          |                v
+                          |             [ Z^-1 ]
+                          |                |
+                          |                v
+                          +-------------- (X)
+                                           ^
+                                           |
+                                      b (Feedback)
+```
+
+### 1.2 Shifted Complex IIR Bandpass Filter (Frequency Tunability)
+
+By modifying the feedback loop of the traditional lowpass prototype, frequency translation is achieved without lowpass-to-bandpass hardware transformations. The feedback coefficient is multiplied by a complex exponential ($e^{j\omega_c T}$), which mathematically shifts the filter's pole strictly along the unit circle to the target center frequency. The real component of the resulting complex signal is extracted at the output.
+
+  
+
+Plaintext
+
+```
+               a 
+               |
+               v
+  x[n] -----> (X) -----> (+) ------+-----------------> [ Real ] ---> y[n]
+                          ^        |
+                          |        v
+                          |     [ Z^-1 ]
+                          |        |
+                          |        v
+                          +------ (X)
+                                   ^
+                                   |
+                      b' = b * e^(j * 2π * fc / fs)
+                         (Frequency Adjustment)
+```
+
+### 1.3 Phase-Sensitive Complex Filter (Phase Adjustment)
+
+To preserve sharp phase shifts in phase-modulated signals (e.g., QPSK), phase nullification is introduced. The incoming signal's phase ($\phi$) is nullified by rotating the feedforward coefficient by $e^{-j\phi}$. The phase is subsequently corrected after the recursive filtering block by multiplying the output by $e^{j\phi}$ before the real part is extracted.
+
+  
+
+Plaintext
+
+```
+  Phase Nullification                    Phase Correction
+  a' = a * e^(-j * Φ)                       e^(j * Φ)
+               |                                |
+               v                                v
+  x[n] -----> (X) -----> (+) ------+---------> (X) ---> [ Real ] ---> z[n]
+                          ^        |
+                          |        v
+                          |     [ Z^-1 ]
+                          |        |
+                          |        v
+                          +------ (X)
+                                   ^
+                                   |
+                                   b
+```
+
+### 1.4 Full Phase-Sensitive Dynamic Bandpass Filter (PSDF)
+
+The complete dynamic bandpass architecture is realized by combining both dynamic phase nullification and dynamic frequency tuning. The state memory (`Z^-1`) continuously charges without resetting because the magnitude of the complex feedback coefficient ($b'$) remains constant, even as its phase rotates to track the instantaneous frequency of the incoming symbol.
+
+  
+
+Plaintext
+
+```
+    Phase Adjustment
+  a' = a * e^(-j * Φi)
+               |
+               v                                e^(j * Φi)
+  x[n] -----> (X) -----> (+) ------+---------> (X) ---> [ Real ] ---> z[n]
+                          ^        |            ^
+                          |        v            |
+                          |     [ Z^-1 ]        |
+                          |        |            |
+                          |        v            |
+                          +------ (X)           |
+                                   ^            |
+                                   |            |
+                      b' = b * e^(j * 2π * fc / fs)
+                          Frequency Adjustment
+```
+
+### 1.5 Traditional Single-Pole IIR Highpass Filter (Notch Prototype)
+
+The baseline for notch filtering relies on a single-pole highpass architecture, which introduces an additional feedforward path delayed by one sample interval (`Z^-1`). This creates the necessary transmission zero to reject specific frequency bands.
+
+  
+
+Plaintext
+
+```
+               a0
+               |
+               v
+  x[n] -+---> (X) -----> (+) -----> (+) -------------> y[n]
+        |                 ^          ^        |
+        v                 |          |        v
+     [ Z^-1 ]             |          |     [ Z^-1 ]
+        |                 |          |        |
+        v                 |          |        v
+       (X) ---------------+          +------ (X)
+        ^                                     ^
+        |                                     |
+        a1                                    b1
+```
+
+### 1.6 Full Phase-Sensitive Dynamic Notch Filter
+
+The highpass prototype is dynamically shifted to form an energy-preserving notch filter. Complex frequency shifts ($e^{j\omega_c T}$) are applied to both the delayed feedforward coefficient ($a_1'$) and the feedback coefficient ($b_1'$) to center the stopband. Simultaneously, phase nullification ($e^{-j\phi_i}$) is applied across the feedforward paths to correlate the rejection specifically to the instantaneous symbol transitions.
+
+Plaintext
+
+```
+            a0' = a0 * e^(-j * Φi)
+                       |
+                       v
+  x[n] -------+-----> (X) -----> (+) -----> (+) ------+-----> (X) ---> [ Real ] ---> z[n]
+              |                   ^          ^        |        ^
+              v                   |          |        v        |
+           [ Z^-1 ]               |          |     [ Z^-1 ]    |
+              |                   |          |        |        |
+              v                   |          |        v        |
+             (X) -----------------+          +------ (X)    e^(j * Φi)
+              ^                                       ^
+              |                                       |
+ a1' = a1 * e^(j * 2π * fc / fs)         b1' = b1 * e^(j * 2π * fc / fs) 
+            * e^(-j * Φi)  
+```
 
 ## 2. Mathematical Modeling of Complex IIR Filters
 
