@@ -1,4 +1,4 @@
-# Orchestrating Silicon: An Exhaustive Analysis of Modern Open-Source RTL-to-GDSII Platforms
+# Orchestrating Silicon: Modern Open-Source RTL-to-GDSII Platforms
 
 The landscape of semiconductor physical design and Electronic Design Automation (EDA) is undergoing a structural paradigm shift of unprecedented magnitude. Historically, the journey from a behavioral hardware description to a fully routed, tape-out-ready geometric layout—traditionally represented in GDSII or OASIS formats—required managing a highly fragmented ecosystem of proprietary point-tools. This traditional methodology was characterized by exorbitant licensing costs, siloed data formats, and brittle integration scripts that severely hampered design space exploration . Within the Free and Open-Source Silicon (FOSSi) domain, early attempts to automate this RTL-to-GDSII pipeline relied on simple Makefiles or Bash wrappers, which ultimately proved insufficient for handling the complex design rules, routing congestion, and timing closure requirements of advanced technology nodes . 
 

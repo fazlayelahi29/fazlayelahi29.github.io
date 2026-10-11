@@ -1,4 +1,4 @@
-# The Open-Source Silicon Engineering Handbook
+# The Open-Source Silicon
 
 ## Chapter 1: Modern HDL and Hardware Construction Architectures
 
@@ -207,5 +207,3 @@ endmodule
 ```
 
 Through this highly orchestrated, multi-layered compilation process, the modern hardware engineer writes immensely expressive software that flawlessly scales across architectures. By utilizing advanced type systems and graph-based lowering through MLIR, designers generate robust, verification-ready, and layout-optimized structural netlists, permanently sidestepping decades of manual string-concatenation errors and opaque preprocessor directives associated with traditional hardware description languages.
-
-[STAGE COMPLETE] System ready for the next chapter. Provide the 'PROCEED' command.
