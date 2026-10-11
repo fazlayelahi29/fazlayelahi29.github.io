@@ -114,7 +114,17 @@ Khalishpur Housing Estate, Khalishpur, Khulna-9000, Bangladesh
       
     
 
-# RESEARCH INTERESTS
+
+# PROFESSIONAL WORK INTERESTS
+
+
+- **Semiconductor Device Physics Modeling:** Directing focus toward finite-element drift-diffusion and hydrodynamic modeling of nanoscale transistor architectures. Analyzing electrostatics and carrier transport mechanisms across **FinFET, Gate-All-Around FET (GAAFET), RibbonFET, Forksheet FET, Nanosheet FET, Complementary FET (CFET), Reconfigurable FET (RFET), Negative Capacitance FET (NCFET), Tunnel FET (TFET), Carbon Nanotube FET (CNTFET), Ferroelectric FET (FeFET)**, and **Current Aperture Vertical Electron Transistors (CAVET)**. Actively integrating **Physics-Informed Neural Network (PINN)** surrogate models to accelerate electrostatic convergence mapping and predict structural behavior under varied boundary conditions.
+
+- **VLSI Design and Application-Specific Integrated Circuits (ASIC):** Focus includes understanding the digital physical design workflows necessary for custom silicon layouts, covering fundamental RTL synthesis, standard-cell mapping, static timing analysis, and floorplanning concepts. 
+
+
+
+# ACADEMIC RESEARCH INTERESTS
 
 - **Semiconductor Device Physics Modeling:** Directing focus toward finite-element drift-diffusion and hydrodynamic modeling of nanoscale transistor architectures. Analyzing electrostatics and carrier transport mechanisms across **FinFET, Gate-All-Around FET (GAAFET), RibbonFET, Forksheet FET, Nanosheet FET, Complementary FET (CFET), Reconfigurable FET (RFET), Negative Capacitance FET (NCFET), Tunnel FET (TFET), Carbon Nanotube FET (CNTFET), Ferroelectric FET (FeFET)**, and **Current Aperture Vertical Electron Transistors (CAVET)**. Actively integrating **Physics-Informed Neural Network (PINN)** surrogate models to accelerate electrostatic convergence mapping and predict structural behavior under varied boundary conditions.
     
@@ -142,7 +152,7 @@ Khalishpur Housing Estate, Khalishpur, Khulna-9000, Bangladesh
     
 - **Device Reliability and Electrothermal Behavior:** Investigating physical deterioration and structural reliability, focusing on Time-Dependent Dielectric Breakdown (**TDDB**), Hot Carrier Injection (**HCI**), Negative Bias Temperature Instability (**NBTI**), self-heating kinetics, and trapping/de-trapping scattering effects.
 
-# PROJECTS
+# UNDERGRADUATE ACADEMIC ENGINEERING PROJECTS
 
 
 > Detailed documentation for the following projects—including technical analyses, simulation scripts, and parameter outputs—is available on my personal website https://fazlayelahi29.github.io/ 

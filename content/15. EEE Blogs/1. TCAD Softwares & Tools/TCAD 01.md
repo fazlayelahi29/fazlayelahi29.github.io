@@ -1,4 +1,4 @@
-# The Landscape of Free and Open-Source Semiconductor Device Physics Modeling Software: A Comprehensive Analysis
+# FOSS for Semiconductor Device Physics Modeling Blog 1
 
 ## Introduction to Computational Electronics and Open-Source Paradigms
 
