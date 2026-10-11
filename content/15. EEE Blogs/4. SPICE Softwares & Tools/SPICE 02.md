@@ -1,4 +1,4 @@
-# Definitive Technical Reference Manual and Research Report on Synopsys HSPICE
+# Synopsys HSPICE
 
 ## CHAPTER 1: ARCHITECTURAL FOUNDATION & NUMERICAL SOLVER PHYSICS
 

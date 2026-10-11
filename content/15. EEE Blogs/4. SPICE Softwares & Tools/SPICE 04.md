@@ -1,396 +1,231 @@
-# MASTER TECHNICAL DOSSIER: SYNOPSYS HSPICE ENTERPRISE ECOSYSTEM
+# Synopsys HSPICE J-2014.09-SP2-2 Ecosystem
 
-## CHAPTER 1: ENGINE ARCHITECTURE & SYSTEM ENVIRONMENT (J-2014.09-SP2-2)
+## 1. Executive System Topology and Operating Environment
+The deployed ecosystem, stationed in Dhaka, Bangladesh, represents a highly sophisticated, hardware-accelerated Electronic Design Automation (EDA) pipeline running on a 64-bit Windows architecture. This specialized configuration pairs a transitional nanoscale simulation engine, capable of sub-16nm FinFET analysis, with a modernized, cryptographically secured network licensing framework. The architecture operates strictly through a client-server daemon topology, tightly coupling the computational physics engine to an OSI Layer 7 cryptographic authentication layer. 
 
-### 1.1 Architecture & Context
-The physical simulation of modern semiconductor topologies necessitates a computational architecture capable of processing massive, dense mathematical matrices. The deployment of the Synopsys HSPICE J-2014.09-SP2-2 engine on a 64-bit Windows environment represents a critical infrastructural baseline for handling these computations . Historically, legacy 32-bit computing architectures restricted individual application processes to a hard limit of 4GB of Random Access Memory (RAM), with Windows kernels often reserving half of that allocation, leaving merely 2GB for the simulation solver. In the context of nanoscale Integrated Circuit (IC) design, particularly during post-layout verification where extraction tools generate parasitic netlists containing millions of resistance and capacitance (RC) elements, this 32-bit limitation resulted in catastrophic fatal memory overflow errors. 
+The successful execution of high-performance analog and mixed-signal simulation requires absolute synchronization between the host operating system's memory management, the network interface controller, and the application's executable binaries. The deployment specifications delineate a highly localized yet enterprise-grade execution environment.
 
-By explicitly routing execution through the 64-bit executable path at `D:\Hspice_J-2014.09-SP2-2\WIN64\hspice.exe`, the deployed ecosystem unlocks the vast 64-bit memory address space. This permits the solver to dynamically map up to 8 terabytes of user-mode virtual memory (bounded realistically only by the physical silicon arrays on the `fazlayelahi29` workstation motherboard). The transition to the 64-bit solver is not merely a capacity enhancement; it allows the J-2014.09-SP2-2 engine to load entire Compiled Model Interface (CMI) libraries and massive Jacobian matrices directly into active memory without relying on high-latency virtual paging to the hard drive, substantially accelerating the algorithmic solving sequences .
+| System Component | Technical Specification and Absolute Path Target |
+| :--- | :--- |
+| **Workstation Hostname** | `fazlayelahi29` |
+| **Core Simulation Engine** | Synopsys HSPICE J-2014.09-SP2-2 (64-BIT) |
+| **Engine Execution Path** | `D:\Hspice_J-2014.09-SP2-2\WIN64\hspice.exe` |
+| **Application Launcher (UI)**| `D:\Hspice_J-2014.09-SP2-2\bin\hspui.exe` |
+| **Post-Processing Engine** | Avanwaves J-2014.09-SP2-2 (`awaves.exe`) |
+| **Visualizer Execution Path**| `D:\Hspice_J-2014.09-SP2-2\BIN\awaves.exe` |
+| **Licensing Framework** | Synopsys Common Licensing (SCL) 2018.06-SP1 |
+| **FlexNet Publisher Version**| v11.14.0.2 |
+| **Master License Target** | `27000@fazlayelahi29` |
+| **License Payload File** | `D:\SCL 2018\Synopsys.dat` |
 
-Furthermore, this specific software iteration (J-2014.09-SP2-2) acts as a transitional milestone bridging planar CMOS physics and multi-gate 14nm/16nm FinFET topologies. The engine natively implements the BSIM-CMG (Berkeley Short-channel IGFET Model for the Common Multi-Gate Structure) compact models, abandoning simplified drift-diffusion logic . It evaluates complex quantum-mechanical phenomena, mapping physical gate-leakage currents flowing through sub-2nm oxides by executing quantum tunneling probability functions at every transient timestep. The engine also calculates sub-surface threshold voltage roll-off via Drain-Induced Barrier Lowering (DIBL) equations driven by multi-gate geometric configurations . 
+The integration between the Windows kernel and the application suite relies heavily on dynamic pointer injection via system-level environment variables. Without these precise routing pointers, the engine cannot resolve its execution dependencies or initiate the cryptographic handshake required for mathematical computation. The primary environment variable, `HSP_HOME`, instructs the underlying mathematical engine where the root installation resides. This directory acts as the nexus for the Compiled Model Interface (CMI) and include directories required for mapping standardized device libraries—such as those provided by TSMC or GlobalFoundries—to internal physics macros . 
 
-### 1.2 System Variable Layout
-The structural integrity of this ecosystem relies entirely on correctly mapping Windows Environment Variables to the execution paths. If the solver cannot locate its model libraries, or if the network daemon cannot authenticate, the execution pipeline will halt prior to matrix initialization. The variables must be permanently written into the Windows Registry of the `fazlayelahi29` workstation.
+Equally critical is the `SNPSLMD_LICENSE_FILE` environment string, which serves as the network routing pointer. Set explicitly to `27000@fazlayelahi29`, this variable dynamically directs the application’s mathematical solver to poll the local machine's Transmission Control Protocol (TCP) port 27000. This polling initiates the FlexNet token authentication process, an absolute prerequisite that must be satisfied before the engine is permitted to execute any matrix factorization or ingest structural netlists.
 
-| Environment Variable | Target Value / Path | Operational Purpose |
+## 2. Software Pedigree, Foundational Paradigms, and EDA Integration
+HSPICE, an acronym for Simulation Program with Integrated Circuit Emphasis, operates in a paradigm entirely distinct from conventional design software. It is not a schematic capture utility with a graphical user interface for drawing wires and components; rather, it is a purely mathematical solver. Universally regarded as the foundry-certified "gold standard" for accurate circuit simulation, the software functions as the ultimate arbiter of physical layout physics . Engineers interact with the engine entirely through programmatic, text-based netlists that define components, physical geometries, and nodal intersections with extreme cryptographic precision.
+
+The primary directive of this simulation engine is to perform "tape-out signoff." This represents the final, rigorous mathematical verification step before a silicon chip design is transmitted to a physical semiconductor foundry. At this stage, multi-million-dollar manufacturing masks are fabricated, making predictive accuracy critical. If a design fails after tape-out, the financial and temporal losses are catastrophic. Consequently, HSPICE is engineered to translate graphical physical layouts into vast systems of algebraic and differential equations, simulating real-world physical phenomena such as parasitic resistance, crosstalk, thermal noise, and quantum tunneling long before a single atom of physical silicon is etched or doped .
+
+Over decades of continuous development, the fundamental numerical engine of HSPICE has remained architecturally stable, even as its front-end interfaces and device model libraries have expanded exponentially to cover new process technologies . This stability is rooted in its uncompromising reliance on robust iterative numerical algorithms that converge to accurate answers within specified tolerances, ensuring that the simulated electrostatics mirror the quantum realities of the physical world.
+
+## 3. The Input and Output Data Ecosystem
+To comprehend the operational dynamics of the Synopsys HSPICE J-2014.09-SP2-2 engine, one must trace the flow of data as it enters, traverses, and exits the execution pipeline. The software enforces a highly structured file extension methodology, completely isolating the input stimuli from the output audit trails and the resultant binary waveform vectors.
+
+| File Typology | Extension | Structural Format | Primary Function |
+| :--- | :--- | :--- | :--- |
+| **Master Netlist** | `.sp` | ASCII Text | Defines circuit topology, component calls, and analysis directives. |
+| **Model Library** | `.inc` | ASCII Text | External foundry parameters (e.g., TSMC 65nm device physics). |
+| **Execution Audit** | `.lis` | ASCII Text | Records memory utilization, syntax warnings, and DC convergence matrices. |
+| **Transient Waveform**| `.tr0` | Floating-Point Binary | Highly compressed time-domain vector arrays for visualization. |
+| **DC Sweep Waveform** | `.sw0` | Floating-Point Binary | Compressed voltage/current vector arrays across a parameterized sweep. |
+| **Status Telemetry** | `.st0` | ASCII Text | Real-time diagnostic tracker updated incrementally during simulation. |
+| **Initial Conditions**| `.ic0` | Formatted Text | Final settled bias voltages allowing subsequent runs to warm-start. |
+
+The input pipeline is governed by the master source code file, bearing the `.sp` extension. This file encapsulates the fundamental circuit topology, explicitly calling active devices, establishing ideal voltage and current sources, and dictating simulation directives such as transient time-domain execution, direct current sweeps, or alternating current frequency-domain analysis. The engine’s parser dynamically integrates `.inc` files into the main netlist hierarchy during initialization. This inclusion mechanism substitutes generic transistor calls with highly calibrated, empirical physics models provided directly by the semiconductor foundry, ensuring that the simulation reflects the precise manufacturing realities of a specific node .
+
+Upon successful mathematical convergence, the engine generates specific output targets. The listing file (`.lis`) serves as a dense, human-readable audit trail. It logs CPU runtime metrics, memory allocation tables, syntax evaluation warnings, and explicitly requested variable tables. However, the true analytical value lies in the binary waveform files (`.tr0`, `.sw0`, `.ac0`). These files are exclusively generated if the `.OPTION POST=1` command is present in the master netlist. The engine utilizes double-precision floating-point formatting to construct these binary files, preserving the extreme granularity of femtosecond-level voltage transients and picoampere current fluctuations .
+
+To mitigate the immense computational cost of determining complex direct current operating points, the engine outputs an initial conditions file (`.ic0`). In modern VLSI networks encompassing millions of parasitic elements, settling a circuit to a stable DC bias state requires massive matrix iteration. The `.ic0` file saves the final settled voltages of every node, allowing subsequent simulations to bypass the initial calculation phase and execute a "warm start," drastically reducing cumulative CPU cycles across iterative design testing . Real-time monitoring of this processing pipeline is facilitated by the `.st0` status file, which provides external third-party orchestration scripts the ability to monitor the percentage completion of computationally expensive jobs.
+
+## 4. Application Layer Orchestration and User Interface Routing
+The Graphical User Interface (`hspui.exe`) operates strictly as a lightweight Win32 orchestration wrapper. It functions solely as a conduit designed to format execution strings, parse command-line arguments, and pass them to the underlying physics solver; the interface itself never natively computes physical phenomena. 
+
+A critical function of this orchestration layer is the 64-bit memory unlock sequence. By explicitly routing the primary HSPICE execution parameter to the `\WIN64` sub-directory, the user interface forces the Windows kernel to launch a 64-bit child process. This execution pathway bypasses the legacy 4-Gigabyte Virtual Address Space allocation limit inherent to 32-bit computing architecture. This memory bypass is mathematically non-negotiable for modern VLSI design. The underlying solver must possess the capability to dynamically allocate vast swaths of the motherboard's physical Random Access Memory to hold massive parasitic Resistance-Capacitance matrices, which frequently exceed tens of gigabytes for post-layout extracted memory arrays.
+
+To guarantee failsafe data visualization, the interface incorporates strict visualization redundancies. Regardless of whether a user attempts to execute legacy third-party viewing tools, the output targets are hard-mapped identically to the local `awaves.exe` binary. The interface intercepts external invocations and forces binary plot data back to the native Avanwaves ingestion engine, preventing pipeline execution errors during the delicate handoff of massive `.tr0` files.
+
+Furthermore, the application launcher is designed to circumvent modern Windows User Account Control constraints. Because modern Windows Operating System kernels actively block standard user processes from rewriting configuration files inside root application folders (such as the `D:\` drive configuration deployed in Dhaka), the launcher silently saves its structural configuration hierarchy directly to the User Local HOME directory. This evasion ensures that environment variable pointers, graphical layout preferences, and recent file histories remain persistent across system reboots without continuously triggering intrusive Administrator privilege elevation prompts.
+
+## 5. The Core Computation Engine: Physics and Mathematical Framework
+The underlying `hspice.exe` binary utilized in this deployment represents a monumental leap in EDA engineering. As a transitional architecture, it is explicitly engineered to handle the paradigm shift from classical planar MOSFETs to three-dimensional 14nm and 16nm FinFET topologies. At these sub-22nm nodes, classical drift-diffusion physical equations experience complete breakdown due to extreme short-channel effects, requiring entirely new mathematical paradigms.
+
+### 5.1 FinFET Modeling via the BSIM-CMG Standard
+To accurately simulate nanoscale geometries, the HSPICE engine natively integrates the Berkeley Short-channel IGFET Model for the Common Multi-Gate (BSIM-CMG) standard . The engine abandons simple two-dimensional planar assumptions and forces the calculation of three-dimensional electrostatics. Within this framework, the effective channel width ($W_{eff}$) is no longer a simple drawn parameter on a mask; it is dynamically calculated based on the physical geometry of the fin itself.
+
+The evaluation of $W_{eff}$ is dictated by the `GEOMOD` (Geometric Model) selector within the netlist. This selector instructs the engine on how to formulate its surface potential equations based on the specific manufacturing architecture .
+
+| `GEOMOD` Value | Structural Architecture | Effective Width ($W_{eff\_UFCM}$) Equation |
 | :--- | :--- | :--- |
-| `HSP_HOME` | `D:\Hspice_J-2014.09-SP2-2` | Instructs the HSPICE binary where the root installation directory resides. The engine uses this pointer to resolve relative paths for the CMI and standard device include directories. |
-| `SNPSLMD_LICENSE_FILE` | `27000@fazlayelahi29` | The network routing pointer directing the FlexNet licensing handshake to the OSI Layer 7 master daemon listening on TCP port 27000. |
-| `PATH` (System Level) | `D:\Hspice_J-2014.09-SP2-2\WIN64;D:\Hspice_J-2014.09-SP2-2\BIN` | Ensures that both `hspice.exe` and `awaves.exe` can be invoked system-wide without explicit absolute paths, facilitating shell automation. |
+| **0** | Double Gate FinFET | $2 \cdot H_{FIN}$ |
+| **1** | Triple Gate FinFET | $2 \cdot H_{FIN} + T_{FIN}$ |
+| **2** | Quadruple Gate FinFET | Complex cylindrical approximation encompassing all four fin sides. |
 
-When the Graphical User Interface Application Launcher (`D:\Hspice_J-2014.09-SP2-2\bin\hspui.exe`) initializes, it operates as a lightweight Win32 orchestration shell that never computes physics natively . Because modern Windows User Account Control (UAC) constraints block standard unprivileged processes from rewriting configuration files within root application folders, the UI circumvents this restriction by saving its structural configurations (e.g., `hspui.cfg`) directly to the User Local HOME directory. This mechanism ensures that customized execution paths and environmental overrides remain persistent across system reboots without violating core OS security protocols.
+For a double-gate FinFET (`GEOMOD=0`), where conduction primarily occurs on the two vertical sidewalls of the silicon fin, the effective fin width is evaluated as a strict function of the Fin Height ($H_{FIN}$). However, for a triple-gate configuration (`GEOMOD=1`), the top of the fin is also actively gated by the dielectric, requiring the thickness of the fin ($T_{FIN}$) to be mathematically integrated into the active conduction width . The total fin count ($N_{FIN}$) is subsequently multiplied across the multi-fingered layout to derive the final terminal current matrix, ensuring that the structural advantages of multi-fin architectures are accurately represented in the simulation output .
 
-### 1.3 Numerical Core Solver Physics
-HSPICE does not evaluate logic states in the manner of digital event-driven simulators; it evaluates non-linear differential equations representing physical semiconductor phenomena . The J-2014.09-SP2-2 engine converts the input `.sp` netlist into a directed mathematical graph, mapping physical node voltages to admittance edges. This topology is subsequently processed through Modified Nodal Analysis (MNA). 
+Beyond pure geometry, the BSIM-CMG model computes severe intrinsic quantum mechanical anomalies. The engine calculates sub-surface Drain-Induced Barrier Lowering (DIBL) via multi-gate geometric equations intertwined with the Equivalent Oxide Thickness ($EOT$) and spatial fringing fields . Furthermore, extreme scaling forces the engine to model gate-dielectric tunneling. The simulator calculates distinct gate leakage vector arrays via the parameters `IGCMOD` and `IGBMOD`. It maps the physical leakage current flowing from the gate through sub-2nm oxides to the active channel ($I_{gc}$) and to the bulk substrate ($I_{gb}$) by continuously executing quantum tunneling probability functions at every evaluated timestep . Additional modifiers, such as `RDSMOD` (parasitic drain/source resistance model) and `GIDLMOD` (Gate-Induced Drain Leakage model), further refine the leakage and degradation profiles .
 
-The fundamental algorithmic structure is represented by the differential matrix equation:
-$G \cdot V + C \cdot \frac{dV}{dt} = I$
+### 5.2 Mathematical Matrix Assembly: Modified Nodal Analysis
+The core operational loop of HSPICE translates the physical FinFET layout into an immense algebraic topology utilizing Modified Nodal Analysis (MNA). MNA significantly extends classical Kirchhoff’s Current Law by accommodating components that cannot be modeled by simple nodal admittance matrices, such as ideal voltage sources, inductors, and complex controlled current sources .
 
-In this architecture, $G$ represents the conductance matrix, $C$ represents the capacitance and inductance matrix, $V$ is the vector of unknown node voltages, and $I$ is the vector of independent voltage and current sources. Because transistor current-voltage characteristics (especially within BSIM-CMG FinFET models) are highly non-linear, the solver utilizes the Newton-Raphson iterative algorithm to find mathematical convergence . The algorithm linearizes the circuit equations at a guessed operating point ($V_0$), solves the resultant matrix to determine the new voltage vector ($V_1$), and calculates the error delta representing $\vert{}V_1 - V_0\vert{}$. 
+The internal parser initiates execution by flattening all subcircuit hierarchies and constructing a global system of Differential-Algebraic Equations (DAEs). The fundamental structure of this system is expressed as:
+$G \cdot \mathbf{v}(t) + C \cdot \frac{d\mathbf{v}(t)}{dt} + \mathbf{F}(\mathbf{v}(t)) = \mathbf{i}(t)$
+Within this differential matrix architecture:
+*   $G$ represents the sparse conductance matrix formed by linear resistive elements.
+*   $C$ constitutes the capacitance and inductance storage matrix, holding differential charge states across time.
+*   $\mathbf{v}(t)$ denotes the vector of unknown nodal voltages and branch currents that the engine must solve.
+*   $\mathbf{i}(t)$ is the vector of independent external source stimuli.
+*   $\mathbf{F}(\mathbf{v}(t))$ encapsulates the highly non-linear device physics equations evaluated continuously from the BSIM-CMG compact models .
 
-The acceptance of the $V_1$ vector as the mathematically correct voltage at a specific timestep is dictated strictly by the system's convergence tolerances . The Relative Tolerance (`RELTOL`) dictates the maximum allowable percentage error between iterations. The Absolute Current Tolerance (`ABSTOL`) defines the noise floor for current measurements, preventing non-convergence on mathematically zero-current nodes, while the Absolute Voltage Tolerance (`VNTOL`) defines the noise floor for voltage accuracy. If the error delta exceeds these tolerances, the system resets the guess to $V_1$ and iterates again. If convergence fails entirely, the engine triggers a timestep cutback, dynamically shrinking the transient time step ($\Delta t$) to resolve high-frequency voltage spikes before attempting another matrix inversion.
+### 5.3 Non-Linear Resolution and Newton-Raphson Iteration
+Because the BSIM-CMG equations driving the $\mathbf{F}(\mathbf{v}(t))$ vector are extraordinarily non-linear, the equation cannot be solved directly via simple matrix inversion. The engine instead relies on the Newton-Raphson iterative method to converge upon a mathematically sound operating point.
 
-For time-domain numerical integration, the engine supports multiple discrete time approximation methods . By default, the J-2014.09-SP2-2 engine utilizes the Trapezoidal method (`METHOD=TRAP`), which offers high accuracy with minimal computational overhead but is susceptible to artificial numerical oscillation (known as ringing) in highly inductive circuits. To counteract simulation instability in switching regulators or resonant oscillators, infrastructure architects can invoke the Gear method (`METHOD=GEAR`), a backward-differentiation formula that inherently damps numerical ringing, albeit at the cost of artificially suppressing high-frequency physical resonance if the timestep is not strictly managed .
+For a given instance in time, the engine formulates an initial predictive guess for the voltage vector ($\mathbf{V}_0$). It subsequently calculates the Jacobian matrix—representing the partial derivatives of all currents with respect to all voltages—at this specific bias point, effectively linearizing the localized circuit behavior. It solves this linear system to determine the subsequent vector ($\mathbf{V}_1$), and calculates the error delta as the absolute mathematical difference ($|\mathbf{V}_1 - \mathbf{V}_0|$). 
 
----
+Convergence is strictly achieved only when this error delta satisfies rigid mathematical bounds dictated by the engine's internal `.OPTION` tolerance parameters .
 
-## CHAPTER 2: EXHAUSTIVE INTERACTION WITH THE AVANWAVES VISUALIZER
+| Tolerance Parameter | Function | Default Value | Convergence Implication |
+| :--- | :--- | :--- | :--- |
+| **`RELTOL`** | Relative Error Tolerance | $10^{-3}$ (0.1%) | Dictates the percentage of acceptable error relative to the calculated node value. |
+| **`VNTOL`** | Voltage Node Tolerance | $1 \mu V$ | Establishes the absolute voltage convergence floor for microscopic potentials. |
+| **`ABSTOL`** | Absolute Current Tolerance | $1 pA$ | Establishes the absolute current convergence floor for leakage vectors. |
 
-### 2.1 Binary Invocation & Path Mechanics
-The visualization pipeline is handled exclusively by AvanWaves, executed via the specific path `D:\Hspice_J-2014.09-SP2-2\BIN\awaves.exe`. AvanWaves is engineered to bypass standard random-access memory allocation behaviors common to standard plotting utilities . It does not attempt to ingest massive, multi-gigabyte binary output files directly into active memory. Instead, it utilizes selective memory mapping. When instructed to open a file, AvanWaves parses only the header block to build a lightweight index table of signals and their corresponding byte-offsets. When a user queries a specific nodal trace in the graphical interface, the application jumps to the exact memory address on the hard drive, pulls only the required isolated floating-point vector column, and maps it directly to the pixel rendering engine.
+If the calculated state $\mathbf{V}_1$ yields an error where the change in voltage ($\Delta V$) is less than or equal to $(\text{RELTOL} \times V_n) + \text{VNTOL}$, and the change in current ($\Delta I$) is less than or equal to $(\text{RELTOL} \times I_n) + \text{ABSTOL}$, the Newton-Raphson iteration terminates successfully. The node values are logged to memory, and the engine steps forward to the next analytical time slice .
 
-AvanWaves can be orchestrated via command-line arguments to streamline automation from shell scripts without requiring manual GUI navigation. The `-d` switch automatically opens the specified simulation results database, while the `-c` switch loads a pre-defined window and macro configuration file (`awaves.cfg`), allowing for instantaneous standardized plotting layouts across successive simulation runs . Additionally, the `-laf` switch forces the look-and-feel of the GUI engine (e.g., Windows, Motif), establishing a uniform user experience across mixed OS enterprise environments.
-
-### 2.2 Data Formats & Compatibility
-To ensure strict compatibility with `awaves.exe`, the HSPICE simulation engine must be explicitly commanded to generate proprietary output formats. The formatting of the output matrix is governed by the `.OPTION POST` directive within the root netlist . Utilizing `.OPTION POST=1` forces the computation engine to write out data in a highly compressed proprietary binary format. This is the optimal setting for the J-2014.09-SP2-2 solver, as it minimizes chronological I/O bottleneck times during mathematical execution and allows AvanWaves to utilize its rapid disk-seek architecture. Conversely, invoking `.OPTION POST=2` forces an ASCII plain-text output format. While ASCII is platform-independent, it results in file sizes exponentially larger than binary arrays and severely degrades AvanWaves' rendering velocity during data ingestion .
-
-When the binary compression flag is invoked, the engine generates distinct vector files based on the requested analysis domains. 
-
-| File Extension | Mathematical Domain | Pipeline Purpose & Description |
-| :--- | :--- | :--- |
-| `.tr0`, `.tr1` | Time-Domain | Generated by `.tran` commands. Contains dense arrays representing transient voltage and current vectors plotted against nanosecond or picosecond time axes . |
-| `.sw0`, `.sw1` | DC Sweep Domain | Generated by `.dc` commands. Contains static transfer characteristics representing output nodal states plotted against a continuously swept input voltage or current parameter . |
-| `.ac0`, `.ac1` | Frequency Domain | Generated by `.ac` commands. Contains complex floating-point arrays (both magnitude and phase data) plotted against logarithmic frequency vectors. |
-| `.st0` | Telemetry Data | A real-time status output file indicating CPU usage, memory allocation, and the current mathematical time-step iteration, used by external daemons to monitor simulation progress . |
-| `.lis` | Execution Audit | The master listing file containing the execution audit, memory utilization, syntax warnings, initial DC operating point tables, and explicitly requested `.PRINT` text tables . |
-
-### 2.3 Configuration & Customization
-AvanWaves maintains deep customizability through its internal Expression Builder and Macro evaluation architecture. The Expression Builder allows engineers to perform complex algebraic and calculus operations on waveform vectors directly within the visualizer without requiring a computational re-run from the core `hspice.exe` solver . For instance, an engineer can compute the instantaneous dynamic power dissipation of a specific FinFET device by mathematically multiplying the drain voltage vector array by the drain current vector array. The Expression Builder evaluates syntactic strings such as `v(out) * i(m1)` in real-time . 
-
-These mathematical macro operations, along with complex panel arrangements, axis scaling limits, and custom waveform colors, can be saved to local configuration files. By utilizing the internal save mechanisms, the visualizer commits the current session's macros and panel layouts to a configuration file (e.g., `awaves.cfg`) within the active working directory. This architecture allows subsequent automated batch runs to inherit the exact analytical environment, ensuring perfectly standardized engineering print setups and logs across multiple verification iterations .
-
----
-
-## CHAPTER 3: CAD RUNTIME NETLIST ARCHITECTURE & EXHAUSTIVE DIRECTIVES
-
-### 3.1 Execution Workflow Block Diagram
-The deployment pipeline follows a strict, sequential handoff between the operating system shell, the mathematical solver, the cryptographic licensing daemon, and the visualizer.
-
-[1. User/Script Netlist Initialization]
-|
-       v
-+-------------------------------------------------------+
-
-| Netlist Source Code (.sp) |
-| Device Models (.inc / .lib) |
-+-------------------------------------------------------+
+### 5.4 Timestep Integration and Local Truncation Error
+To convert the continuous differential capacitance equations of the MNA matrix into discrete algebraic forms solvable by computer architecture, HSPICE employs implicit numerical integration formulas, primarily utilizing Backward Euler or the Trapezoidal Rule. The algorithmic determination of the integration timestep ($\Delta t$) is vital; an excessively large step yields numerical instability and charge non-conservation, while a step too small drives the central processing unit runtime toward infinity.
 
-| (Execution Command: hspice.exe -i design.sp -o design)
-       v
-+=================================================================+
+The engine governs this dynamic sizing by utilizing the Local Truncation Error (LTE) algorithm, explicitly activated via the `.OPTION LVLTIM=2` directive . Instead of merely limiting timesteps based on the raw rate of voltage change (as seen in older `DVDT` algorithms), the LTE method mathematically predicts the Taylor series truncation error at each discrete time step . The engine scales this internal algorithmic estimate by the `TRTOL` option (typically possessing a value between 1 and 10). Increasing `TRTOL` instructs the engine to tolerate slightly higher mathematical error, thereby taking larger timesteps and accelerating the simulation at the risk of smoothing out high-frequency transient spikes .
 
-| HSPICE J-2014.09-SP2-2 (64-BIT) |
-| |
-| [Parsing & Flattening] -> [Directed Computational Graph] |
-| | |
-| {TCP 27000 Handshake to fazlayelahi29 via SNPSLMD_LICENSE} |
-| | |
-| [Matrix Setup] -> [Newton-Raphson Solver] -> [Timestep Engine] |
-+=================================================================+
-|
-| (Output Matrix Generation via .OPTION POST=1)
-       v
-+-------------------------------------------------------+
+If the Newton-Raphson solver fails to achieve convergence within a predefined maximum number of iterations, the algorithm initiates an aggressive "timestep cutback." It dynamically shrinks $\Delta t$ and re-attempts the solver loop to mathematically resolve violent, high-frequency voltage spikes . To assist with intractable convergence failures on highly non-linear nodes, the engine allows the injection of artificial mathematical accelerants. Options such as `GMIN` place a microscopic $10^{-12}$ Siemen conductance across all semiconductor junctions to prevent matrix singularities, while `CSHUNT` provides parallel capacitive grounding to dampen extreme oscillatory behavior during the initial state resolution .
 
-| .lis (ASCII Audit, Warnings, & Execution Log) |
-| .tr0 (Compressed Binary Transient Waveforms) |
-| .st0 (Real-Time Telemetry & CPU Status) |
-+-------------------------------------------------------+
-|
-       v (Shell Invocation: awaves.exe -d design)
-+-------------------------------------------------------+
+### 5.5 Hardware Acceleration via HSPICE Precision Parallel
+The immense dimension of post-layout netlists, which regularly include millions of extracted parasitic interconnect resistors and coupling capacitors, creates MNA matrices of staggering complexity. To circumvent severe processing bottlenecks, the simulation pipeline utilizes HSPICE Precision Parallel (HPP) execution protocols .
 
-| AvanWaves J-2014.09-SP2-2 Visualizer |
-| |
-| [Memory Maps .tr0 Header Array] |
-| [Renders Pixels via Win32 UI / Expression Builder] |
-+-------------------------------------------------------+
+By invoking the multithreading switch (`-mt`), the engine abandons traditional monolithic direct matrix solvers. Instead, it deploys advanced left-looking sparse matrix algorithms. The HPP framework dynamically analyzes the MNA graph, slices independent mathematical branches, and distributes them across distinct physical CPU cores. By localizing sub-matrix arithmetic to the CPU's Level 2 and Level 3 hardware caches, the architecture drastically reduces main-memory fetch latency, resolving massively parallel sparse matrices concurrently in a fraction of the traditional execution time .
 
-### 3.2 Syntax Valid Netlist Blueprint
-The following is a production-grade, syntax-perfect `.sp` netlist engineered specifically for the J-2014.09-SP2-2 solver. It models a nanoscale FinFET CMOS inverter, utilizing the BSIM-CMG parameters required to model multi-gate physics. It incorporates the explicit `.OPTIONS POST=1` command to guarantee AvanWaves binary ingestion compatibility .
+## 6. Post-Processing Architecture: The Avanwaves Subsystem
+Handling the massive output `.tr0` binary waveform files generated by multi-threaded precision runs requires a highly specialized data ingestion engine. Avanwaves (`awaves.exe`) serves as this dedicated graphical vector-rendering platform, meticulously engineered to prevent catastrophic system memory overflow when parsing transient wave files that frequently exceed tens of gigabytes in size.
 
-```spice
-* MASTER ENTERPRISE FINFET INVERTER CHARACTERIZATION NETLIST
-* Target Engine: HSPICE J-2014.09-SP2-2 (64-BIT)
-* Visualization Target: AvanWaves awaves.exe
+When an engineer opens a `.tr0` file, Avanwaves refuses to load the raw floating-point data directly into system Random Access Memory. Instead, it executes a process of Selective Memory Mapping. The software strictly reads the binary file's header block, parsing it to build a highly optimized, lightweight index table of signal vectors . The heavy double-precision data remains static on the physical hard drive. Only when a specific physical node is requested via the graphical interface does the subsystem jump to the exact mapped memory address on the disk, fetch the isolated floating-point vector array, and pipe it efficiently to the pixel rendering engine.
 
-* --- Simulation Directives & Formatting ---
-.OPTIONS POST=1 INGOLD=2 NUMDGT=10
-.OPTIONS RELTOL=1e-5 ABSTOL=1e-10 VNTOL=1e-6
-.OPTIONS GMIN=1e-12 CONV=1 METHOD=TRAP
-.OPTIONS NODE LIST NOMOD
+Furthermore, Avanwaves encompasses a powerful internal macro evaluator, driven by Application Interface Mathematics (AIM) functions . This internal calculator allows engineers to perform complex vector arithmetic in real-time. Operations such as integrating a current vector array over time to yield total charge, subtracting two distinct nodal arrays to measure differential voltage swing, or performing Fast Fourier Transforms (FFT) on oscillating signals can be executed instantly in-memory. This negates the requirement for the user to manually edit the master netlist and re-run the computationally expensive HSPICE physics engine to derive secondary mathematical metrics .
 
-* --- Global Parameters & Supply ---
-.PARAM vdd_val = 0.8v
-.PARAM fin_height = 30n
-.PARAM fin_thick = 15n
-.PARAM gate_len = 14n
+## 7. Cryptographic Licensing Infrastructure
+The extraordinary physics computation and parallelization capabilities stationed on the `fazlayelahi29` workstation are strictly governed by an uncompromising network licensing protocol. Execution rights are dictated by FlexNet Publisher v11.14.0.2 application layer protocols, which leverage Elliptic Curve Cryptography to bind virtual software execution tokens directly to the physical silicon of the host machine .
 
-Vdd n_vdd 0 DC vdd_val
-Vin n_in 0 PULSE(0 vdd_val 2n 20p 20p 4n 10n)
+### 7.1 The Cryptographic Hardware Merge
+To generate a valid `Synopsys.dat` payload file, the licensing architecture concatenates a series of immutable hardware and software parameters. This includes the workstation’s physical Media Access Control (MAC) address serving as the Host ID, the Hostname string, the specific requested Feature String (e.g., `hspice` or `hspice_rf`), and the hardcoded token expiration date. This concatenated block is routed through a private-key cryptographic hashing algorithm at the vendor level. The resultant asymmetric alphanumeric output signature becomes the highly guarded `SIGN=` payload on the active feature line within the local dat file.
 
-* --- Device Instantiation (BSIM-CMG FinFET) ---
-* Syntax: M<name> Nd Ng Ns Nb ModelName L=... NFIN=...
-Mp1 n_out n_in n_vdd n_vdd PFINFET_MOD L='gate_len' NFIN=4
-Mn1 n_out n_in 0 0 NFINFET_MOD L='gate_len' NFIN=2
-Cload n_out 0 5f
+### 7.2 The Dual-Daemon Network Topology
+The system enforces licensing through a specialized dual-daemon network topology, isolating initial license discovery from the actual vendor business logic:
+1.  **The Master Daemon (`lmgrd.exe`)**: Booted silently by the Windows Service Control Manager via LMTOOLS. Upon initialization, it reads the `Synopsys.dat` file, reverse-verifies the physical MAC address of the host against the `SERVER` line, and subsequently binds to TCP port 27000 to listen passively for application queries .
+2.  **The Vendor Fork (`snpslmd.exe`)**: Once port binding is successful, `lmgrd.exe` executes a system fork, spawning the Synopsys-specific business logic daemon (operating under Process ID 11156 in this environment). This vendor daemon instantly runs the Synopsys Security System (SSS) audit to verify the cryptographic fingerprint. Upon successful validation of the payload, `snpslmd.exe` binds to a dynamic high-level TCP port (e.g., 58793) to manage live token allocation .
 
-* --- Predictive Transistor Models (BSIM-CMG Specific) ---
-* GEOMOD=1 (Triple-Gate), BULKMOD=1 (Bulk Substrate)
-.MODEL NFINFET_MOD NMOS LEVEL=72 
-+ GEOMOD=1 BULKMOD=1 TFIN='fin_thick' HFIN='fin_height'
-+ VTH0=0.25 U0=400 TOX=1.2n DIBL=0.05
-.MODEL PFINFET_MOD PMOS LEVEL=72 
-+ GEOMOD=1 BULKMOD=1 TFIN='fin_thick' HFIN='fin_height'
-+ VTH0=-0.25 U0=150 TOX=1.2n DIBL=0.05
+### 7.3 The Three-Way TCP Handshake and Telemetry
+When `hspice.exe` is initiated, the Newton-Raphson mathematical solver remains securely locked, refusing to parse netlists or populate the MNA matrix until network authentication succeeds via a specialized three-way handshake:
+*   **Discovery**: The client parses the Windows `SNPSLMD_LICENSE_FILE` environment variable and issues a query to TCP Port 27000 (`lmgrd.exe`).
+*   **Redirection**: The master daemon intercepts the query, denies direct checkout, and replies with a FlexNet packet instructing the client to sever the connection and re-route to the vendor daemon’s dynamic port (TCP 58793) .
+*   **Authentication**: Upon connecting to `snpslmd`, the vendor daemon issues a mathematical challenge hash. The `hspice.exe` client solves this hash utilizing a compiled internal key. The daemon validates the returned signature, decrements the active RAM seat table, and issues the execution unlock token.
 
-* --- Analysis Directives ---
-* Transient Analysis: Step=5ps, Stop=20ns
-.TRAN 5p 20n
+During mathematical processing, the physics engine continually transmits microscopic heartbeat frames to `snpslmd.exe`. If the workstation experiences a critical out-of-memory crash during an extreme matrix iteration, the heartbeat instantly terminates. The daemon's internal garbage-collection routine detects this timeout and immediately reclaims the floating software token, returning it to the enterprise pool to prevent license deadlocking .
 
-* DC Transfer Sweep: Sweep Vin from 0 to 0.8V in 10mV steps
-.DC Vin 0 vdd_val 10m
+### 7.4 Diagnostic Telemetry and SSS Lockdown Vulnerabilities
+The Synopsys Security System cryptographic mechanism is exceptionally volatile and operates as a strict anti-tamper perimeter. Should the `Synopsys.dat` file contain so much as a single errant whitespace character, or if a virtual network adapter—such as a VMware or Hyper-V virtual switch—broadcasts a conflicting MAC address with priority over the physical Network Interface Card during the Windows boot sequence, the SSS decryption algorithms will fail to derive the correct key . 
 
-* --- Measurement Engine (TPHL & TPLH Delay Calculations) ---
-.MEASURE TRAN tplh TRIG v(n_in) VAL='vdd_val/2' FALL=1 
-+ TARG v(n_out) VAL='vdd_val/2' RISE=1
-.MEASURE TRAN tphl TRIG v(n_in) VAL='vdd_val/2' RISE=1 
-+ TARG v(n_out) VAL='vdd_val/2' FALL=1
-.MEASURE TRAN total_delay PARAM='(tplh+tphl)/2'
-.MEASURE TRAN avg_power AVG p(Vdd) FROM=0 TO=20n
+When the hash fails to decode properly, the diagnostic server logs output a specific critical failure sequence:
+* `Checking the integrity of the license file...`
+* `The SSS features are garbled.`
+* `All revenue keys ("SN=RK:..." on feature line) have been excluded.` 
 
-.END
-```
+This sequence indicates a complete defensive lockdown. The `snpslmd.exe` daemon aggressively protects its intellectual property by instantly excluding all feature keys from its active memory array. Consequently, when the HSPICE client attempts the handshake, the daemon replies with the fatal warning `DENIED: hspice - excluded by SSS`. This halts the execution pipeline at the network layer, preventing the mathematical solver from initializing and ensuring no physical computations can proceed on unauthorized or obfuscated hardware.
 
-### 3.3 Dot-Command Dictionary
-A thorough comprehension of execution directives is required to manipulate the mathematical bounds of the J-2014.09-SP2-2 engine.
+## 8. Strategic Synthesis and Systemic Implications
+The architecture deployed in the Dhaka ecosystem illuminates the intricate, multi-layered dependencies required to execute modern VLSI physical design analysis. The pairing of the J-2014.09-SP2-2 numerical engine with BSIM-CMG physics models grants engineers the capability to accurately simulate the esoteric non-planar quantum tunneling effects, velocity saturation, and extreme electrostatics inherent in nanoscale FinFET manufacturing. 
 
-**Primary Analysis Vectors:**
-The `.dc` command initiates a static operating point sweep. During this routine, the solver deactivates time-domain capacitors and inductors (treating them as open and short circuits, respectively) to calculate static I-V transfer characteristics across a specified voltage range . The `.tran` command initiates a non-linear time-domain analysis. The engine first calculates the initial DC bias of the network, then applies time-varying stimuli using dynamic matrices . The `.ac` command dictates a small-signal frequency domain analysis. The non-linear equations are linearized perfectly around the DC operating point, and a frequency sweep evaluates the circuit's complex phase and magnitude responses .
-
-**The Measurement Engine (.MEASURE):**
-The `.measure` subsystem allows the solver to extract highly specific data points directly during matrix evaluation and output them to proprietary `.mt0` measurement files, circumventing the need for manual cursor placement within AvanWaves . The `TRIG` and `TARG` directives define the starting and stopping events for timing calculations, commonly used for propagation delay evaluation . The `RISE`, `FALL`, and `VAL` parameters direct the engine to trigger exactly when a calculated voltage vector crosses a designated threshold on a specific edge . Furthermore, standard functions like `AVG`, `RMS`, and `PP` compute the Average, Root-Mean-Square, or Peak-to-Peak values of a specified waveform over a given time interval, which is essential for dynamic power consumption profiling .
-
-**Tuning & Formatting Directives:**
-The `.options` command fundamentally alters the execution parameters of the core solver. Beyond `POST=1` for binary generation, `INGOLD` specifies the printout data format for numeric values within the ASCII `.lis` audit file. Setting `INGOLD=1` forces scientific notation (e.g., 1.00E-09), while `INGOLD=2` invokes engineering notation (e.g., 1.00n) for human readability . The `NUMDGT` option dictates the absolute number of significant digits printed for output variables . While the default is 4, it can be aggressively scaled up to `NUMDGT=10` to guarantee maximum precision during extreme sub-threshold leakage analysis .
-
-Convergence stabilization variables are frequently required for advanced FinFET modeling. The `CONV` parameter assists in stabilizing non-convergent circuits by altering standard iteration limitations . The `GMINST` directive initiates a dynamic conductance stepping algorithm. If initial DC convergence fails due to highly non-linear device states, the solver places a massive artificial conductance (`GMIN`) across all nodes, calculates a crude solution, and incrementally reduces the conductance over subsequent iterations until the true physical solution emerges from the matrix . Additional options like `CSHDC` and `CSHUNT` provide further numerical damping by adding tiny parasitic capacitances to internal nodes to prevent mathematical singularities .
-
----
-
-## CHAPTER 4: INFRASTRUCTURE, NETWORKING, & SCL 2018.06-SP1 LICENSING
-
-### 4.1 The License Daemon Ecosystem
-Execution of the 64-bit HSPICE simulation engine is strictly controlled by a cryptographic network handshake governed by the Synopsys Common Licensing (SCL) 2018.06-SP1 framework. This infrastructure relies on the FlexNet Publisher v11.14.0.2 architecture , creating a highly secure perimeter around the EDA tools. 
-
-The system utilizes a dual-daemon topology to manage execution rights. When the `fazlayelahi29` workstation boots, the Windows Service Control Manager invokes `lmgrd.exe` (the Master Daemon). The Master Daemon parses the local license file, binds its listening socket exclusively to TCP Port 27000 , and immediately executes a system fork to spawn the business logic daemon `snpslmd.exe` (the Vendor Daemon). The Vendor Daemon validates the cryptographic payload using the proprietary Synopsys Security System (SSS) hashing algorithms. Only upon successful cryptographic verification does `snpslmd.exe` bind to an arbitrary high-level ephemeral TCP port (e.g., TCP 58793) to accept incoming token checkout requests from the simulation clients .
-
-### 4.2 File Parsing & Troubleshooting
-The structural integrity of the `D:\SCL 2018\Synopsys.dat` payload file is paramount. The file is divided into distinct hierarchical blocks that dictate the operational parameters of the daemons. 
-
-The **SERVER Block** (e.g., `SERVER fazlayelahi29 0128D07E321F 27000`) binds the license explicitly to the physical host name and the unique Network Interface Card (NIC) hardware MAC address . The **VENDOR Block** (`VENDOR snpslmd`) directs `lmgrd` to locate the proprietary Synopsys daemon executable. The **FEATURE** or **INCREMENT** blocks define the specific capabilities unlocked by the token. For this enterprise deployment, the crucial features are `hspice`, `hspice_adv` (required to unlock multi-threading capabilities), and `awaves` (required to launch the AvanWaves visualizer). Appended to every feature line is the **SIGN / SSS Payload**, which is an Elliptic Curve Cryptography hash that cryptographically binds the hostname, MAC address, and expiration date together.
-
-Diagnostic telemetry reveals that the SSS cryptographic lockdown mechanism is highly volatile . If the `Synopsys.dat` file is altered by even a single character, or if a virtual machine network adapter (e.g., VMware or Hyper-V) broadcasts a conflicting MAC address during the daemon boot sequence, the decryption routine fails. The audit log will report:
-`The SSS features are garbled... All revenue keys have been excluded.`
-This error triggers an instantaneous defensive lockdown, causing the `snpslmd.exe` Vendor Daemon to aggressively flush all available seats from its active memory . Consequently, when the HSPICE client attempts to connect, the daemon replies with a denial, shutting down the execution pipeline at the OSI network layer.
-
-### 4.3 Client-Server Network Mechanics
-The execution of `hspice.exe` relies on a precise Three-Way TCP Handshake that must complete before the Newton-Raphson solver is permitted to initialize:
-1.  **Discovery**: `hspice.exe` reads the `SNPSLMD_LICENSE_FILE` system variable and dispatches a FlexNet query to TCP Port 27000 on the host `fazlayelahi29`.
-2.  **Redirection**: `lmgrd.exe` intercepts the packet but does not allocate the license. Instead, it replies with a routing packet instructing `hspice.exe` to disconnect and reconnect to the dynamic ephemeral port currently held by the `snpslmd.exe` Vendor Daemon .
-3.  **Authentication**: `hspice.exe` negotiates with `snpslmd.exe`, solves a mathematical challenge hash based on its compiled internal keys, and is subsequently granted an active RAM seat. 
-
-If this handshake fails, the infrastructure architect must diagnose specific FlexNet error codes. **FlexNet Error -15 (Cannot connect to license server system)** indicates a catastrophic Layer 4 network failure . The client cannot reach the Master Daemon on TCP Port 27000. This is universally caused by the Windows Defender Firewall blocking inbound/outbound packets on port 27000, or the `lmgrd.exe` process failing to bind due to a crashed prior instance retaining a ghost grip on the socket . Conversely, **FlexNet Error -5 (No such feature exists)** indicates that the network handshake completed, but the Vendor Daemon rejected the request because the requested feature (e.g., `hspice`) is expired, misspelled, or was purged from active memory due to an SSS garbled string defensive lockout .
-
----
-
-## CHAPTER 5: PERFORMANCE OPTIMIZATION & WORKFLOW AUTOMATION
-
-### 5.1 Parallelization Tuning
-The 64-bit architecture of the J-2014.09-SP2-2 engine is uniquely suited to digest extreme computational workloads via symmetric multiprocessing. For highly parasitic post-layout netlists, relying on the default single-threaded execution model results in severe thermal constraints and unacceptable chronological bottlenecks.
-
-To optimize the Newton-Raphson iteration times, the engine features HSPICE Precision Parallel (HPP) . HPP utilizes sophisticated graph-partitioning algorithms to slice the central Jacobian matrix into independent mathematical sub-branches. To prevent computational bottlenecks, the algorithm utilizes left-looking sparse matrix solvers, processing these branches concurrently across multiple physical CPU cores. 
-
-To invoke parallelization, the execution string must explicitly command the `-mt` (multi-threading) and `-hpp` switches. For example, to execute the solver across 8 physical processor cores, the command string is formatted as:
-`D:\Hspice_J-2014.09-SP2-2\WIN64\hspice.exe -i design.sp -o design -hpp -mt 8` . 
-
-This approach dynamically allocates the mathematical sub-matrices directly into the localized L2 and L3 hardware caches of the CPU cores, drastically reducing the overall simulation runtime for extensive transient analyses . However, architects must note that multi-threading scaling efficiency is not strictly linear; performance gains frequently plateau beyond 8 to 16 cores due to ultimate constraints in motherboard memory bandwidth and the inherent interdependencies of non-linear matrix mathematics .
-
-### 5.2 Automation Scripts
-The complexity of this ecosystem demands a highly structured, failsafe execution environment. The following Windows PowerShell script automates the verification of the SCL daemon, the parallelized execution of the HSPICE J-2014.09-SP2-2 64-bit solver, the parsing of the ASCII audit log for simulation errors, and the subsequent launching of AvanWaves.
-
-```powershell
-# ==============================================================================
-# MASTER HSPICE WORKFLOW AUTOMATION SCRIPT
-# Target Environment: fazlayelahi29 (64-Bit Windows Architecture)
-# Target Engine: Synopsys HSPICE J-2014.09-SP2-2
-# Licensing: Synopsys Common Licensing (SCL) 2018.06-SP1
-# ==============================================================================
-
-Param (
-    [Parameter(Mandatory=$true)][string]$DesignName
-)
-
-# 1. Environment Variable Reinforcement
-$env:HSP_HOME = "D:\Hspice_J-2014.09-SP2-2"
-$env:SNPSLMD_LICENSE_FILE = "27000@fazlayelahi29"
-$HspiceBin = "D:\Hspice_J-2014.09-SP2-2\WIN64\hspice.exe"
-$AwavesBin = "D:\Hspice_J-2014.09-SP2-2\BIN\awaves.exe"
-
-Write-Host "[INIT] Commencing HSPICE Automation Pipeline..." -ForegroundColor Cyan
-
-# 2. Network Port Validation (Ensure TCP 27000 is listening)
-# Preemptively catches FlexNet Error -15 socket failures before matrix generation
-$PortTest = Test-NetConnection -ComputerName "fazlayelahi29" -Port 27000
-if (-not $PortTest.TcpTestSucceeded) {
-    Write-Host "[ERROR] FlexNet TCP Port 27000 is closed or blocked by Firewall." -ForegroundColor Red
-    Write-Host "[ERROR] Ensure lmgrd.exe is running via LMTOOLS and inbound rules allow Port 27000." -ForegroundColor Red
-    Exit
-}
-Write-Host "[OK] Synopsys Common Licensing (SCL) Master Daemon Handshake Verified." -ForegroundColor Green
-
-# 3. Solver Execution (Multi-Threaded HPP Mode)
-$InputFile = "$DesignName.sp"
-$OutputFile = "$DesignName"
-
-if (-not (Test-Path $InputFile)) {
-    Write-Host "[ERROR] Netlist $InputFile not found in active directory." -ForegroundColor Red
-    Exit
-}
-
-Write-Host "[EXEC] Launching HSPICE J-2014.09-SP2-2 (64-BIT)..." -ForegroundColor Yellow
-# Invoking 4-core multi-threading with HSPICE Precision Parallel
-$HspiceProcess = Start-Process -FilePath $HspiceBin -ArgumentList "-i $InputFile -o $OutputFile -hpp -mt 4" -Wait -NoNewWindow -PassThru
-
-# 4. Audit File Verification (.lis)
-$LisFile = "$DesignName.lis"
-if (Test-Path $LisFile) {
-    # Scan the listing file for catastrophic abort triggers or convergence failures
-    $AbortCheck = Select-String -Path $LisFile -Pattern "error \*\*\*\*\*"
-    if ($AbortCheck) {
-        Write-Host "[FATAL] HSPICE Job Aborted. Convergence failure or Syntax Error detected." -ForegroundColor Red
-        Write-Host $AbortCheck -ForegroundColor Gray
-        Exit
-    } else {
-        Write-Host "[OK] HSPICE Mathematical Execution Concluded Successfully." -ForegroundColor Green
-    }
-} else {
-    Write-Host "[ERROR] Listing file .lis not generated. Execution pipeline failure." -ForegroundColor Red
-    Exit
-}
-
-# 5. Visualizer Orchestration
-$Tr0File = "$DesignName.tr0"
-if (Test-Path $Tr0File) {
-    Write-Host "[UI] Dispatching Compressed Binary Waveforms to AvanWaves..." -ForegroundColor Cyan
-    # Automatically loads the database and maximizes the UI for engineering review
-    Start-Process -FilePath $AwavesBin -ArgumentList "-d $DesignName" -WindowStyle Maximized
-} else {
-    Write-Host "[WARNING] .tr0 file missing. Ensure .OPTION POST=1 is present in the netlist." -ForegroundColor Yellow
-}
-
-Write-Host "[SYS] EDA Pipeline Terminated." -ForegroundColor Cyan
-```
-
-This enterprise script solidifies the infrastructure boundaries by locking execution exclusively to the explicit binary paths. By utilizing `Test-NetConnection` to preemptively audit the FlexNet TCP socket, it ensures zero computational CPU cycles are wasted on an unauthenticated simulation attempt, preserving system resources and streamlining the overall CAD verification methodology. 
+However, this vast computational power, enabled by precision multithreading and meticulously optimized local truncation error tolerances, remains entirely subservient to a fragile network layer. The primary operational risk in this pipeline does not stem from mathematical divergence or non-linear matrix singularities during transient analysis, but rather from the strict cryptographic reliance on physical MAC addresses. Standard enterprise IT practices, such as the deployment of virtual adapters or dynamic network bridging, can inadvertently trigger a Synopsys Security System lockdown, instantly terminating multi-million dollar semiconductor engineering workflows. Absolute mastery of this deployed ecosystem therefore demands not only profound expertise in Modified Nodal Analysis and sub-16nm semiconductor physics but also an exacting command of Windows memory allocation, file pointer persistence, and OSI Layer 7 cryptographic routing. 
 
 
 ## Sources
 
-- [**synopsys.com** HSPICE Quick Reference M-2017.03 - Synopsys](https://www.synopsys.com/content/dam/synopsys/verification/hspice-quickrefcard-M-2017-03.pdf)
-- [**academia.edu** (PDF) BSIM—SPICE Models Enable FinFET and UTB IC Designs](https://www.academia.edu/98591178/BSIM_SPICE_Models_Enable_FinFET_and_UTB_IC_Designs)
-- [**scribd.com** BSIM-CMG 112.0.0beta2 Technical Manual | PDF - Scribd](https://www.scribd.com/document/808293021/BSIM-CMG-112-0-0beta2-Technical-Manual)
-- [**advanceduninstaller.com** hspice P-2019.06-SP1-1 version 2019.0611 by Synopsys Inc](https://www.advanceduninstaller.com/hspice-P-2019_06-SP1-1-c0a3a0183f53ab4edba47355a0284b63-application.htm)
-- [**web.mit.edu** 6.012 - SPICE GUIDE - MIT](https://web.mit.edu/6.012/FALL99/www/spice/SPICE.htm)
-- [**semanticscholar.org** BSIM-CMG: Standard FinFET compact model for advanced circuit](https://www.semanticscholar.org/paper/BSIM-CMG%3A-Standard-FinFET-compact-model-for-circuit-Duarte-Khandelwal/2f7f095acbef181f9f54fc4baed15697ed5e4919/figure/1)
-- [**scribd.com** BSIMCMG108 0 0manual | PDF | Field Effect Transistor - Scribd](https://www.scribd.com/document/815575200/BSIMCMG108-0-0Manual)
 - [**cseweb.ucsd.edu** HSPICE Reference Manual: Commands and Control Options](https://cseweb.ucsd.edu/classes/wi10/cse241a/assign/hspice_cmdref.pdf)
-- [**vdoc.pub** Circuit Simulation With Spice Opus: Theory And Practice [PDF]](https://vdoc.pub/documents/circuit-simulation-with-spice-opus-theory-and-practice-cpb4glinac60)
-- [**researchgate.net** Digital Wave vs. Nodal Analysis for Circuit ... - ResearchGate](https://www.researchgate.net/profile/Piero_Belforte/publication/288668128_Digital_Wave_vs_Nodal_Analysis_for_Circuit_Simulation_an_experimental_comparison/links/5682ab9e08aebccc4e0e0326/Digital-Wave-vs-Nodal-Analysis-for-Circuit-Simulation-an-experimental-comparison.pdf)
-- [**cmosedu.com** AvanWaves User Guide - CMOSedu.com](https://cmosedu.com/cmos1/hspice/AvanWaves_User_Guide.pdf)
-- [**dartec.com** AvanWaves User Guide](https://www.dartec.com/MIC4120/SPICE/awaves.pdf)
-- [**scribd.com** Hspice Guide | PDF | Spice | Electrical Resistance And Conductance](https://www.scribd.com/doc/291274456/Hspice-Guide)
+- [**technav.ieee.org** Circuit analysis computing | IEEE Technology Navigator](https://technav.ieee.org/topic/circuit-analysis-computing/)
+- [**rudraj.it** HSPICE Reference Manual](http://www.rudraj.it/hspice_cmdref.pdf)
+- [**ece.iisc.ac.in** HSPICE User Guide: Signal Integrity - ECE, IISc](https://ece.iisc.ac.in/~dipanjan/E8_262/hspice_si.pdf)
 - [**web.stanford.edu** Star-Hspice Manual - Stanford University](https://web.stanford.edu/class/archive/ee/ee371/ee371.1066/tools/hspice.pdf)
-- [**cse.psu.edu** HSICE Simulation Guide](https://www.cse.psu.edu/~kxc104/class/cse577/11s/lec/HSPICEGuide.pdf)
-- [**cs.tufts.edu** HSPICE Tutorial](https://www.cs.tufts.edu/comp/103/labs/lab1.html)
-- [**courses.ece.ubc.ca** ELEC 480 - HSpice Instructions](https://courses.ece.ubc.ca/480/priv_2006/instr_hspice.htm)
-- [**brainkart.com** Spice Tutorial - BrainKart](https://www.brainkart.com/article/Spice-Tutorial_13187/)
-- [**ee.columbia.edu** AvanWaves Manual](https://www.ee.columbia.edu/~kinget/EE3081_F02/documentation/avanwaves.pdf)
-- [**web.stanford.edu** SPICE Quick Reference Sheet v1.0](https://web.stanford.edu/class/ee133/handouts/general/spice_ref.pdf)
-- [**scribd.com** CAD Tools and HSPICE Overview | PDF | Spice - Scribd](https://www.scribd.com/document/254989513/Intro-to-Cad-Tools-2012)
-- [**nthuee.org** HSPICE Reference Manual: Commands and Control Options](https://nthuee.org/archive/AIC/106%E8%AC%9D%E5%BF%97%E6%88%90/Hspice/hspice_cmdref.pdf)
-- [**cse.chalmers.se** HSPICE Quick Reference Guide](https://www.cse.chalmers.se/~perla/ugrad/EDA351/HSPICEQuickRef.pdf)
-- [**scribd.com** Hspice Command Ref | PDF | Spice - Scribd](https://www.scribd.com/document/839625956/Hspice-Command-Ref)
-- [**electronics.stackexchange.com** How can I change decimal place in HSPICE?](https://electronics.stackexchange.com/questions/430826/how-can-i-change-decimal-place-in-hspice)
+- [**scribd.com** BSIM-CMG 112.0.0beta2 Technical Manual | PDF - Scribd](https://www.scribd.com/document/808293021/BSIM-CMG-112-0-0beta2-Technical-Manual)
+- [**bsim.gitbooks.io** 5.1.1 Basic Device Parameter List · BSIM-CMG Technical Manual](https://bsim.gitbooks.io/bsimcmg/content/Ch5.1.1.html)
+- [**scribd.com** BSIMCMG108 0 0manual | PDF | Field Effect Transistor - Scribd](https://www.scribd.com/document/815575200/BSIMCMG108-0-0Manual)
+- [**arxiv.org** Physics-Regularized Iterative Symbolic Modeling of 3nm FinFETs](https://arxiv.org/pdf/2609.13200)
+- [**scribd.com** BSIM4 4.8.1 Technical Manual | PDF | Field Effect Transistor - Scribd](https://www.scribd.com/document/507835958/BSIM4-4-8-1-Technical-Manual)
+- [**scribd.com** 基于BSIM-CMG的FinFET器件模型的研究朱袁科 - Scribd](https://www.scribd.com/document/719523237/%E5%9F%BA%E4%BA%8EBSIM-CMG%E7%9A%84FinFET%E5%99%A8%E4%BB%B6%E6%A8%A1%E5%9E%8B%E7%9A%84%E7%A0%94%E7%A9%B6-%E6%9C%B1%E8%A2%81%E7%A7%91)
+- [**mathematik.hu-berlin.de** Model Design Criteria for Integrated Circuits to Have a Unique](https://www.mathematik.hu-berlin.de/~caren/pub/Tischendorf_ModelDesignCriteria.pdf)
+- [**uom.lk** modified nodal analysis](https://uom.lk/sites/default/files/elect/files/ee321s3.3.pdf)
+- [**hvg.ece.concordia.ca** A Tool for Modeling and Analysis of Electronic Circuits and Systems](https://hvg.ece.concordia.ca/Publications/TECH_REP/TMAAC_TR12/TMAAC_TR12.pdf)
+- [**researchgate.net** Modified nodal matrix before pivoting. - ResearchGate](https://www.researchgate.net/figure/Modified-nodal-matrix-before-pivoting_fig1_3184759)
+- [**ftp.riken.jp** ngspice user manual - ftp](http://ftp.riken.jp/Linux/gentoo/distfiles/d4/ngspice-43-manual.pdf)
 - [**simetrix.co.uk** SIMETRIX SIMULATOR REFERENCE MANUAL](https://www.simetrix.co.uk/Files/manuals/8.5/SimulatorReference.pdf)
-- [**edaboard.com** PSS convergence in PLL simulation | Forum for Electronics](https://www.edaboard.com/threads/pss-convergence-in-pll-simulation.382266/)
+- [**scribd.com** Hspice Command Ref | PDF | Spice - Scribd](https://www.scribd.com/document/839625956/Hspice-Command-Ref)
+- [**scribd.com** Overview of HSPICE Simulation Options | PDF | Spice - Scribd](https://www.scribd.com/document/888815871/Useful-Information-About-HSPICE)
 - [**scribd.com** HSPICE® Reference Manual: Commands and Control Options](https://www.scribd.com/document/224238938/hspice-cmdref)
+- [**scribd.com** Hspice Sa | PDF | Mosfet | Spice - Scribd](https://www.scribd.com/document/247050725/hspice-sa)
+- [**scribd.com** Hspice Sa PDF | PDF | Copyright | Electronic Engineering - Scribd](https://www.scribd.com/doc/248897174/hspice-sa-pdf)
+- [**cdn14.21dianyuan.com** CosmosScope Calculator Reference Manual](https://cdn14.21dianyuan.com/download.php?id=43090)
+- [**u.dianyuan.com** Saber Tools Reference](https://u.dianyuan.com/upload/bbs/2010/07/27/1280198833-305064.pdf)
+- [**studylib.net** HSPICE Integration to Cadence Virtuoso User Guide - Studylib](https://studylib.net/doc/18427575/hspice-integration-to-cadence-virtuoso-analog-design-envi...)
+- [**amd.com** Licensing FAQ - AMD](https://www.amd.com/en/products/software/adaptive-socs-and-fpgas/licensing-faq.html)
+- [**scribd.com** FLOW-3D Installation Guide | PDF | Command Line Interface - Scribd](https://www.scribd.com/document/657968254/FLOW-3D-HYDRO-installation-instructions)
+- [**jtbworld.com** Autodesk Network License Manager - JTB World](https://jtbworld.com/autodesk-network-license-manager)
+- [**flexerasoftware.my.site.com** FlexNet Publisher Release History - contact Flexera Support](https://flexerasoftware.my.site.com/revenera/s/article/flexnet-publisher-release-history)
+- [**synopsys.com** Synopsys License Verification](https://www.synopsys.com/content/dam/synopsys/support/documents/licensing/scl-license-verification.pdf)
 - [**scribd.com** SCL 2018.06-SP1 Install | PDF - Scribd](https://www.scribd.com/document/994154357/SCL-2018-06-SP1-Install)
 - [**synopsys.com** Licensing QuickStart Guide | Synopsys](https://www.synopsys.com/support/licensing-installation-computeplatforms/licensing.html)
-- [**community.flexera.com** What are the Default tcp Ports for Components of the FlexNet](https://community.flexera.com/s/article/what-are-the-default-tcp-ports-for-components-of-the-flexnet-publisher-license-server-lmgrd-and-vendor-daemon)
-- [**synopsys.com** Synopsys License Verification](https://www.synopsys.com/content/dam/synopsys/support/documents/licensing/scl-license-verification.pdf)
-- [**jtbworld.com** JTB FlexReport FAQ - Frequently Asked Questions](https://jtbworld.com/jtb-flexreport-faq)
-- [**optics.ansys.com** Fixing common licensing errors - Ansys Optics](https://optics.ansys.com/hc/en-us/articles/5535208693651-Fixing-common-licensing-errors)
-- [**esrd.com** How Do I Set Up Rules in Windows Firewall for the FlexNet License](https://www.esrd.com/support/software-faqs/flexnet-license-manager-windows-firewall-rules/)
-- [**cdn.comsol.com** COMSOL Multiphysics Installation Guide](https://cdn.comsol.com/doc/5.3/COMSOL_MultiphysicsInstallationGuide.pdf)
-- [**scribd.com** LDRA FlexLM Licensing Guide 2025 | PDF - Scribd](https://www.scribd.com/document/920848766/Licencing-Guide)
-- [**eetimes.com** Synopsys' HSPICE Precision Parallel claims 7X simulation speed-up](https://www.eetimes.com/synopsys-hspice-precision-parallel-claims-7x-simulation-speed-up/)
-- [**researchgate.net** Performance scaling with number of parallel CPU threads showing](https://www.researchgate.net/figure/Performance-scaling-with-number-of-parallel-CPU-threads-showing-run-time-improvement-with_fig3_372182022)
-- [**ece.northeastern.edu** DIGITAL CIRCUIT SIMULATION USING HSPICE - Electrical and](https://ece.northeastern.edu/courses/eece4525/2018su/Hspice/dig_sim.pdf)
-- [**ece.iisc.ac.in** HSPICE User Guide: Signal Integrity - ECE, IISc](https://ece.iisc.ac.in/~dipanjan/E8_262/hspice_si.pdf)
-- [**wenku.csdn.net** Ubuntu18.04虚拟机安装Synopsys2018 EDA工具避坑指南（VCS+](https://wenku.csdn.net/answer/jy676ic600s)
-- [**huaweicloud.csdn.net** UVM学习之路（1）— CentOS 7虚拟机下安装VCS开发环境_](https://huaweicloud.csdn.net/6707a747e2ce0119e0a1ccdf.html)
-- [**blog.csdn.net** Ubuntu 22.04安装Synopsys工具链：依赖处理与License配置全指南](https://blog.csdn.net/weixin_30516429/article/details/167023439)
-- [**ee.columbia.edu** EXPERIMENT 1 INSTRUCTIONS](https://www.ee.columbia.edu/~kinget/EE3081_F02/inst1.pdf)
-- [**scribd.com** Gateway Users1 | PDF | Spice | Graphical User Interfaces - Scribd](https://www.scribd.com/document/247865970/Gateway-Users1)
-- [**patents.google.com** GB2288521A - Reconfigurable process stage - Google Patents](https://patents.google.com/patent/GB2288521A/en)
-- [**mr-wu.cn** HSPICE的多线程及并行计算命令行参数 - 吴川斌的博客](https://www.mr-wu.cn/command-line-parameters-for-multithreading-and-distributed-processing-in-hspice/)
-- [**simetrix.co.uk** SIMETRIX SIMULATOR REFERENCE MANUAL](https://www.simetrix.co.uk/Files/manuals/9.3/SimulatorReference.pdf)
-- [**sites.units.it** SPICE: - PHP 8.2.31 - UniTS](https://sites.units.it/carrato/didatt/doc/spice.pdf)
-- [**computer.org** 5nm FinFET Standard Cell Library Optimization and Circuit](https://www.computer.org/csdl/proceedings-article/isvlsid/2014/3765a424/12OmNzd7bFg)
-- [**arxiv.org** An Intelligent Parameter Extractor based on Features for BSIM-CMG](https://arxiv.org/html/2404.07827v1)
-- [**www2.eecs.berkeley.edu** Compact Modeling of Advanced CMOS and Emerging Devices for](https://www2.eecs.berkeley.edu/Pubs/TechRpts/2019/Archive/EECS-2019-28.pdf)
-- [**shop.elsevier.com** FinFET/GAA Modeling for IC Simulation and Design - Elsevier Shop](https://shop.elsevier.com/books/finfet-gaa-modeling-for-ic-simulation-and-design/chauhan/978-0-323-95729-8)
-- [**akademibokhandeln.se** FinFET Modeling for IC Simulation and Design - Yogesh Singh](https://www.akademibokhandeln.se/bok/finfet-modeling-for-ic-simulation-and-design/9780124200319)
-- [**researchgate.net** Nanoscale FinFET global parameter extraction for the BSIM-CMG](https://www.researchgate.net/publication/283877543_Nanoscale_FinFET_global_parameter_extraction_for_the_BSIM-CMG_model)
-- [**semanticscholar.org** Performance evaluation of FinFET pass-transistor full adders with](https://www.semanticscholar.org/paper/Performance-evaluation-of-FinFET-pass-transistor-Martin-Oruklu/b53924a954e4ea3b545d30be31c093d540c10431)
+- [**techrxiv.org** Physical Neural Network Compact Model for Fast and Flexible](https://www.techrxiv.org/doi/pdf/10.36227/techrxiv.174673029.93291786)
+- [**in4.iue.tuwien.ac.at** Graph-based Compact Modeling (GCM) of CMOS transistors for](https://in4.iue.tuwien.ac.at/pdfs/sispad2022/Graph-based-Compact-Modeling--GCM--of-CMOS-transistors-for-_2023_Solid-State.pdf)
+- [**intechopen.com** Semiconductor Device Modeling and Simulation for Electronic](https://www.intechopen.com/chapters/71973)
+- [**computer.org** Metalearning Based Adaptive Compact Modeling Framework for](https://www.computer.org/csdl/journal/ai/2025/10/10949699/25DZPetUH3a)
+- [**osti.gov** Graph-based Compact Modeling (GCM) of CMOS Transistors for](https://www.osti.gov/servlets/purl/2480616)
+- [**alphaxiv.org** Kolmogorov-Arnold Network for Transistor Compact Modeling](https://www.alphaxiv.org/abs/2503.15209)
+- [**mdpi.com** ResNet Modeling for 12 nm FinFET Devices to Enhance DTCO](https://www.mdpi.com/2079-9292/13/20/4040)
+- [**web.engr.oregonstate.edu** ECE 521 - College of Engineering | Oregon State University](https://web.engr.oregonstate.edu/~karti/ece521/Lectures.pdf)
+- [**webthesis.biblio.polito.it** POLITECNICO DI TORINO - WebThesis](https://webthesis.biblio.polito.it/33864/1/tesi.pdf)
+- [**support.ptc.com** FlexNet Publisher License Administration Guide - support PTC](https://support.ptc.com/images/cs/articles/2020/06/1592373493MyaH/LicenseAdministration.pdf)
+- [**docs.revenera.com** FlexNet Publisher License Administration Guide](https://docs.revenera.com/fnp/2026r2/pdf/fnp_LicAdmin.pdf)
+- [**docs.genesys.com** Installing License Manager - Genesys Documentation](https://docs.genesys.com/Documentation/System/8.5.x/GenLic/InstallingLicenseManager)
+- [**ansyshelp.ansys.com** Ansys, Inc. License Management Guide](https://ansyshelp.ansys.com/public/Views/Secured/corp/v261/en/pdf/ansys_license_management_guide.pdf)
+- [**www2.eecs.berkeley.edu** Negative Capacitance Field-Effect Transistor Design and Machine](https://www2.eecs.berkeley.edu/Pubs/TechRpts/2022/Archive/EECS-2022-34.pdf)
+- [**pdfcoffee.com** Vdoc - Pub Finfet Devices For Vlsi Circuits and Systems](https://pdfcoffee.com/vdoc-pub-finfet-devices-for-vlsi-circuits-and-systems-pdf-free.html)
+- [**scribd.com** Vdoc - Pub Finfet Devices For Vlsi Circuits and Systems | PDF - Scribd](https://www.scribd.com/document/583544102/Vdoc-pub-Finfet-Devices-for-Vlsi-Circuits-and-Systems)
+- [**inaoe.repositorioinstitucional.mx** Reliability Assessment of Weak Chips Under Thermal Effects in](https://inaoe.repositorioinstitucional.mx/jspui/bitstream/1009/2748/1/AGUIRRESGJ_DE.pdf)
+- [**escholarship.org** Negative Capacitance Field-Effect Transistor Design ... - UC Berkeley](https://escholarship.org/content/qt54p0x2x2/qt54p0x2x2.pdf?v=lg)
+- [**cse.chalmers.se** HSPICE Quick Reference Guide](https://www.cse.chalmers.se/~perla/ugrad/EDA351/HSPICEQuickRef.pdf)
+- [**class.ece.iastate.edu** Virtuoso® Analog Design Environment User Guide](https://class.ece.iastate.edu/djchen/ee501/2011/Cadence%20analog%20design%20environment%20user%20guide%202006.pdf)
+- [**kolegite.com** THE SPICE BOOK](https://kolegite.com/EE_library/books_and_lectures/%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F%20%D0%BD%D0%B0%20%D0%9F%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D0%B8%D1%80%D0%B0%D0%BD%D0%B5%D1%82%D0%BE%20%D0%B2%20%D0%95%D0%BB%D0%B5%D0%BA%D1%82%D1%80%D0%BE%D0%BD%D0%B8%D0%BA%D0%B0%D1%82%D0%B0/The%20SPICE%20Book%20by%20Andrei%20Vladimirescu%20%28z-lib.org%29.pdf)
+- [**unm.edu** T-Spice 14 User Guide—Contents - The University of New Mexico](https://www.unm.edu/~pzarkesh/ECE520/tspice.pdf)
+- [**es.mathworks.com** Create IBIS Model from SPICE Simulation Data - MATLAB & Simulink](https://es.mathworks.com/help/serdes/ug/create-ibis-model-from-spice-simulation-data.html)
+- [**scribd.com** BSIM4 Manual | PDF | Mosfet | Dielectric - Scribd](https://www.scribd.com/document/41887274/BSIM4-Manual)
+- [**xyce.sandia.gov** SANDIA REPORT Xyce™ Parallel Electronic Simulator Reference](https://xyce.sandia.gov/files/xyce/Xyce_Reference_Guide_7.8.pdf)
+- [**scribd.com** BSIM6.1.1 Technical Manual | PDF | Field Effect Transistor - Scribd](https://www.scribd.com/document/815575202/BSIM6-1-1-Technical-Manual)
+- [**scribd.com** Bsim4 Manual | PDF - Scribd](https://www.scribd.com/doc/101441431/bsim4-manual)
+- [**cdn14.21dianyuan.com** Saber MAST Language Reference Manual](https://cdn14.21dianyuan.com/download.php?id=188144)
+- [**cdn14.21dianyuan.com** Saber User Guide](https://cdn14.21dianyuan.com/download.php?id=43201)
+- [**scribd.com** HP 8153A Programming Guide | PDF | Ac Power Plugs And Sockets](https://www.scribd.com/document/736986357/HP-8153A-Programming-Guide)
+- [**github.com** AsahiroKenpachi/asap_7nm_Xschem - GitHub](https://github.com/AsahiroKenpachi/asap_7nm_Xschem)
+- [**vdoc.pub** Finfet Modeling For Ic Simulation And Design: Using The Bsim-cmg](https://vdoc.pub/documents/finfet-modeling-for-ic-simulation-and-design-using-the-bsim-cmg-standard-5teikr79jg00)
+- [**github.com** GitHub - RSMadhuri66/avsdbgr_7nm](https://github.com/RSMadhuri66/avsdbgr_7nm)
+- [**mdpi.com** A Design-Technology Co-Optimization Framework Based on ... - MDPI](https://www.mdpi.com/2079-9292/15/16/3553)
+- [**nthuee.org** HSPICE Reference Manual: Commands and Control Options](https://nthuee.org/archive/AIC/106%E8%AC%9D%E5%BF%97%E6%88%90/Hspice/hspice_cmdref.pdf)
 - [**dartec.com** HSPICE Simulation and Analysis User Guide](https://www.dartec.com/MIC4120/SPICE/hspice_sim_analysis.pdf)
-- [**community.cadence.com** Using Print in Spectre - Custom IC Design - Cadence Community](https://community.cadence.com/cadence_technology_forums/f/custom-ic-design/14989/using-print-in-spectre)
-- [**documentation-service.arm.com** ARM DS-5 License Management Guide](https://documentation-service.arm.com/static/5ea873959931941038df28e7?token=)
-- [**manuals.plus** Product document - Manuals.plus](https://manuals.plus/m/8dda6f07fd07295e3cec77b5bbb07fae956e34abb543187d260d6ca84bf46d3e)
-- [**scribd.com** XVL Products License Management Guide | PDF - Scribd](https://www.scribd.com/document/563004673/LMGuide)
-- [**docs.citrix.com** Citrix Virtual Apps and Desktops](https://docs.citrix.com/es-es/citrix-virtual-apps-desktops/downloads/citrix-virtual-apps-and-desktops-1811.pdf)
-- [**es.scribd.com** Xen Desktop Xena PP | PDF | Windows 10 - Scribd](https://es.scribd.com/document/396993292/Xen-Desktop-Xena-Pp)
-- [**es.mathworks.com** Correlate an IBIS Model Against Its Source SPICE Model - MATLAB](https://es.mathworks.com/help/serdes/ug/correlate-ibis-model-against-its-source-spice-model.html)
-- [**researchgate.net** HSPICE User Guide: Simulation and Analysis - ResearchGate](https://www.researchgate.net/profile/Sivakumar_Murugesan/post/What_is_meant_by_1V_MOSFET/attachment/59d65a2b79197b80779af5a0/AS:545258371272704@1507011134602/download/hspice_si.pdf)
 - [**rudraj.it** HSPICE Simulation and Analysis User Guide](http://www.rudraj.it/hspice_sa.pdf)
 - [**manuals.plus** HSPICE User Guide, RF Analysis - Manuals.plus](https://manuals.plus/m/a40a232e9cee7349398878238dd02168037f2e8795b0e643abae27f166b11533.pdf)
-- [**ecse.rpi.edu** Introduction to Cadence Chapter 2: Schematics Chapter 3 - RPI ECSE](https://ecse.rpi.edu/cadence/CDStutorial_11-03.pdf)
-- [**cdn14.21dianyuan.com** Saber Simulator Command Reference Manual](https://cdn14.21dianyuan.com/download.php?id=43203)
-- [**users.ece.utexas.edu** VCS®/VCSi™ User Guide](https://users.ece.utexas.edu/~patt/10s.382N/handouts/vcs.pdf)
-- [**github.com** GitHub - RSMadhuri66/avsdbgr_7nm](https://github.com/RSMadhuri66/avsdbgr_7nm)
-- [**github.com** AsahiroKenpachi/asap_7nm_Xschem - GitHub](https://github.com/AsahiroKenpachi/asap_7nm_Xschem)
-- [**electronics.stackexchange.com** Is this NGSPICE simulation correct with ASAP7 transistor models?](https://electronics.stackexchange.com/questions/678378/is-this-ngspice-simulation-correct-with-asap7-transistor-models)
-- [**rudraj.it** HSPICE Reference Manual](http://www.rudraj.it/hspice_cmdref.pdf)
-- [**wenku.csdn.net** 'VD is starting'这个提示到底是启动成功还是出错了？背后有哪些常见](https://wenku.csdn.net/answer/2p2xeussip2x)
-- [**blog.csdn.net** Synopsys License 启动原理与故障排查全指南原创 - CSDN博客](https://blog.csdn.net/weixin_30599521/article/details/166877294)
-- [**synopsys.com** Tamper-Resistant Licensing Format Change Requires SCL 2018.06](https://www.synopsys.com/support/licensing-installation-computeplatforms/licensing/trl.html)
-- [**scribd.com** SCL 2018.06-SP1 Release Notes | PDF - Scribd](https://www.scribd.com/document/994155587/SCL-2018-06-SP1-Release-Notes)
-- [**synopsys.com** Archived Installation Guides - Synopsys](https://www.synopsys.com/support/licensing-installation-computeplatforms/installation/archived-installation-guides.html)
-- [**synopsys.com** SCL Supported OS - Synopsys](https://www.synopsys.com/support/licensing-installation-computeplatforms/licensing/scl-supported-os.html)
-- [**synopsys.com** Synplicity Users - Synopsys](https://www.synopsys.com/support/licensing-installation-computeplatforms/licensing/synplicity-users.html)
-- [**synopsys.com** SCL Server & Client Enhanced Licensing Messages - Synopsys](https://www.synopsys.com/content/dam/synopsys/support/documents/licensing/scl_enhanced_logging.pdf)
 - [**cseweb.ucsd.edu** HSPICE User Guide: Simulation and Analysis - UCSD CSE](https://cseweb.ucsd.edu/classes/wi10/cse241a/assign/hspice_sa.pdf)
-- [**whatportis.com** FlexNet License Server — Port 27000 (TCP) | WhatPortIs](https://whatportis.com/ports/27000-flexnet-license-server)
-- [**geoslope.support** Changing the FlexNet Publisher License Server Manager Port Number](https://www.geoslope.support/kb/article/61-changing-the-flexnet-publisher-license-server-manager-port-number/)
-- [**intel.com** The Ports of the Intel® Software License Manager](https://www.intel.com/content/www/us/en/developer/articles/guide/ports-of-software-license-manager.html)
-- [**community.esri.com** License Manager and FlexNET Service Using Port - Esri Community](https://community.esri.com/t5/arcgis-pro-questions/license-manager-and-flexnet-service-using-port/td-p/1218523)
-- [**3ds.com** FLEXnet Publisher 11.6.1 License Administration Guide](https://www.3ds.com/fileadmin/PRODUCTS-SERVICES/SIMULIA/RESOURCES/FLEXlm-License-Administration11.6.1.pdf)
-- [**graitec.com** Configuring Firewall Ports for the License Server - Graitec](https://www.graitec.com/Help/Graitec_Licensing/En/Configuring_Firewall_Ports_for_the_License_Server.htm)
-- [**gctjaipur.wordpress.com** digital-integrated-circuits-wo28.pdf](https://gctjaipur.wordpress.com/wp-content/uploads/2015/08/digital-integrated-circuits-wo28.pdf)
-- [**studylib.net** HSPICE Integration to Cadence Virtuoso User Guide - Studylib](https://studylib.net/doc/18427575/hspice-integration-to-cadence-virtuoso-analog-design-envi...)
-- [**fastonetech.com** synopsys仿真（synopsys eda） - 速石科技](https://fastonetech.com/newszblog/post/27577.html)
-- [**scribd.com** Verilog Concepts and Code Examples | PDF | Cmos | Mosfet - Scribd](https://www.scribd.com/document/687486558/VLSI-Q-As)
-- [**vlsisystemdesign.com** 7nm - VLSI System Design](https://www.vlsisystemdesign.com/7nm/)
-- [**wenku.csdn.net** Virtuoso新建库时弹出的技术文件选项该怎么挑？选错会有啥影响？](https://wenku.csdn.net/answer/b1cvtbwmx90a)
-- [**docs.corewing.com** How to export and import INAV configuration](https://docs.corewing.com/en/plane/inav/settings/fc/config-import-export.html)
