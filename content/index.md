@@ -1,9 +1,9 @@
-# Welcome to fazlayelahi29.github.io
+# Welcome to the Personal Website of Fazlay Elahi <fazlayelahi29.github.io>
 
 
 # FAZLAY ELAHI
 
-![[Image 1.jpg|451]]
+![[Image 1.jpg|250]]
 
 
 
@@ -13,9 +13,6 @@
 
 **Junior Year Undergraduate Student pursuing BSc (Engg.) in EEE at AUST | Semiconductor Device Physics Modeling | VLSI Circuits & Systems Design**
 
-
-Undergraduate electrical engineering student engaged in nanoscale **Semiconductor Device Physics Modeling** and applied **Hardware Systems Design**. Capable of executing finite-element **TCAD** drift-diffusion electrostatics and maintaining foundational familiarity with **VLSI EDA** workflows. Translates theoretical material behaviors into measurable circuit-level parameters, supported by laboratory execution in analog integrated circuits, analog electronics, electrical machineries, and numerical analysis.
-  
 ---
 # CONTACT
 
@@ -1304,34 +1301,7 @@ Khalishpur Housing Estate, Khalishpur, Khulna-9000, Bangladesh
 
 ---
 
-# PERSONAL STATEMENT 
-
-I remember the exact sound of my laptop fan maxing out—a desperate, high-pitched whine before the system violently crashed. I was sitting alone in my room in Dhaka, attempting to run a Density Functional Theory simulation on a dual-boot Ubuntu partition. For months, I had spent countless hours independently deciphering the quantum mechanics of Transition Metal Dichalcogenides and compiling open-source Quantum ESPRESSO frameworks. I had reached out to doctoral candidates and professors globally, seeking mentorship in computational material science, only to be met with institutional skepticism or pervasive silence. Yet, without access to a High-Performance Computing cluster, the massive Brillouin zone sampling completely overwhelmed my hardware. That system crash could have been an ending. Instead, it became the defining pivot of my academic life.
-
-  
-
-My undergraduate journey at Ahsanullah University of Science and Technology has not been a seamless narrative of perfect grades. Early in my academic career, I encountered severe hurdles, navigating semester drops and a cumulative GPA that does not accurately capture my intellectual velocity or my capacity for deep work. Standardized testing and rigid curricular pacing often felt misaligned with my autodidactic nature. However, rather than allowing traditional academic metrics to define my potential, I treated these setbacks as a crucible. I realized that true engineering is about optimizing within extreme constraints.
-
-  
-
-When pure computational material science proved physically impossible on my limited hardware, I refused to surrender my passion for nanoscale physics. I executed a strategic pivot into semiconductor device physics modeling. I taught myself Synopsys Sentaurus TCAD—a mathematically intense, finite-element domain that allowed me to rigorously explore sub-3nm architectures, FinFETs, and wide-bandgap materials without requiring an institutional supercomputer. I traded the passive constraints of a traditional classroom for the absolute accountability of self-guided research, independently designing and executing over thirty distinct TCAD simulations. I built a comprehensive personal website from scratch to document every simulation script, theoretical justification, and parameter output, ensuring my capabilities were backed by undeniable, empirical execution rather than just a transcript.
-
-  
-
-This resilience was not forged overnight. Long before I modeled the electrostatics of stacked ribbon channels, my mindset was shaped by years of classical vocal training in Rabindra Sangeet and Nazrul Geeti, alongside the rigorous field discipline I learned as a Rover Scout. These formative experiences instilled in me an appreciation for acoustic resonance, harmonic analysis, and the quiet, sustained effort required to achieve mastery. I am someone who favors deep, isolated work over superficial, fleeting accomplishments.
-
-  
-
-However, my autodidactic survival also made me acutely aware of the systemic bottlenecks facing my peers. I believe that engineering is fundamentally a human endeavor; it is about building ecosystems where others can thrive despite institutional limitations. This conviction led me to found Gluino Private Limited, a social enterprise designed to bridge the gap in STEM pedagogy and incubate undergraduate research literacy. I wanted to ensure that other students facing similar hardware or mentorship constraints had the structural support to write, research, and understand theoretical device physics. My commitment to community resilience was further tested during the height of the COVID-19 pandemic. Operating as an HR Officer for the WE FOR US Foundation, I helped mobilize emergency fundraising logistics, facilitating the organized distribution of critical relief funds to vulnerable populations. Whether coordinating high-pressure robotics tracks for the AUST Innovation and Design Club or managing precise editorial workflows for the IEEE Student Branch, my objective has always been to construct frameworks that elevate collective potential.
-
-  
-
-Today, when I look at my trajectory, I do not see a student hindered by early academic struggles; I see an engineer who has been battle-tested. I have learned how to navigate academic ghosting, how to pivot strategically when silicon and finances hit a wall, and how to extract rigorous, publication-worthy data from constrained environments. A U.S. graduate research environment is inherently ambiguous, demanding scholars who can forge paths where blueprints do not exist and persevere when experiments fail. My unconventional journey has rigorously prepared me for this exact reality. I am not a researcher who expects a linear path to success. I am a builder who has learned how to forge my own tools, architect my own solutions, and relentlessly pursue the absolute physical limits of technology. 
-
-
----
-
-## SPECIALIZED ACADEMIC & PERSONAL DEVELOPMENT COURSES
+# SPECIALIZED ACADEMIC & PERSONAL DEVELOPMENT COURSES
 * **Abartan's Thesis & Research Publication Course** (Oct 2023): Foundation in scientific peer-review.
 * **"Purify with Yahia Amin" at LifeSpring** (May 2023): Engagement with spiritual and psychological sciences.
 
@@ -1434,6 +1404,33 @@ Today, when I look at my trajectory, I do not see a student hindered by early ac
 - [Lam Research Tech Briefs](https://www.lamresearch.com/)
 - [Applied Materials Blog](https://www.appliedmaterials.com/us/en/blog.html)
 - [Silicon Catalyst Ecosystem](https://siliconcatalyst.com/)
+
+
+---
+
+# PERSONAL STATEMENT 
+
+I remember the exact sound of my laptop fan maxing out—a desperate, high-pitched whine before the system violently crashed. I was sitting alone in my room in Dhaka, attempting to run a Density Functional Theory simulation on a dual-boot Ubuntu partition. For months, I had spent countless hours independently deciphering the quantum mechanics of Transition Metal Dichalcogenides and compiling open-source Quantum ESPRESSO frameworks. I had reached out to doctoral candidates and professors globally, seeking mentorship in computational material science, only to be met with institutional skepticism or pervasive silence. Yet, without access to a High-Performance Computing cluster, the massive Brillouin zone sampling completely overwhelmed my hardware. That system crash could have been an ending. Instead, it became the defining pivot of my academic life.
+
+  
+
+My undergraduate journey at Ahsanullah University of Science and Technology has not been a seamless narrative of perfect grades. Early in my academic career, I encountered severe hurdles, navigating semester drops and a cumulative GPA that does not accurately capture my intellectual velocity or my capacity for deep work. Standardized testing and rigid curricular pacing often felt misaligned with my autodidactic nature. However, rather than allowing traditional academic metrics to define my potential, I treated these setbacks as a crucible. I realized that true engineering is about optimizing within extreme constraints.
+
+  
+
+When pure computational material science proved physically impossible on my limited hardware, I refused to surrender my passion for nanoscale physics. I executed a strategic pivot into semiconductor device physics modeling. I taught myself Synopsys Sentaurus TCAD—a mathematically intense, finite-element domain that allowed me to rigorously explore sub-3nm architectures, FinFETs, and wide-bandgap materials without requiring an institutional supercomputer. I traded the passive constraints of a traditional classroom for the absolute accountability of self-guided research, independently designing and executing over thirty distinct TCAD simulations. I built a comprehensive personal website from scratch to document every simulation script, theoretical justification, and parameter output, ensuring my capabilities were backed by undeniable, empirical execution rather than just a transcript.
+
+  
+
+This resilience was not forged overnight. Long before I modeled the electrostatics of stacked ribbon channels, my mindset was shaped by years of classical vocal training in Rabindra Sangeet and Nazrul Geeti, alongside the rigorous field discipline I learned as a Rover Scout. These formative experiences instilled in me an appreciation for acoustic resonance, harmonic analysis, and the quiet, sustained effort required to achieve mastery. I am someone who favors deep, isolated work over superficial, fleeting accomplishments.
+
+  
+
+However, my autodidactic survival also made me acutely aware of the systemic bottlenecks facing my peers. I believe that engineering is fundamentally a human endeavor; it is about building ecosystems where others can thrive despite institutional limitations. This conviction led me to found Gluino Private Limited, a social enterprise designed to bridge the gap in STEM pedagogy and incubate undergraduate research literacy. I wanted to ensure that other students facing similar hardware or mentorship constraints had the structural support to write, research, and understand theoretical device physics. My commitment to community resilience was further tested during the height of the COVID-19 pandemic. Operating as an HR Officer for the WE FOR US Foundation, I helped mobilize emergency fundraising logistics, facilitating the organized distribution of critical relief funds to vulnerable populations. Whether coordinating high-pressure robotics tracks for the AUST Innovation and Design Club or managing precise editorial workflows for the IEEE Student Branch, my objective has always been to construct frameworks that elevate collective potential.
+
+  
+
+Today, when I look at my trajectory, I do not see a student hindered by early academic struggles; I see an engineer who has been battle-tested. I have learned how to navigate academic ghosting, how to pivot strategically when silicon and finances hit a wall, and how to extract rigorous, publication-worthy data from constrained environments. A U.S. graduate research environment is inherently ambiguous, demanding scholars who can forge paths where blueprints do not exist and persevere when experiments fail. My unconventional journey has rigorously prepared me for this exact reality. I am not a researcher who expects a linear path to success. I am a builder who has learned how to forge my own tools, architect my own solutions, and relentlessly pursue the absolute physical limits of technology. 
 
 
 ---
