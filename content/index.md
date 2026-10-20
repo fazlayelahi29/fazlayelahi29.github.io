@@ -1,5 +1,9 @@
 # Welcome to the Personal Website of Fazlay Elahi <fazlayelahi29.github.io>
 
+> _This Website is maintained, managed, and administrated by Fazlay Elahi himself._ 
+> 
+> _This Personal Website is continually updated._ 
+
 
 # FAZLAY ELAHI
 
@@ -17,11 +21,11 @@
 # CONTACT
 
 **Cell Phone Number:** +8801613019329
-**Personal Email:** scholar.fazlay.elahi.eee.aust@gmail.com
+**Personal Email Address:** scholar.fazlay.elahi.eee.aust@gmail.com
 **Personal Website:** https://fazlayelahi29.github.io/
 **LinkedIn:** https://www.linkedin.com/in/fazlayelahi29
-**Present Address:** Dhanmondi, Dhaka-1209, Bangladesh 
-**Permanent Address:** Khalishpur Housing Estate, Khalishpur, Khulna-9000, Bangladesh
+**Present Mail Address:** Dhanmondi, Dhaka-1209, Bangladesh 
+**Permanent Mail Address:** Khalishpur Housing Estate, Khalishpur, Khulna-9000, Bangladesh
 
 ---
 
