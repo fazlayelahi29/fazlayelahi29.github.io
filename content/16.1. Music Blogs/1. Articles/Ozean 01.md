@@ -1,5 +1,12 @@
 # An American Shoegaze Music Band: Ozean
 
+https://www.facebook.com/LisaMonetDesign 
+
+https://www.facebook.com/sheabones 
+
+https://www.facebook.com/ozean92 
+
+
 Ozean is a an American shoegaze band formed in 1992 from San Jose, CA. Inspired by British bands the Cocteau Twins, The Jesus and Mary Chain, Ride, Lush, My Bloody Valentine, Slowdive, Pale Saints. 
 
 They recorded and released their self-titled EP between 1992 and 1993 on tapes, and it was a lost media until 2017. The original lineup consists of: Lisa Baer (vocals), Mike Prosenko (guitar), Eric Shea (guitar), Daniel Dietrick (bass), Mark Baldwin (drums). Their hypnotic and dreamy sound is often compared to Slowdive, Ride and Lush.
@@ -10,6 +17,8 @@ They recorded and released their self-titled EP between 1992 and 1993 on tapes, 
 ![[Ozean_2.jpeg|411]]
 
 ![[Ozean_3.jpg|403]]
+
+![[Ozean_4.jpg|404]]
 
 ## Abstract and Introduction
 
